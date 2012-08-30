@@ -1,0 +1,2 @@
+$(document).ready ->
+	$('#post_submit').tagit({ availableTags: ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'], singleField: true, singleFieldNode: $('#post_description') })
