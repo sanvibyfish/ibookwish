@@ -1,82 +1,31 @@
+require "open-uri"  
+
 class PostsController < ApplicationController
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
-  end
+	DOUBAN_APIKEY = '0c4c24c38128d4df24e46e4a837a7e9d'
+	DOUBAN_SECRET = 'd66f4058142d5c92'
+	DOUBAN_ACCESS_TOKEN = '1bfe1241d8bdf5de53fa36c58a39e19a'
+	def new	
+		@post = Post.new
+	end
 
-  # GET /posts/1
-  # GET /posts/1.json
-  def show
-    @post = Post.find(params[:id])
+	def get_book
+		@book = JSON.parse(open("http://api.douban.com/v2/book/isbn/#{params[:isbn]}?apikey=#{DOUBAN_APIKEY}&secret=#{DOUBAN_SECRET}").read)
+		@tags = []
+		@book["tags"].each { |tag|
+			@tags << tag["name"]
+		}
+		@sucess = true if @book
+		respond_to do |format|
+			format.js { render :layout => false }
+		end
+	end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
-  end
+	def create
+		# FIXME: 已经保存,未添加验证
+		@post = Post.new(params[:post])
+		@sucess if @post.save
 
-  # GET /posts/new
-  # GET /posts/new.json
-  def new
-    @post = Post.new
-    @categories = Category.all
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
-  end
+	end
 
-  # GET /posts/1/edit
-  def edit
-    @post = Post.find(params[:id])
-  end
 
-  # POST /posts
-  # POST /posts.json
-  def create
-    @post = Post.new(params[:post])
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /posts/1
-  # PUT /posts/1.json
-  def update
-    @post = Post.find(params[:id])
-
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /posts/1
-  # DELETE /posts/1.json
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
-  end
 end

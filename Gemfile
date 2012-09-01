@@ -8,7 +8,10 @@ gem 'rails', '3.2.8'
 # MongoDB..
 gem 'bson_ext'
 gem 'mongoid'
-
+gem "carrierwave"
+gem "carrierwave-upyun"
+gem "rest-client"
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,6 +23,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-will_paginate', '0.0.3'
+  gem 'bootstrap_helper', "1.4.1"
 end
 
 gem 'jquery-rails', '2.0.3'

@@ -11,6 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
+//= require tag-it
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require bootstrap-tab
+//= require app
+

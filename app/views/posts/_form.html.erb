@@ -1,62 +1,36 @@
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :_type, :class => 'control-label' %>
+    <%= f.label "isbn", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :_type, :class => 'text_field' %>
+      <%= f.text_field :isbn, :class => 'text_field', :id => 'post_isbn' %>
+      <%= f.button "获取", :class => 'btn', :id => "get_book_button", :type => "button" %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :_id, :class => 'text_field' %>
+  <div class="control-group" id="share_book" style="display:none;">
+    <%= f.label "分享图书", :class => 'control-label' %>
+    <div class="controls" id="content">
+
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :author, :class => 'control-label' %>
+  
+    <div class="control-group">
+    <%= f.label "愿望", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :author, :class => 'text_field' %>
+      <%= f.text_area :dream, :class => 'text_field',:placeholder => "写上你的小愿望" , :rows => '3' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :source, :class => 'control-label' %>
+    <div class="control-group">
+    <%= f.label "标签", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :source, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :platform, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :platform, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :size, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :size, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :watch, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :watch, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :description, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :categories, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :description, :class => 'text_field' %>
+      <div class="text_field">
+        <%= f.hidden_field :tag_names, :value => @post.tags.map(&:name).join(',') %>
+      <ul id="post_tags">
+      </ul> 
+      </div>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary', :id => 'post_submit' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
+    <%= f.submit "分享", :class => 'btn btn-primary', :id => 'post_submit' %>
   </div>
 <% end %>

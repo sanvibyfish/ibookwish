@@ -1,6 +1,16 @@
-<%- model_class = Post -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
-                                 :default => "New #{model_class.model_name.human}") %></h1>
+<div class="span8 bookdate-box">
+	<h2>分享一本书</h2>
+	<div class="tabbable">
+		<ul class="nav nav-tabs" id="tab">
+			<li><a href="#isbn" data-toggle="tab">根据ISBN</a></li>
+			<li><a href="#profile" data-toggle="tab">根据书名,作者名</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="isbn">
+				<%= render :partial => 'form' %>
+			</div>
+			<div class="tab-pane" id="profile">.大大大..</div>
+		</div>
+	</div>
 </div>
-<%= render :partial => 'form' %>
