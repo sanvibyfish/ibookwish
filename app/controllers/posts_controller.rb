@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 		@book["tags"].each { |tag|
 			@tags << tag["name"]
 		}
-		@sucess if @book
+		@sucess = true if @book
 		respond_to do |format|
 			format.js { render :layout => false }
 		end

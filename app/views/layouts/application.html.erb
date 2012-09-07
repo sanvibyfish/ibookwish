@@ -50,18 +50,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">书愿网</a>
+          <a class="brand" href="/">书愿网<small>beta</small></a>
           <div class="container nav-collapse">
-                            <p class="dropdown navbar-text pull-right">
-                            <a href="#" class="navbar-link">Username</a>
-                      </p>
-            <ul class="nav">
+
               <%= render_list :class => "nav" do |li|
             li << link_to("书单", "/")
             li << link_to("书友", cpanel_posts_path)
             li << link_to("活动", cpanel_accounts_path)
           end  %>
-            </ul>
+  <% if account_signed_in? %>
+  <ul class="nav pull-right">
+     <li class="dropdown" id="user_menu">
+    <%= link_to(raw("#{current_account.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
+    <%= render_list :class => "dropdown-menu" do |li|  
+      li <<  link_to("修改个人信息", edit_account_registration_path) 
+      li <<  link_to("邀请", new_account_invitation_path) 
+      li <<  link_to("登出", destroy_account_session_path, :method => :delete) 
+    end %>
+  </li>
+</ul>
+  <% else %>
+           <%= render_list :class => "nav pull-right" do |li|
+            li << link_to("登录", new_account_session_path)
+            li << link_to("注册", new_account_registration_path)
+             end  %>
+  <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -69,19 +82,9 @@
 
     <div class="container">
       <div class="row">
-        <div class="span9">
+        <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
-        </div>
-        <div class="span3">
-
-
-           <div class="bookdate-box">
-            <%= link_to "分享图书", new_post_path, :class => 'btn btn-large btn-primary long-btn' %>
-           </div>
-           <div class="bookdate-box">
-             <a class="btn btn-large btn-primary long-btn" href="#">下载安卓版</a>
-           </div>
         </div>
       </div><!--/row-->
 

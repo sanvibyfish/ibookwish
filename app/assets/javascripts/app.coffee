@@ -31,7 +31,7 @@ $(document).ready ->
     $(".tooltip").tooltip()
     $("a[rel=tooltip]").tooltip()
     $('#tab a:first').tab('show')
-
+    $('.dropdown-toggle').dropdown()
     $("#get_book_button").click () ->
       Window.APP.get_book($("#post_isbn"))
 

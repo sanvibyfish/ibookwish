@@ -20,7 +20,7 @@ class Post
   after_create :assign_categories, :assign_tags
   after_update :assign_categories, :assign_tags
   validates_presence_of :category_names, :tag_names, :isbn, :dream
-  validates_length_of :isbn,  :within => 10..13, :too_long => "请输入正确的ISBN", :too_short => "请输入正确的ISBN"
+  validates_length_of :isbn,  :within => 10..13
 
 
   protected
