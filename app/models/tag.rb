@@ -1,5 +1,7 @@
 class Tag
   include Mongoid::Document
+
+
   has_and_belongs_to_many :posts
   field :name
   field :created_at, type: Date, :default => Time.new
@@ -11,4 +13,9 @@ class Tag
   def self.autocomplete_data(q)
     Tag.autocomplete(q).map(&:name)
   end
+
+  def to_param
+    "#{name}"
+  end
+
 end

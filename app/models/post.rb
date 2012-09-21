@@ -1,6 +1,8 @@
 # coding: utf-8
 class Post
   include Mongoid::Document
+  include Geocoder::Model::Mongoid
+
   field :isbn, type: String
   field :author, type: String
   field :title, type: String
@@ -8,26 +10,41 @@ class Post
   field :price
   field :image
   field :created_at, type: Date, :default => Time.new
-  field :updated_at, type: Date
+  field :updated_at, type: Date, :default => Time.new
   field :dream, type: String
-
-  has_and_belongs_to_many :categories
+   
+  belongs_to :account
   has_and_belongs_to_many :tags
 
 
-  attr_accessor :category_names, :tag_names
-  # attr_accessible :category_names, :author, :source, :platform, :size, :description, :watch
-  after_create :assign_categories, :assign_tags
-  after_update :assign_categories, :assign_tags
-  validates_presence_of :category_names, :tag_names, :isbn, :dream
+  field :coordinates, :type => Array
+  field :city
+  field :state
+  field :country
+  field :address
+
+  reverse_geocoded_by :coordinates  do |obj,results|
+    binding.pry
+      if geo = results.first
+        obj.city    = geo.city
+        obj.state = geo.state
+        obj.country = geo.country
+        obj.address = geo.address
+      end
+
+  end
+  after_validation :reverse_geocode  # auto-fetch address
+  
+
+  attr_accessor :tag_names
+  after_create  :assign_tags
+  after_update  :assign_tags
+  validates_presence_of  :isbn, :dream, :title
   validates_length_of :isbn,  :within => 10..13
 
 
   protected
-  def assign_categories
-    names = category_names.split(',')
-    categories << names.map { |name| Category.find_or_create_by(name: name) } 
-  end
+
 
   def assign_tags
     names = tag_names.split(',')

@@ -1,11 +1,17 @@
-<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+<script src="/assets/post.js" type="text/javascript"></script>
+<div class="row">
+  <div class="span6">
+    <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+          <%= render "shared/error_messages", :target => @post %>
+
   <div class="control-group">
     <%= f.label "isbn", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :isbn, :class => 'text_field', :id => 'post_isbn' %>
-      <%= f.button "获取", :class => 'btn', :id => "get_book_button", :type => "button" %>
+      <%= f.button "获取", :class => 'btn', :id => "get_book_button", :type => "button", :disabled => true%>
     </div>
   </div>
+
   <div class="control-group" id="share_book" style="display:none;">
     <%= f.label "分享图书", :class => 'control-label' %>
     <div class="controls" id="content">
@@ -30,7 +36,25 @@
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit "分享", :class => 'btn btn-primary', :id => 'post_submit' %>
+<%= hidden_field_tag 'lat'%>
+<%= hidden_field_tag 'lng' %>
   </div>
+  <div class="span4 left30">
+    <div class="row">
+      <div>
+        <%= text_field_tag  "post_address_search", nil, :placeholder => "你的大致位置"  %>
+        <%= link_to "查看该地址", "#", :class => "btn btn-primary", :style => "margin-bottom:9px;", :id => "address_ok" %>
+      </div>
+      <div>
+        <div id="map"></div>
+      </div>
+    </div>
+   
+  </div>
+</div>
+  <div class="form-actions">
+    <input type="button" value="分享" class="btn btn-primary" id="post_submit">
+  </div>
+
 <% end %>
+

@@ -22,10 +22,11 @@ Code4::Application.routes.draw do
     resources :accounts
   end
   
-  root :to => 'home#index'
+  root :to => 'posts#index'
   resources :posts do
     collection do
       get :get_book
+      get :get_posts
     end    
   end
 

@@ -30,11 +30,11 @@ Code4::Application.configure do
   config.action_mailer.delivery_method = :test
 
   # Raise exception on mass assignment protection for Active Record models
-  config.active_record.mass_assignment_sanitizer = :strict
+  # config.active_record.mass_assignment_sanitizer = :strict
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  config.action_mailer.default_url_options = { :host => 'www.easy17.com' }
+  config.action_mailer.default_url_options = { :host => 'ican.test.com:3000' }
 
 end

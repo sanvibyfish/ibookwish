@@ -10,5 +10,10 @@
  *
  *= require_self
  *= require jquery.tagit
+ *= require jquery-autocomplete
+ *= require 'masonry/basic'
+ *= require 'masonry/gutters'
+ *= require 'masonry/infinitescroll'
+ *= require 'font-awesome'
  *= require_tree .
  */
