@@ -23,17 +23,7 @@ class Post
   field :country
   field :address
 
-  reverse_geocoded_by :coordinates  do |obj,results|
-    binding.pry
-      if geo = results.first
-        obj.city    = geo.city
-        obj.state = geo.state
-        obj.country = geo.country
-        obj.address = geo.address
-      end
 
-  end
-  after_validation :reverse_geocode  # auto-fetch address
   
 
   attr_accessor :tag_names

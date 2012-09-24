@@ -1,0 +1,17 @@
+		<div class="bookdate-box" data-type="image">
+		  			<%= image_tag post.image %>
+		  			<p class="tags">
+		  				<i class="icon-tags"></i>
+		  				<% post.tags.each do |tag|  %>
+		  					<span><%= link_to(tag.name, tag_path(tag)) %> </span>
+		  				<% end %>
+		  			</p>
+		  			<div class="stats clearfix">
+		  <span><a href="/puzzles/278">答案(1)</a></span>
+		  <span><a href="/puzzles/278">喜欢(0)</a></span>
+		  </div>
+		  			<div class="author clearfix">
+		  <a href="/235" title="春天" class="img"><img src="http://caidianying-avatar.b0.upaiyun.com/uploads/avatar/u-235.jpg!small" alt="profile img"></a>
+		  <p><a href="/235"> 春天 </a> 创建于 <span class="create_time">2012-09-17 23:05:10</span></p>
+		  </div>
+		  			</div>

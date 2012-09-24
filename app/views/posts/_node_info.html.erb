@@ -1,0 +1,11 @@
+<ul class="sorts left-band">
+	<li style="font-size:18px;" <%= " class=active" if action_name == "index"  %>><%= link_to(raw("<i class='icon-upload'></i>最新上传"), root_path) %></li>/
+	<li style="font-size:18px;"  <%= " class=active" if action_name == "near_me"  %> ><%= link_to(raw("<i class='icon-map-marker'></i>离我最近"), near_me_post_path(@location.name)) %>
+      <a data-toggle="modal" href="#myModal">(<%= @location.name %>)</a>
+      </li>	
+</ul>
+
+<ul class="sorts right-band">
+	<li style="font-size:18px;"><%= link_to(raw("分享图书"), new_post_path) %></li>/
+	<li style="font-size:18px;"><a href="#">下载安卓版</a></li>
+</ul>

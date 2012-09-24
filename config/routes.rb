@@ -28,6 +28,9 @@ Code4::Application.routes.draw do
       get :get_book
       get :get_posts
     end    
+    member do
+      get :near_me
+    end
   end
 
   resources :tags do

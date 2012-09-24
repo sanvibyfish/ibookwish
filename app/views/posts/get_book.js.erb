@@ -1,0 +1,7 @@
+<% if @sucess %>
+	$('#share_book').show()
+	$('#post_tag_names').val("<%= @tags.join(',') %>")
+	$('#content').html("<%= j render 'content', :book => @book %>")
+<% else %>
+	Window.APP.alert('找不到该书，请查看ISBN是否正确',"#share_book")
+<% end %>

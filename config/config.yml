@@ -1,0 +1,11 @@
+# coding: utf-8
+defaults: &defaults
+  app_name: "书愿网"
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

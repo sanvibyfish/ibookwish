@@ -1,0 +1,19 @@
+<div class="bookdate-box width-full" id="node_info">
+      <%= render "node_info", :location => @location %>
+</div>
+
+<div class="row-fluid"  >
+      <div id="posts-container">
+          <%= render @posts %>
+    </div>
+    <div>
+     <%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts'}  %>
+</div>
+
+
+<%= render "city", :locations => @locations %>
+
+<p id="back-top" >
+	<a href="#top"><span></span>回到顶部</a>
+</p>
+</div>

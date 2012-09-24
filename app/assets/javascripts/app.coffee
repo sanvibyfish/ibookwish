@@ -99,8 +99,11 @@ $(document).ready ->
 
 
     $("#get_book_button").click () ->
+      #FIXME 缺少获取中
       Window.APP.get_book($("#post_isbn"))
 
+
+    $('#myModal').hide()
 
 
     $("#post_tags").tagit

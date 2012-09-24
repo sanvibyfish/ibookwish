@@ -3,6 +3,7 @@ class Category
   field :name, type: String
   field :text, type: String
   field :created_at, type: Date, :default => Time.new
+  field :updated_at, type: Date, :default => Time.new
 
 
   def self.autocomplete(q)

@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="span7">
+     <div class="bookdate-box">
+      <h4>修改密码</h4>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal change-password-form '}) do |f| %>
+                <%= render "shared/error_messages", :target => resource %>
+
+  <%= f.input :email %>
+  <%= f.input :password, :autocomplete => "off"  %> 
+
+  <%= f.input :password_confirmation %>
+
+  <%= f.input :current_password, :hint => "你需要输入你当前的密码" %> 
+
+      <div class="form-actions">
+      <div><%= f.submit "提交", :class => 'btn btn-primary', 'data-disable-with' => '提交中...' %></div>
+    </div>
+<% end %>
+    </div>
+
+  </div>
+  <div class="span5">
+   
+    <div class="bookdate-box">
+      <h4>删除我的账户</h4>
+
+<p>不喜欢? <%= link_to "删除账户", registration_path(resource_name), :data => { :confirm => "你确定要删除?" }, :method => :delete %>.</p>
+
+    </div>
+  </div>
+</div>
+
+

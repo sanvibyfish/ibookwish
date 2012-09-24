@@ -1,0 +1,41 @@
+<div class="row bookdate-box">
+	<div class="span7 ">
+		
+		<h2>登录</h2>
+
+		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' }) do |f| %>
+
+		<%= f.input :email, :placeholder => 'user@domain.com'%>
+		<%= f.input :password %>
+
+		<% if devise_mapping.rememberable? -%>
+		<div class="control-group checkbox optional">
+			<label class="checkbox optional control-label"></label>
+			<div class="controls">
+				<%= f.check_box :remember_me, :style => "width:auto;" %> <%= t("mongoid.attributes.account.remember_me") %>
+
+				<span class="help-inline">
+					<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+					<%= link_to "忘记密码?", new_password_path(resource_name) %>
+					<% end -%>
+
+				</span>
+			</div>
+		</div>
+		<% end -%>
+
+		<div class="form-actions">
+			<div><%= f.submit "登录", :class => 'btn btn-primary', 'data-disable-with' => "登录中..." %></div>
+		</div>
+		<% end %>
+	</div>
+	<div class="span4">
+				<%= render "devise/shared/links" %>
+
+		
+	</div>
+
+</div>
+
+
+

@@ -1,0 +1,16 @@
+"zh-CN":
+  devise:
+    invitations:
+      send_instructions: '邀请电子邮件已经发送到 %{email}.'
+      invitation_token_invalid: '所提供的邀请码是无效的!'
+      updated: '你的密码已经设置成功,你现在登录'
+      no_invitations_remaining: "没有剩下的邀请"
+      new:
+        header: "发送邀请码"
+        submit_button: "发送邀请"
+      edit:
+        header: "设置你的密码"
+        submit_button: "设置密码"
+    mailer:
+      invitation_instructions:
+        subject: '邀请码说明'
