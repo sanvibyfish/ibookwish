@@ -1,8 +1,10 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>您好 <%= @resource.email %>!</p>
 
-<p>Someone has invited you to <%= root_url %>, you can accept it through the link below.</p>
+<p>有人邀请你注册<%= Setting.app_name %> ，你可以点下面连接进行注册</p>
+<p><%= link_to '接受', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 
-<p>If you don't want to accept the invitation, please ignore this email.<br />
-Your account won't be created until you access the link above and set your password.</p>
+<p>如果看不到连接，请复制下面的连接然后在浏览器里面打开：</p>
+<p><%= accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+
+<p>如果你不想接受邀请，请忽略次邮件<br /></p>

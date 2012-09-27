@@ -1,4 +1,6 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<div class="row bookdate-box">
+	<div class="span8">
+		<h2><%= t 'devise.invitations.edit.header' %></h2>
 
 <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
 
@@ -6,8 +8,28 @@
 
   <%= f.hidden_field :invitation_token %>
 
+
+				<div class="control-group">
+			<%= f.label :gender, :class => 'control-label' %>
+			<div class="controls">
+				<label class="radio inline"><%= radio_button("account", "gender", "0", :class => "radio_buttons") %>男</label>
+		<label class="radio inline"><%= radio_button("account", "gender", "1", :class => "radio_buttons", :checked => true) %>女</label>
+			</div>
+		</div>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
+  <%= f.input :nickname %>
 
-  <%= f.submit t("devise.invitations.edit.submit_button") %>
+  		<div class="form-actions">
+			<div><%= f.submit "注册", :class => 'btn btn-primary', 'data-disable-with' => '注册中...' %></div>
+		</div>
 <% end %>
+
+
+
+	</div>
+</div>
+
+
+
+

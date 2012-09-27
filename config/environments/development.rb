@@ -45,5 +45,5 @@ Code4::Application.configure do
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { :host => 'ican.test.com:3000' }
+  config.action_mailer.default_url_options = { :host => 'sanvibyfish.no-ip.org:3000' }
 end
