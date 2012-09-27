@@ -1,6 +1,8 @@
+$("#get_book_button").val("获取")
+$("#get_book_button").removeAttr("disabled")
 <% if @sucess %>
 	$('#share_book').show()
-	$('#post_tag_names').val("<%= @tags.join(',') %>")
+	$('#post_tag_names').val("<%= tag_name_tag(@book['tags']) %>")
 	$('#content').html("<%= j render 'content', :book => @book %>")
 <% else %>
 	Window.APP.alert('找不到该书，请查看ISBN是否正确',"#share_book")

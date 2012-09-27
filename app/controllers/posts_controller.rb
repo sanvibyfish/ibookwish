@@ -1,39 +1,51 @@
 #coding: utf-8
 require "open-uri"  
-
 class PostsController < ApplicationController
-	before_filter :authenticate_account!, :only => [:new, :create]
+	before_filter :authenticate_account!
 	before_filter :location, :only => [:index, :near_me]
+	before_filter :set_menu_active
 
 	DOUBAN_APIKEY = '0c4c24c38128d4df24e46e4a837a7e9d'
 	DOUBAN_SECRET = 'd66f4058142d5c92'
 	DOUBAN_ACCESS_TOKEN = '1bfe1241d8bdf5de53fa36c58a39e19a'
+
 	def new	
 		@post = Post.new
 	end
 
 	def location
 		@locations = Location.all
-		# FIXME 目前是虚拟IP
-		request.env["HTTP_X_FORWARDED_FOR"] = "58.251.231.75"
-		@location = Location.find_by(pin_yin: request.location.city.downcase)
+		if session[:location].blank?
+			# FIXME 目前是虚拟IP
+			if request.location.city.downcase.blank?
+				session[:location] =  Location.find_by(pin_yin: "shenzhen")
+			else
+				session[:location] = Location.find_by(pin_yin: request.location.city.downcase)
+			end
+			
+		end
 	end
 
 	def get_book
 		@book = JSON.parse(open("http://api.douban.com/v2/book/isbn/#{params[:isbn]}?apikey=#{DOUBAN_APIKEY}&secret=#{DOUBAN_SECRET}").read)
-		@tags = []
-		@book["tags"].each { |tag|
-			@tags << tag["name"]
-		}
-		@sucess = true if @book
+		@sucess = true
+		respond_to do |format|
+			format.js { render :layout => false }
+		end
+		rescue OpenURI::HTTPError, Net::HTTPNotFound, Mechanize::ResponseCodeError
+		@sucess = false	
 		respond_to do |format|
 			format.js { render :layout => false }
 		end
 	end
 
 	def get_posts
-		@posts = Post.desc(:created_at).page(params[:page])
-		render "posts/_posts"
+		if params[:action_name] == "near_me"
+			@posts = Post.where(location: session[:location]).page(params[:page])
+		else
+			@posts = Post.desc(:created_at).page(params[:page])
+		end
+		render @posts
 	end
 
 	def index
@@ -41,18 +53,24 @@ class PostsController < ApplicationController
 	end
 
 	def near_me
-		@posts = Post.where(city: params[:id]).desc(:created_at).page(params[:page])
+		session[:location] = Location.find_by(name: params[:id])
+		@posts = Post.where(location: session[:location]).desc(:created_at).page(params[:page])
+		render :action => "index"
 	end
 
 
 	def create
-		# FIXME: 跳转修复
-		params[:post][:coordinates] = [params[:lat],params[:lng]]
-		@result = JSON.parse(open("http://maps.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
-		params[:post][:address] = @result["Placemark"][0]["address"]
-		params[:post][:city] = @result["Placemark"][0]["AddressDetails"]["Locality"]["LocalityName"]
-		params[:post][:state] = @result["Placemark"][0]["AddressDetails"]["Locality"]["AddressLine"]
+		# FIXME: 跳转修复 
+		unless params[:lat].blank?
+			params[:post][:coordinates] = [params[:lat],params[:lng]]
+			doc = JSON.parse(open("http://maps.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
+			address_path = JsonPath.new('$..address')
+			location_path = JsonPath.new('$..LocalityName')
+			params[:post][:address] = address_path.on(doc).first
+			params[:post][:location] = Location.find_by(name: location_path.on(doc).first[0,2]) 
+		end
 		@post = Post.new(params[:post])
+		@post.remote_image_url = params[:post][:image]
 		@post.account = current_account
 		if @post.save
 			redirect_to @post, notice: '操作成功.' 
@@ -66,6 +84,14 @@ class PostsController < ApplicationController
 	def show
 
 	end
+
+
+	protected
+
+  	def set_menu_active
+    	@current = @current = ['/posts']
+  	end
+
 
 
 end

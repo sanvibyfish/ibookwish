@@ -5,14 +5,14 @@
 	<div class="span3">
 	
 		<div><small>书名:<%= book["title"] %></small></div>
-		<div><small>作者:<%= book["attrs"]["author"] %></small></div>
-		<div><small>出版社:<%= book["attrs"]["publisher"] %></small></div>
-		<div><small>价格:<%= book["attrs"]["price"] %></small></div>
+		<div><small>作者:<%= book["author"] %></small></div>
+		<div><small>出版社:<%= book["publisher"] %></small></div>
+		<div><small>价格:<%= book["price"] %></small></div>
 		<%= hidden_field_tag "post[title]", book["title"]  %>
-		<%= hidden_field_tag "post[author]", book["attrs"]["author"] %>
-		<%= hidden_field_tag "post[publisher]",book["attrs"]["publisher"]  %>
-		<%= hidden_field_tag "post[price]", book["attrs"]["price"] %>
-		<%= hidden_field_tag "post[image]", book["image"] %>
+		<%= hidden_field_tag "post[author]", book["author"] %>
+		<%= hidden_field_tag "post[publisher]",book["publisher"]  %>
+		<%= hidden_field_tag "post[price]", book["price"] %>
+		<%= hidden_field_tag "post[image]", book["images"]["large"] %>
 		<%= hidden_field_tag "post[description]", book["summary"] %>
 	</div>
 </div>

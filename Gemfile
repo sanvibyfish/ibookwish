@@ -10,9 +10,12 @@ gem 'rails', '3.2.8'
 gem 'bson_ext'
 gem 'mongoid'
 gem 'kaminari'
-gem "carrierwave"
+
+# 图片存储
+gem "carrierwave",'0.6.2'
 gem "carrierwave-upyun"
 gem "rest-client"
+gem "carrierwave-mongoid"
 
 
 # 用户系统
@@ -35,8 +38,10 @@ gem "geocoder"
 #瀑布流
 gem 'masonry-rails'
 gem 'modernizr-rails'
-#icon
-gem 'font-awesome-rails'
+
+gem 'mechanize'
+
+gem 'jsonpath'
 
 gem "cells"
 
@@ -64,8 +69,10 @@ group :development, :test do
 	gem 'pry'	
 	gem 'thin'
   gem 'rspec-rails', '~> 2.10.0'
+  gem 'database_cleaner'
   # gem 'rvm-capistrano', :require => false
-  gem 'factory_girl_rails'
+  gem "factory_girl_rails"
+  
   # gem "capybara", :require => false
   
 end

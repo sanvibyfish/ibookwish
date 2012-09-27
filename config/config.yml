@@ -1,11 +1,18 @@
 # coding: utf-8
 defaults: &defaults
   app_name: "书愿网"
+  upload_url: "sanvi1020.b0.upaiyun.com"
 development:
   <<: *defaults
+  domain:
+    host: loclahost
+    port: ':3000'
 
 test:
   <<: *defaults
 
 production:
   <<: *defaults
+  domain:
+    host: bookdate.cn
+    port: ''

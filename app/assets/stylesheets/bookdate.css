@@ -11,6 +11,29 @@
 	padding-bottom: 15px;
 }
 
+.avatar32_f img {
+width: 32px;
+height: 32px;
+float: left;
+}
+
+.ml40_f {
+margin-left: 40px;
+}
+
+.fb_f {
+font-weight: bold;
+}
+a.fb_f {
+	color: #666;
+text-decoration: none;
+}
+
+.gray_f  {
+color: #999;
+text-decoration: none;
+}
+
 #node_info a {
 	color: #333;
 }

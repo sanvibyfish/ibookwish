@@ -49,16 +49,12 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <a class="brand" href="/">书愿网<small>beta</small></a>
+          <!-- #FIXME 其他连接未激活书单-->
           <div class="container nav-collapse">
 
               <%= render_list :class => "nav" do |li|
-            li << link_to("书单", "/")
+            li << link_to("书单", posts_path)
             li << link_to("书友", "#")
             li << link_to("活动", "#")
           end  %>
@@ -89,6 +85,9 @@
         <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
+          <p id="back-top" >
+  <a href="#top"><span></span>回到顶部</a>
+</p>
         </div>
       </div><!--/row-->
 

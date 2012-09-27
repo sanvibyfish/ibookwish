@@ -2,15 +2,18 @@
 class Post
   include Mongoid::Document
   include Geocoder::Model::Mongoid
+  include Mongoid::Timestamps
 
+  
   field :isbn, type: String
   field :author, type: String
   field :title, type: String
   field :publisher
   field :price
-  field :image
-  field :created_at, type: Date, :default => Time.new
-  field :updated_at, type: Date, :default => Time.new
+  
+  mount_uploader :image, ImageUploader
+  field :uploader_secure_token
+
   field :dream, type: String
    
   belongs_to :account
@@ -18,8 +21,7 @@ class Post
 
 
   field :coordinates, :type => Array
-  field :city
-  field :state
+  belongs_to :location
   field :country
   field :address
 
@@ -29,16 +31,14 @@ class Post
   attr_accessor :tag_names
   after_create  :assign_tags
   after_update  :assign_tags
-  validates_presence_of  :isbn, :dream, :title
+  validates_presence_of  :isbn, :dream, :title, :coordinates
   validates_length_of :isbn,  :within => 10..13
 
 
-  protected
-
-
   def assign_tags
-    names = tag_names.split(',')
-    tags << names.map { |name| Tag.find_or_create_by(name: name) } 
+    unless tag_names.blank?
+      tags << Tag.assign_tags(tag_names)
+    end 
   end
 
 end

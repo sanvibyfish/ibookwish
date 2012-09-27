@@ -1,10 +1,10 @@
 class Location
   include Mongoid::Document
-
+  include Mongoid::Timestamps
   field :name
   field :pin_yin
-  field :created_at, type: Date, :default => Time.new
-  field :updated_at, type: Date, :default => Time.new
+
+  validates_uniqueness_of :name
 
   def to_param
     "#{name}"

@@ -39,6 +39,8 @@ $(document).ready ->
     $('.dropdown-toggle').dropdown()
     
     $("#post_submit").click ->
+      $(this).val("分享中...")
+      $(this).attr("disabled","disabled")
       $("#new_post").submit()
 
     $("#post_isbn").keyup ->  
@@ -99,7 +101,8 @@ $(document).ready ->
 
 
     $("#get_book_button").click () ->
-      #FIXME 缺少获取中
+      $(this).val("获取中...")
+      $(this).attr("disabled","disabled")
       Window.APP.get_book($("#post_isbn"))
 
 

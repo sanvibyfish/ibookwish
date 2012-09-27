@@ -1,11 +1,12 @@
-#coding: utf-8
+# encoding: utf-8
+# Read about factories at http://github.com/thoughtbot/factory_girl
+
 FactoryGirl.define do
-	factory :account do
-		nickname 'name'
-		sequence(:email){|n| "email#{n}@bookdate.cn" }
-    	password 'password'
-    	password_confirmation 'password'
-    	gender 0
-	end
- 
+  factory :account do
+  	sequence(:nickname){|n| "name#{n}" }
+    sequence(:email){|n| "email#{n}@ruby-chine.org" }
+    password 'password'
+    password_confirmation 'password'
+  end
+
 end

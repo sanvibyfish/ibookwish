@@ -1,5 +1,56 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  remember_me: "Remember me"
+"en":
+  mongoid:
+    inspection:
+        criteria: "#<Mongoid::Criteria__selector: %{selector},__options:  %{options},__class:    %{klass},__embedded: %{embedded}>"
+    models:
+      account: "User"
+    attributes:
+      user:
+        name: "Name"
+        login: "Login name"
+        email: "Email"
+        location: "City"
+        bio: "Bio"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        website: "Personal Website"
+        last_logined_at: "Last signed in at"
+        tagline: "Tagline"
+        state: "Status"
+        verified: "Verified"
+        remember_me: "Remember me"
+        current_password: "Current Password"
+        nickname : "Nickname"
+        gender: "Gender"
+      post:
+        dream: "dream"
+        isbn: "ISBN"
+        title: "Book Title"
+        tag_names: "Tag"
+    errors:
+      models:
+        account: "User"        
+      messages:
+        inclusion: "Inclusion"
+        exclusion: "Exclusion"
+        invalid: "Invalid"
+        confirmation: "Confirmation did not match"
+        accepted: "acceptance required."
+        empty: "Cannot be empty."
+        blank: "Cannot be blank."
+        too_long: "Too long (limited to %{count} characters)."
+        too_short: "Too short (at least %{count} characters are required)."
+        wrong_length: "Invvalid length (valid length: %{count} characters)."
+        taken: "already taken"
+        not_a_number: "Not a number"
+        not_an_integer: "Not an integer"
+        greater_than: "should be greater than %{count}"
+        greater_than_or_equal_to: "should be greater than or equal to %{count}"
+        equal_to: "should be equal to %{count}"
+        less_than: "should be less than %{count}"
+        less_than_or_equal_to: "should be less than or equal to %{count}"
+        odd: "should be odd number."
+        even: "should be even number."
