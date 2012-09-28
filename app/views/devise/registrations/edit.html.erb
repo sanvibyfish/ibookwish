@@ -1,26 +1,38 @@
 <div class="row">
-  <div class="span7">
+  <div class="span9">
      <div class="bookdate-box">
-      <h4>修改密码</h4>
+<%=simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :enctype =>  "multipart/form-data" ,  :class => 'form-horizontal change-password-form ' }) do |f| %>
+      <%= render "shared/error_messages", :target => resource if params[:by].blank? %>
+      <fieldset>
+        <legend>个人信息设置</legend>
+  <%= f.input :email , :disabled => true %>
+  <%= f.input :gender,  :collection => [[0, '男'], [1, '女']], :label_method => :last, :value_method => :first, :as => :radio %>
+  <%= f.input :nickname %>
+  <%= f.input :location,  :collection => Location.all, :as => :select, :selected => f.object.location_id%>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal change-password-form '}) do |f| %>
-                <%= render "shared/error_messages", :target => resource %>
+  <%= f.input :avatar %>
 
-  <%= f.input :email %>
-  <%= f.input :password, :autocomplete => "off"  %> 
 
-  <%= f.input :password_confirmation %>
-
-  <%= f.input :current_password, :hint => "你需要输入你当前的密码" %> 
-
+  <%= f.input :tagline, :input_html => { :class => "xxlarge" } %>
       <div class="form-actions">
-      <div><%= f.submit "提交", :class => 'btn btn-primary', 'data-disable-with' => '提交中...' %></div>
+      <div><%= f.submit "更新", :class => 'btn btn-primary', 'data-disable-with' => '提交中...' %></div>
     </div>
+
+  </fieldset>
 <% end %>
     </div>
 
   </div>
-  <div class="span5">
+  <div class="span3">
+   
+    <div class="bookdate-box">
+      <h4>我的头像</h4>
+        <%= image_tag  resource.avatar%>
+    
+
+          </div>
+  </div>
+    <div class="span3">
    
     <div class="bookdate-box">
       <h4>删除我的账户</h4>
@@ -29,6 +41,27 @@
 
     </div>
   </div>
+
+  <div class="span9">
+     <div class="bookdate-box">
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name,:by => :pwd), :html => { :method => :put, :class => 'form-horizontal change-password-form ' }) do |f| %>
+      <%= render "shared/error_messages", :target => resource if params[:by] == "pwd" %>
+      <fieldset>
+        <legend><%= t("accounts.edit_password")%></legend>
+        <input type="hidden" name="account[:by]" value="pwd" />
+        <%= f.input :current_password %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+        <div class="form-actions">
+          <%= f.submit "修改密码", :class => "btn btn-success", 'data-disable-with' => "正在保存..." %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+    </div>
+
+  </div>
+
 </div>
 
 

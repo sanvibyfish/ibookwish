@@ -1,5 +1,7 @@
 class Account
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -10,8 +12,8 @@ class Account
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
-  validates_presence_of :email, :encrypted_password, :nickname
-  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :nickname
+  validates_presence_of :email, :encrypted_password, :nickname, :gender
+  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :nickname, :gender, :location, :avatar, :tagline
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -30,6 +32,11 @@ class Account
   ##Customer Field
   field :nickname
   field :gender, :type => Integer
+  belongs_to :location
+  mount_uploader :avatar, ImageUploader
+  field :tagline
+  field :uploader_secure_token
+
 
   ##Invitation Token
   field :invitation_token, :type => String
@@ -41,6 +48,19 @@ class Account
   validates_length_of :invitation_token, maximum: 60
 
   has_many :posts
+
+
+  def update_with_password(params={})
+    if !params[:current_password].blank? or !params[:password].blank? or !params[:password_confirmation].blank?
+      super
+    else
+      params.delete(:current_password)
+      self.update_without_password(params)
+    end
+  end
+
+
+
 
   ## Confirmable
   # field :confirmation_token,   :type => String

@@ -1,10 +1,5 @@
 Code4::Application.routes.draw do
 
-
-  devise_for :accounts
-
-  resources :accounts
-
   #后台路由
   namespace :cpanel do
     root :to => 'posts#index'
@@ -33,11 +28,19 @@ Code4::Application.routes.draw do
     end
   end
 
+  devise_for :accounts,  :controllers => {
+      :registrations => :accounts
+  }
+
+
   resources :tags do
       collection do
         get :autocomplete
       end
   end
 
+
+
+  resources :accounts
 
 end

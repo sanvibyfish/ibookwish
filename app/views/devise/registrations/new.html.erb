@@ -5,14 +5,10 @@
 		<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal' } ) do |f| %>
 		      <%= render "shared/error_messages", :target => resource %>
 				<%= f.input :email,  :placeholder => "foo@bar.com" 	%>
+			
+				<%= f.input :gender, :input_html => { :class => 'inline' }, :collection => [[0, '男'], [1, '女']], :label_method => :last, :value_method => :first, :as => :radio %>
+		       
 
-				<div class="control-group">
-			<%= f.label :gender, :class => 'control-label' %>
-			<div class="controls">
-				<label class="radio inline"><%= radio_button("account", "gender", "0", :class => "radio_buttons") %>男</label>
-		<label class="radio inline"><%= radio_button("account", "gender", "1", :class => "radio_buttons", :checked => true) %>女</label>
-			</div>
-		</div>
 				<%= f.input :password %>
 				<%= f.input :password_confirmation %>
 				<%= f.input :nickname %>
