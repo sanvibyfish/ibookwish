@@ -6,7 +6,7 @@
 		      <%= render "shared/error_messages", :target => resource %>
 				<%= f.input :email,  :placeholder => "foo@bar.com" 	%>
 			
-				<%= f.input :gender, :input_html => { :class => 'inline' }, :collection => [[0, '男'], [1, '女']], :label_method => :last, :value_method => :first, :as => :radio %>
+				<%= f.input :gender,:item_wrapper_class => 'inline', :input_html => { :class => 'inline' }, :collection => [[0, '男'], [1, '女']], :label_method => :last, :value_method => :first, :as => :radio %>
 		       
 
 				<%= f.input :password %>

@@ -1,21 +1,16 @@
 <div class="row bookdate-box">
 	<div class="span8">
-		<h2><%= t 'devise.invitations.edit.header' %></h2>
+		<h2>注册新用户</h2>
 
-<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' } do |f| %>
 
   <%= render "shared/error_messages", :target => resource %>
 
+  <%= f.input :email, :disabled => true %>
   <%= f.hidden_field :invitation_token %>
 
+  <%= f.input :gender, :item_wrapper_class => 'inline',  :collection => [[0, '男'], [1, '女']], :label_method => :last, :value_method => :first, :as => :radio %>
 
-				<div class="control-group">
-			<%= f.label :gender, :class => 'control-label' %>
-			<div class="controls">
-				<label class="radio inline"><%= radio_button("account", "gender", "0", :class => "radio_buttons") %>男</label>
-		<label class="radio inline"><%= radio_button("account", "gender", "1", :class => "radio_buttons", :checked => true) %>女</label>
-			</div>
-		</div>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
   <%= f.input :nickname %>
