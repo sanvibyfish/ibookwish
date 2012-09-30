@@ -25,6 +25,7 @@ Code4::Application.routes.draw do
     end    
     member do
       get :near_me
+      get :tag
     end
   end
 

@@ -3,13 +3,19 @@
 </div>
 
 <div class="row-fluid"  >
+        <% if @current_tag %>
+         <h1><%= @current_tag.name %></h1>
+        <% end %>
       <div id="posts-container">
+
           <%= render @posts %>
     </div>
     <div>
     <% if action_name == "near_me"  %>
      	<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => action_name}  %>
-    <%  else %>
+    <%  elsif action_name == "tag" %>
+    <%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => action_name}  %>
+      <% else %>
 		<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts'}  %>
     <% end %>
 </div>

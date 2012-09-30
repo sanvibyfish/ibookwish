@@ -2,7 +2,7 @@
 require "open-uri"  
 class PostsController < ApplicationController
 	before_filter :authenticate_account!
-	before_filter :location, :only => [:index, :near_me]
+	before_filter :location, :only => [:index, :near_me, :tag]
 	before_filter :set_menu_active
 
 	DOUBAN_APIKEY = '0c4c24c38128d4df24e46e4a837a7e9d'
@@ -42,6 +42,9 @@ class PostsController < ApplicationController
 	def get_posts
 		if params[:action_name] == "near_me"
 			@posts = Post.where(location: session[:location]).page(params[:page])
+		elsif params[:action_name] == "tag"
+			@current_tag = Tag.find_by(:name => params[:id])
+			@posts = @current_tag.posts.desc(:created_at).page(params[:page])
 		else
 			@posts = Post.desc(:created_at).page(params[:page])
 		end
@@ -55,6 +58,12 @@ class PostsController < ApplicationController
 	def near_me
 		session[:location] = Location.find_by(name: params[:id])
 		@posts = Post.where(location: session[:location]).desc(:created_at).page(params[:page])
+		render :action => "index"
+	end
+
+	def tag
+		@current_tag = Tag.find_by(:name => params[:id])
+		@posts = @current_tag.posts.desc(:created_at).page(params[:page])
 		render :action => "index"
 	end
 
