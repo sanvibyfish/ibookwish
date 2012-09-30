@@ -7,11 +7,5 @@
           <%= render :partial => "post", :collection => @posts %>
     </div>
     <div>
-    <% if action_name == "near_me"  %>
-     	<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => action_name}  %>
-    <%  elsif action_name == "tag" %>
-    <%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => action_name}  %>
-      <% else %>
-		<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts'}  %>
-    <% end %>
+     	<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => @action_name}  %>
 </div>

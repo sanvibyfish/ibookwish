@@ -14,5 +14,6 @@
  *= require 'masonry/basic'
  *= require 'masonry/gutters'
  *= require 'masonry/infinitescroll'
+ *= require social-share-button
  *= require_tree .
  */

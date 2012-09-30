@@ -45,6 +45,9 @@ gem 'jsonpath'
 
 gem "cells"
 
+#分享组件
+gem 'social-share-button'
+
 # 禁用 assets 日志
 gem 'quiet_assets', "1.0.1"
 

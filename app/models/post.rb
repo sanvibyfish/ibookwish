@@ -10,6 +10,7 @@ class Post
   field :title, type: String
   field :publisher
   field :price
+  field :description
   
   mount_uploader :image, ImageUploader
   field :uploader_secure_token

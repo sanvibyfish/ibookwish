@@ -8,6 +8,7 @@
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
 #= require modernizr
+#= require social-share-button
 
 Window.APP =
   alert : (msg,to) ->

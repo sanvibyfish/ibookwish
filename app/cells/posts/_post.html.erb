@@ -1,5 +1,6 @@
 <div class="bookdate-box" data-type="image">
-<%= image_tag post.image %>
+	<%= link_to image_tag(post.image), post_path(post) %>
+
 <p class="tags">
 	<i class="icon-tags"></i>
 	<% post.tags.each do |tag|  %>
