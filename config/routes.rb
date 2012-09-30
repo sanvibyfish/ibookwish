@@ -31,8 +31,7 @@ Code4::Application.routes.draw do
 
   devise_for :accounts,  :controllers => {
       :registrations => :accounts
-  }
-
+  } 
 
   resources :tags do
       collection do
@@ -43,5 +42,6 @@ Code4::Application.routes.draw do
 
 
   resources :accounts
+  resources :users
 
 end

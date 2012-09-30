@@ -59,7 +59,9 @@ class Account
     end
   end
 
-
+  def to_param
+    "#{nickname}"
+  end
 
 
   ## Confirmable

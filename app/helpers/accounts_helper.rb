@@ -8,6 +8,6 @@ module AccountsHelper
 		when "tiny" then "20x20"
 		else options[:style].to_s
 		end
-		link_to image_tag(account.avatar.url(style)), account
+		link_to image_tag(account.avatar.url(style)), user_path(account)
 	end
 end

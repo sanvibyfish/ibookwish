@@ -1,0 +1,13 @@
+<div class="bookdate-box" data-type="image">
+<%= image_tag post.image %>
+<p class="tags">
+	<i class="icon-tags"></i>
+	<% post.tags.each do |tag|  %>
+		<span><%= link_to(tag.name, tag_post_path(tag)) %> </span>
+	<% end %>
+</p>
+<p class="muted"><%= post.dream %></p>
+
+
+<div class="convo attribution clearfix"><p><a href="<%= user_path(post.account) %>" title="<%= post.account.nickname %>" class="img x"><%= account_avatar_tag(post.account, :style => "small") %></a><a href="<%= user_path(post.account) %>" class="author x"><%= post.account.nickname %></a>&nbsp;创建于&nbsp;<%= distance_of_time_in_words(post.created_at,Time.now) %>前</p></div>
+</div>

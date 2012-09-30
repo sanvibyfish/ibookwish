@@ -42,13 +42,13 @@ class PostsController < ApplicationController
 	def get_posts
 		if params[:action_name] == "near_me"
 			@posts = Post.where(location: session[:location]).page(params[:page])
+
 		elsif params[:action_name] == "tag"
 			@current_tag = Tag.find_by(:name => params[:id])
 			@posts = @current_tag.posts.desc(:created_at).page(params[:page])
 		else
 			@posts = Post.desc(:created_at).page(params[:page])
 		end
-		render @posts
 	end
 
 	def index

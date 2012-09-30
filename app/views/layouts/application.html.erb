@@ -63,6 +63,7 @@
      <li class="dropdown" id="user_menu">
     <%= link_to(raw("#{current_account.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
     <%= render_list :class => "dropdown-menu" do |li|  
+      li <<  link_to("我的主页", user_path(current_account)) 
       li <<  link_to("修改个人信息", edit_account_registration_path) 
       li <<  link_to("邀请", new_account_invitation_path) 
       li <<  link_to("退出", destroy_account_session_path, :method => :delete) 
