@@ -36,6 +36,10 @@ class Account
   mount_uploader :avatar, ImageUploader
   field :tagline
   field :uploader_secure_token
+  #正在关注
+  has_and_belongs_to_many :following, :class_name => 'Account', :inverse_of => :followers
+  #粉丝
+  has_and_belongs_to_many :followers, :class_name => 'Account', :inverse_of => :following
 
 
   ##Invitation Token
@@ -61,6 +65,17 @@ class Account
 
   def to_param
     "#{nickname}"
+  end
+
+  def push_follower(uid)
+    return false if uid == self.id
+    return false if self.following.include?(uid)
+    self.push(:following,uid)
+  end
+
+  def pull_follower(uid)
+    return false if uid == self.id
+    self.pull(:following,uid)
   end
 
 

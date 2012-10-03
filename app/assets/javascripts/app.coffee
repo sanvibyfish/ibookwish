@@ -9,7 +9,7 @@
 #= require masonry/jquery.infinitescroll.min
 #= require modernizr
 #= require social-share-button
-
+#= require user
 Window.APP =
   alert : (msg,to) ->
     $(".alert").remove()

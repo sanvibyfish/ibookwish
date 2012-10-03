@@ -42,6 +42,11 @@ Code4::Application.routes.draw do
 
 
   resources :accounts
-  resources :users
+  resources :users do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
 
 end

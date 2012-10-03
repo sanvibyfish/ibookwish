@@ -1,0 +1,14 @@
+<div id="user-profile" class="profile">
+	<h1><%= @account.nickname %></h1>
+	<p class="stats"><a href="/hb4131362/following/">关注<span>27</span></a><a href="/hb4131362/followers/">粉丝<span>15</span></a></p>
+
+	<div id="user-profile-image">
+		<%= account_avatar_tag(@account, :style => "normal") %>
+	</div>
+	<% unless current_account == @account %>
+	<div class="follow">
+		<%= account_follow_tag @account %>
+	</div>
+	<% end %>
+	<div><p class="muted"><%= @account.tagline %></p></div>
+</div>

@@ -47,6 +47,11 @@ class PostsController < ApplicationController
 			@current_tag = Tag.find_by(:name => params[:id])
 			@posts = @current_tag.posts.desc(:created_at).page(params[:page])
 			@action_name = "tag"
+		elsif params[:action_name] == "show"
+			@account = Account.find_by(:nickname => params[:id])
+			@share_count = @account.posts.count
+			@posts = Post.where(:account => @account).desc(:created_at).page(params[:page])
+			@action_name = "show"
 		else
 			@posts = Post.desc(:created_at).page(params[:page])
 			@action_name = "index"

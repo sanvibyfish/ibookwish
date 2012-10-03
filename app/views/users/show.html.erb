@@ -1,18 +1,6 @@
 <div class="row">
 	<div class="span2">
-		<div id="user-profile" class="profile">
-			<h1><%= @account.nickname %></h1>
-			<p class="stats"><a href="/hb4131362/following/">关注<span>27</span></a><a href="/hb4131362/followers/">粉丝<span>15</span></a></p>
-
-			<div id="user-profile-image"><a href="/hb4131362/" title="傻傻的很天真" class="img x">
-				<%= account_avatar_tag(@account, :style => "normal") %>
-			</div>
-			<% unless current_account == @account %>
-			<div class="follow"><%= link_to "关注", "#" , :class => 'btn btn-primary  btn-block' %></div>
-			<% end %>
-			<div><p class="muted"><%= @account.tagline %></p></div>
-		</div>
-		
+		<%= render "profile", :account => @account %>
 	</div>
 
 	<div class="span9">
@@ -24,7 +12,7 @@
 	</div>
 	<div class="span9">
 		<%= render_cell :posts, :index, 
-    :current_tag => @current_tag, :posts => @posts %>
+    :current_tag => @current_tag, :posts => @posts, :action_name => @action_name %>
 
 	</div>
 
