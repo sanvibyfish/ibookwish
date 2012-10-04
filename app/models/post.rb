@@ -34,7 +34,7 @@ class Post
   after_update  :assign_tags
   validates_presence_of  :isbn, :dream, :title, :coordinates
   validates_length_of :isbn,  :within => 10..13
-
+  validates_length_of :dream,  :within => 0..140
 
   def assign_tags
     unless tag_names.blank?

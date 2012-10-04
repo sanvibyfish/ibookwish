@@ -1,88 +1,49 @@
-<% if @success %>
-success
-<% end %>
 <div class="row">
 	<div class="span9">
 		<div class="container-fluid bookdate-box ">
-			<div class="row-fluid">
-				<div class="span4">
-					<%= image_tag @post.image %>
-					<div>
-						<dl>
-						<dt><h4>我想要</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.dream %></p>
-							</blockquote>
-						</dd>
-					</dl>
-						
-
-					</div>
-
+			<div class="post-detail">
+				<div class="image">
+				<%= image_tag @post.image %>
 					<div class="social_share">
 						<%= social_share_button_tag(@post.title) %>
 					</div>
-					
 				</div>
-				<div class="span6">
 
-					<dl>
-						<dt><h4>书名</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.title %></p>
-							</blockquote>
-						</dd>
-					</dl>
+					<div class="content">
+						<p class="lead">书名
+							<span><%= @post.title %></span>
+						</p>
 
-					<dl>
-						<dt><h4>ISBN</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.isbn %></p>
-							</blockquote>
-						</dd>
-					</dl>
+						<p class="lead">作者
+							<span><%= @post.author %></span>
+						</p>
 
-					<dl>
-						<dt><h4>作者</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.author %></p>
-							</blockquote>
-						</dd>
-					</dl>
+						<p class="lead">出版社
+							<span><%= @post.publisher %></span>
+						</p>
 
-					<dl>
-						<dt><h4>出版社</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.publisher %></p>
-							</blockquote>
-						</dd>
-					</dl>
+						<p class="lead">价钱
+							<span><%= @post.price %></span>
+						</p>						
 
-					<dl>
-						<dt><h4>价钱</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.price %></p>
-							</blockquote>
-						</dd>
-					</dl>
-
-					<dl>
-						<dt><h4>介绍</h4></dt>
-						<dd>
-							<blockquote>
-								<p><%= @post.description %></p>
-							</blockquote>
-						</dd>
-					</dl>
+						<p class="lead">介绍
+							<span><%= @post.description %></span>
+						</p>
 
 					</div>
+					<div class="clearfix"></div>
+					<div class="dream alert alert-success">
+						<span class="label label-important">我想要</span>
+						<%= @post.dream %>
+					</div>
+					<div class="action">
+						<a href="#" class="btn">
+							<i class="icon-heart-empty"></i>
+							帮他实现</a>
+					</div>
+					
 				</div>
+
 			</div>
 			<div class="bookdate-box" id="pin_comments">
 				<div class="piece">
