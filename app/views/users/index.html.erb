@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="span2">
+		<%= render "profile", :account => @account %>
+	</div>
+
+	<div class="span9">
+<ul class="nav nav-pills" id="tab" >
+  <li <%= " class=active" if action_name == "show"  %>>
+  	<%= link_to "#{@account.posts.count}分享",user_path(@account) %>
+  </li>
+  <li <%= " class=active" if action_name == "following"  %>>
+  	<%= link_to "#{@account.following.count}关注",following_user_path(@account) %>
+  </li>
+  <li <%= " class=active" if action_name == "followers"  %>>
+  	<%= link_to "#{@account.followers.count}粉丝",followers_user_path(@account) %></li>
+</ul>
+	<div id="user_content">
+		<% if action_name == "show" %>
+		<%= render_cell :posts, :index, 
+    :current_tag => @current_tag, :posts => @posts, :action_name => @action_name %>	
+    <% elsif action_name == "followers" %>
+    	<%= render "followers",  :followers => @account.followers %>
+    <% else %>
+      <%= render "followers",  :followers => @account.following %>
+    <% end %>
+	</div>
+	</div>
+
+</div>

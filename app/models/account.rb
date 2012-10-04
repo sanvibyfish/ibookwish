@@ -67,15 +67,27 @@ class Account
     "#{nickname}"
   end
 
+  def push_following(uid)
+    return false if uid == self.id
+    return false if self.following_ids.include?(uid)
+    self.push(:following_ids,uid)
+  end
+
+  def pull_following(uid)
+    return false if uid == self.id
+    self.pull(:following_ids,uid)
+  end
+  
+
   def push_follower(uid)
     return false if uid == self.id
-    return false if self.following.include?(uid)
-    self.push(:following,uid)
+    return false if self.follower_ids.include?(uid)
+    self.push(:follower_ids,uid)
   end
 
   def pull_follower(uid)
     return false if uid == self.id
-    self.pull(:following,uid)
+    self.pull(:follower_ids,uid)
   end
 
 

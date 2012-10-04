@@ -6,6 +6,7 @@ module AccountsHelper
 		when "normal" then "100x100"
 		when "large" then "240x240"
 		when "tiny" then "20x20"
+		when "48x48" then "48x48"
 		else options[:style].to_s
 		end
 		link_to image_tag(account.avatar.url(style)), user_path(account)

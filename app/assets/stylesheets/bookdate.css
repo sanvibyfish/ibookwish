@@ -117,10 +117,6 @@ margin: 10px 0 5px;
 }
 
 
-.stats {
-margin: 10px 0;
-color: #999;
-}
 
 #back-top {
 	position: fixed;
@@ -197,12 +193,6 @@ padding: 10px 15px;
 background: #FAFAFA;
 }
 
-#user-profile h1 {
-margin: 0 0 7px;
-font-size: 22px;
-font-weight: 300;
-word-wrap: break-word;
-}
 
 #user-profile .stats {
 font-size: 15px;
@@ -221,19 +211,7 @@ color: #221919;
 text-decoration: none;
 outline: 0;
 }
-#user-profile-image {
-	margin: 15px;
-}
 
-.profile {
-float: left;
-padding: 15px;
-text-shadow: 0 1px rgba(255, 255, 255, .9);
-background-color: white;
-box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
--moz-box-shadow: 0 1px 3px rgba(34,25,25,.4);
--webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
-}
 
 .piece {
 clear: both;
@@ -278,4 +256,3 @@ color: #333;
 .social_share {
 	margin:  10px;
 }
-

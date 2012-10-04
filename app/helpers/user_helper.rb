@@ -4,16 +4,22 @@ module UserHelper
 def account_follow_tag(account)
     return "" if current_account.blank?
     return "" if account.blank?
-    class_name = "follow"
+    return "" if current_account == account
+    display_text = " 关注"
+    display_icon = "<i class='icon-white'></i>"
+    class_name = "btn btn-primary"
+    followed = false
     if account.follower_ids.include?(current_account.id)
-      class_name = "followed"
+      class_name = "btn btn-danger"
+      display_text = " 取消关注"
+      display_icon = "<i class='icon-remove icon-white'></i>"
+      followed = true
     end
 
-    link_to "关注", "#", :onclick => "return Window.Users.follow(this);",
+    link_to raw(display_icon)+display_text, "#", :onclick => "return Window.Users.follow(this);",
                         'data-id' => account.id,
-                        'data-followed' => (class_name == "followed"),
-                        :class => 'btn btn-primary  btn-block',
-                        :rel => "twipsy"
+                        :class => class_name,
+                        'data-followed' => followed
   end
 
 
