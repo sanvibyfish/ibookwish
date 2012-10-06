@@ -6,6 +6,10 @@
 		}
 	}
 
+	.tags {
+		width: 300px;
+	}
+
 	.content {
 		margin-left: 320px;
 	p {
@@ -29,5 +33,20 @@
 
 	.action {
 		float: right;
+	}
+}
+
+
+.submit_buttons {
+	float: right;
+	right: 10px;
+	top: 42px;
+}
+#post-map {
+	height: 210px;
+}
+.post {
+	.tags {
+		margin: 10px 0 5px;
 	}
 }

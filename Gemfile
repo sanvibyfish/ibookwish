@@ -10,7 +10,7 @@ gem 'rails-i18n'
 
 gem 'mongoid'
 gem 'kaminari'
-
+gem 'mongoid_spacial'
 
 # 图片存储
 gem "carrierwave",'0.6.2'

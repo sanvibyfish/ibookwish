@@ -10,6 +10,7 @@
 #= require modernizr
 #= require social-share-button
 #= require user
+#= require comment
 Window.APP =
   alert : (msg,to) ->
     $(".alert").remove()
@@ -107,6 +108,14 @@ $(document).ready ->
 
 
     $('#myModal').hide()
+
+
+    $('#post-map').gmap3
+      action: 'init'
+      options: 
+        zoom: 14
+        center:[$("#post-map").data("lat"), $("#post-map").data("lng")]
+  
 
 
     $("#post_tags").tagit

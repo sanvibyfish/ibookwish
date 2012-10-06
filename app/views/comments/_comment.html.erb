@@ -1,0 +1,17 @@
+<div class="piece">
+	<%= account_avatar_tag(comment.account, :style => "48x48", :class => "signature") %>
+<div class="info_bar">
+<b><%= comment.account.nickname %></b>
+<%= distance_of_time_in_words(comment.created_at,Time.now) %>前
+
+<div class="holder pull-right">
+	<% #FIXME 回复未作 %>
+<a class="rt" href="javascript:void(0)" id="hlcfan">回复</a>
+</div>
+
+</div>
+<div class="messages" id="1190">
+<p><%= comment.body %></p>
+
+</div>
+</div>
