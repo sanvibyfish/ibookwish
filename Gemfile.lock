@@ -91,9 +91,10 @@ GEM
     json (1.7.5)
     jsonpath (0.5.0)
       multi_json
-    kaminari (0.14.1)
+    kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     less (2.2.2)
       commonjs (~> 0.2.6)
     less-rails (2.2.3)
@@ -152,6 +153,8 @@ GEM
       activesupport (= 3.2.8)
       bundler (~> 1.0)
       railties (= 3.2.8)
+    rails-i18n (0.6.6)
+      i18n (~> 0.5)
     railties (3.2.8)
       actionpack (= 3.2.8)
       activesupport (= 3.2.8)
@@ -247,6 +250,7 @@ DEPENDENCIES
   pry
   quiet_assets (= 1.0.1)
   rails (= 3.2.8)
+  rails-i18n
   rest-client
   rspec-rails (~> 2.10.0)
   sass-rails (~> 3.2.3)

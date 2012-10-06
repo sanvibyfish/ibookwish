@@ -2,7 +2,7 @@
 source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.8'
-
+gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -10,6 +10,7 @@ gem 'rails', '3.2.8'
 
 gem 'mongoid'
 gem 'kaminari'
+
 
 # 图片存储
 gem "carrierwave",'0.6.2'

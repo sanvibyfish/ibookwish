@@ -1,4 +1,20 @@
-<%= form_for @post, :html => { :class => 'form-horizontal' }, :url => cpanel_posts_path(@post)  do |f| %>
+<%= simple_form_for [:cpanel,@post], :html => { :class => 'form-horizontal' }  do |f| %>
+    
+  <%= f.input :title %>
+  <%= f.input :image , :hint => "#{image_tag @post.image, :width => '60'}" %>
+  <%= f.input :isbn %>
+  <%= f.input :author %>
+  <%= f.input :publisher %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.input :uploader_secure_token %>
+  <%= f.input :dream %>
+  <%= f.input :account, :collection => Account.all, :as => :select, :selected => f.object.account_id ,:label_method => :nickname, :value_method => :id %>
+  <%= f.input :coordinates, :input_html => { :value => "#{display_latlng_tag @post.coordinates}"} %>
+  <%= f.input :location,  :collection => Location.all, :as => :select, :selected => f.object.location_id%>
+  <%= f.input :address %>
+
+
     <div class="control-group">
     <%= f.label :tags, :class => 'control-label' %>
     <div class="controls">
@@ -12,7 +28,7 @@
 
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary', :id => 'post_submit' %>
+    <%= f.submit nil, :class => 'btn btn-primary'%>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 cpanel_posts_path, :class => 'btn' %>
   </div>

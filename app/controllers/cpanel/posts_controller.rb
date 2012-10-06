@@ -2,7 +2,7 @@ class Cpanel::PostsController < Cpanel::ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.desc(:created_at).page(params[:page]).per(10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -55,7 +55,7 @@ class Cpanel::PostsController < Cpanel::ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
-
+    params[:post][:coordinates] = params[:post][:coordinates].split(",")
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }

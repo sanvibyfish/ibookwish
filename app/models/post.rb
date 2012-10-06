@@ -23,7 +23,6 @@ class Post
 
   field :coordinates, :type => Array
   belongs_to :location
-  field :country
   field :address
 
 

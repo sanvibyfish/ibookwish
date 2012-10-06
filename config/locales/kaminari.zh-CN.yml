@@ -1,0 +1,8 @@
+zh-CN:
+  views:
+    pagination:
+      first: "&laquo; 首页"
+      last: "末页 &raquo;"
+      previous: "&lsaquo; 上页"
+      next: "下页 &rsaquo;"
+      truncate: "..."
