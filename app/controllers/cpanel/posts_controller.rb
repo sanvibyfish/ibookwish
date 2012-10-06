@@ -1,23 +1,18 @@
+#coding: utf-8
 class Cpanel::PostsController < Cpanel::ApplicationController
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.desc(:created_at).page(params[:page]).per(10)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
+    drop_breadcrumb("Posts", cpanel_posts_path)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
+    drop_breadcrumb("Posts", cpanel_posts_path)
+    drop_breadcrumb(@post.title)
   end
 
   # GET /posts/new
@@ -34,6 +29,8 @@ class Cpanel::PostsController < Cpanel::ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    drop_breadcrumb("Posts", cpanel_posts_path)
+    drop_breadcrumb(@post.title)
   end
 
   # POST /posts
@@ -58,7 +55,7 @@ class Cpanel::PostsController < Cpanel::ApplicationController
     params[:post][:coordinates] = params[:post][:coordinates].split(",")
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to [:cpanel,@post], notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
