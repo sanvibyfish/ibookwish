@@ -1,6 +1,6 @@
 namespace :thin do
   namespace :cluster do
-　desc 'Start thin cluster'
+    desc 'Start thin cluster'
     task :start =&gt; :environment do
       `cd #{RAILS_ROOT}`
       port_range = RAILS_ENV == 'development' ? 3 : 8
