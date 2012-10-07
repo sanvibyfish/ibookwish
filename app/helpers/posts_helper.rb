@@ -6,4 +6,10 @@ module PostsHelper
 		}
 		@tags.join(',')
 	end
+
+	def display_latlng_tag(coordinates)
+		coordinates[0].to_s + "," + coordinates[1].to_s
+	end
+
+
 end

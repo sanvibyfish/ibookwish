@@ -51,16 +51,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Code4</a>
+          <a class="brand" href="#">控制台</a>
           <div class="container-fluid nav-collapse">
                           <p class="dropdown navbar-text pull-right">
-                            <a href="#" class="navbar-link">Username</a>
+                            <a href="#" class="navbar-link"><%= current_account.email %></a>
                       </p>
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
+              <%= render_list :class => "nav" do |li|
+            li << link_to("帖子", cpanel_posts_path)
+            li << link_to("用户", cpanel_accounts_path)
+            li << link_to("标签", cpanel_tags_path)
+          end  %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -68,16 +68,8 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-              <%= render_list :class => "nav nav-list" do |li|
-            li << link_to("分类", cpanel_categories_path)
-            li << link_to("帖子", cpanel_posts_path)
-            li << link_to("用户", cpanel_accounts_path)
-          end  %>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
+        <div class="span12">
+          <%= render_breadcrumb %>
           <%= bootstrap_flash %>
           <%= yield %>
         </div>

@@ -39,7 +39,7 @@ Code4::Application.routes.draw do
       end
   end
 
-
+  resources :comments
 
   resources :accounts
   resources :users do

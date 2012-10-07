@@ -1,0 +1,21 @@
+<div class="piece">
+	<%= account_avatar_tag(comment.account, :style => "48x48", :class => "signature") %>
+<div class="info_bar">
+	<span class="name">
+<%= link_to comment.account.nickname, user_path(comment.account) %>
+		</span>
+<%= distance_of_time_in_words(comment.created_at,Time.now) %>前
+
+<div class="holder pull-right">
+	<% #FIXME 目前只能@当前的人，是否要@帖子以外的人 %>
+	<%= link_to "回复", "javascript:void(0)", :class => "rt", "data-account-nickname" => "#{comment.account.nickname}" %>
+</div>
+
+</div>
+<div class="messages" id="1190">
+<p>
+<%=raw comment_body_tag(comment) %>
+</p>
+
+</div>
+</div>

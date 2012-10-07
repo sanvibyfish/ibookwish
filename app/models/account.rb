@@ -13,7 +13,7 @@ class Account
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email, :encrypted_password, :nickname, :gender
-  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :nickname, :gender, :location, :avatar, :tagline
+  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :nickname, :gender, :location, :avatar, :tagline, :roles
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -40,6 +40,10 @@ class Account
   has_and_belongs_to_many :following, :class_name => 'Account', :inverse_of => :followers
   #粉丝
   has_and_belongs_to_many :followers, :class_name => 'Account', :inverse_of => :following
+  # 用户角色
+  field :roles_mask
+  ROLES = %w[admin user]
+
 
 
   ##Invitation Token
@@ -53,6 +57,19 @@ class Account
 
   has_many :posts
 
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  def role?(role)
+    roles.include?(role.to_s)
+  end
 
   def update_with_password(params={})
     if !params[:current_password].blank? or !params[:password].blank? or !params[:password_confirmation].blank?

@@ -1,18 +1,9 @@
 <%- model_class = Post -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:_type) %></th>
-      <th><%= model_class.human_attribute_name(:_id) %></th>
       <th><%= model_class.human_attribute_name(:author) %></th>
-      <th><%= model_class.human_attribute_name(:source) %></th>
-      <th><%= model_class.human_attribute_name(:platform) %></th>
-      <th><%= model_class.human_attribute_name(:size) %></th>
-      <th><%= model_class.human_attribute_name(:watch) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -22,15 +13,12 @@
     <% @posts.each do |post| %>
     <tr>
       <td><%= link_to post.id, cpanel_post_path(post) %></td>
-      <td><%= post._type %></td>
-      <td><%= post._id %></td>
       <td><%= post.author %></td>
-      <td><%= post.source %></td>
-      <td><%= post.platform %></td>
-      <td><%= post.size %></td>
-      <td><%= post.watch %></td>
-      <td><%= post.description %></td>
-      <td><%= post.created_at %></td>
+      <td><%= (truncate(strip_tags(post.description), :length => 30, :omission => '...')).html_safe %>
+    
+
+      </td>
+      <td><%=l post.created_at %></td>
       <td>
         <%= link_to t('.edit', :default => t("helpers.links.edit")),
         edit_cpanel_post_path(post), :class => 'btn btn-mini' %>
@@ -48,3 +36,5 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_cpanel_post_path,
 :class => 'btn btn-primary' %>
+
+      <%= paginate @posts  %>

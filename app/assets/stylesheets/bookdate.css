@@ -112,9 +112,6 @@ margin: 0 5px;
 
 
 
-.tags {
-margin: 10px 0 5px;
-}
 
 
 
@@ -213,32 +210,9 @@ outline: 0;
 }
 
 
-.piece {
-clear: both;
-margin-bottom: 3px;
-padding-top: 5px;
-min-width: 400px;
-height: auto;
-}
 
-.signature {
-width: 6%;
-float: left;
-margin: 0px 1% 0px 0px;
-text-align: right;
-word-wrap: break-word;
-}
 
-.messages {
--moz-border-radius: 6px;
--webkit-border-radius: 6px;
-border-radius: 6px;
-padding: 5px 5px 5px 5px;
-word-wrap: break-word;
-width: 91%;
-color: #222;
-position: relative;
-}
+
 
 
 .holder {

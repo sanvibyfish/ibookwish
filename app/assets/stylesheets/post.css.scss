@@ -6,6 +6,10 @@
 		}
 	}
 
+	.tags {
+		width: 300px;
+	}
+
 	.content {
 		margin-left: 320px;
 	p {
@@ -16,7 +20,7 @@
 		margin-left: 15px;
 		text-align: left;
 		float: right;
-		width: 325px;
+		width: 275px;
 		margin-right: 45px;
 		}
 	}
@@ -29,5 +33,42 @@
 
 	.action {
 		float: right;
+	}
+}
+
+
+.submit_buttons {
+	float: right;
+	right: 10px;
+	top: 42px;
+}
+#post-map {
+	height: 210px;
+}
+.post {
+	.tags {
+		margin: 10px 0 5px;
+	}
+}
+
+
+.accpt-accounts {
+	.image {
+		float: left;
+		margin-right: 10px;
+		margin-top: 5px;
+	}
+	.name {
+		color: #333;
+		font-weight: bold;
+		.accpt-action {
+			float: right;
+			padding-top: 5px;
+		}
+	}
+
+	.accpt-info{
+		font-size: 12px;
+		color: #BBB;
 	}
 }

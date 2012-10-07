@@ -8,8 +8,12 @@
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
 #= require modernizr
+#= require jquery.atwho
+#= require jquery.autogrow-textarea
 #= require social-share-button
 #= require user
+#= require post
+#= require comment
 Window.APP =
   alert : (msg,to) ->
     $(".alert").remove()
@@ -31,8 +35,28 @@ Window.APP =
       type: "GET"
       data: {isbn: el.val()}
 
+    # 绑定 @ 回复功能
+  atReplyable : (el, nicknames) ->
+    return if nicknames.length == 0
+    $(el).atWho "@"
+      data : nicknames
+      tpl : "<li data-value='${nickname}'>${nickname}</li>"
+
+  bindCommentReply: ()->
+    # CommentAble @ 回复功能
+    commenters = []
+    commenter_exists = []
+    $("#pin_comments .piece .info_bar .name a").each (idx) ->
+      val =
+        nickname : $(this).text()
+      if $.inArray(val.nickname,commenter_exists) < 0
+         commenters.push(val)
+         commenter_exists.push(val.nickname)
+    Window.APP.atReplyable("#comment_body", commenters)
+
 
 $(document).ready ->
+    Window.APP.bindCommentReply()
     $("a[rel=popover]").popover()
     $(".tooltip").tooltip()
     $("a[rel=tooltip]").tooltip()
@@ -56,6 +80,10 @@ $(document).ready ->
           $("#get_book_button").attr("disabled","true")
 
     $("#back-top").hide()
+
+
+
+
 
     $ ->
       $(window).scroll ->
@@ -101,12 +129,21 @@ $(document).ready ->
 
 
     $("#get_book_button").click () ->
-      $(this).val("获取中...")
+      $(this).html("获取中...")
       $(this).attr("disabled","disabled")
       Window.APP.get_book($("#post_isbn"))
 
 
     $('#myModal').hide()
+    $("textarea").autogrow()
+
+    # 未显示图标
+    $('#post-map').gmap3
+      action: 'init'
+      options: 
+        zoom: 14
+        center:[$("#post-map").data("lat"), $("#post-map").data("lng")]
+  
 
 
     $("#post_tags").tagit

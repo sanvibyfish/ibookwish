@@ -99,6 +99,8 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		@comment = Comment.new
+		#FIXME 寻找周边图书
 	end
 
 

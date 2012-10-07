@@ -6,9 +6,8 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:_type) %></th>
-      <th><%= model_class.human_attribute_name(:_id) %></th>
-      <th><%= model_class.human_attribute_name(:username) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:nickname) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,10 +16,9 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= link_to account.id, account_path(account) %></td>
-        <td><%= account._type %></td>
-        <td><%= account._id %></td>
-        <td><%= account.username %></td>
-        <td><%=l account.created_at %></td>
+        <td><%= account.email %></td>
+        <td><%= account.nickname %></td>
+        <td><%= account.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_cpanel_account_path(account), :class => 'btn btn-mini' %>

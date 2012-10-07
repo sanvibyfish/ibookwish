@@ -19,11 +19,10 @@ class Post
    
   belongs_to :account
   has_and_belongs_to_many :tags
-
+  has_many :comments
 
   field :coordinates, :type => Array
   belongs_to :location
-  field :country
   field :address
 
 

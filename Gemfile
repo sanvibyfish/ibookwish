@@ -2,7 +2,7 @@
 source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.8'
-
+gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -10,6 +10,7 @@ gem 'rails', '3.2.8'
 
 gem 'mongoid'
 gem 'kaminari'
+gem 'mongoid_spacial'
 
 # 图片存储
 gem "carrierwave",'0.6.2'
@@ -64,6 +65,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'bootstrap-will_paginate', '0.0.3'
   gem 'bootstrap_helper', "1.4.1"
+  gem 'jquery-atwho-rails'
 end
 
 gem 'jquery-rails', '2.0.2'

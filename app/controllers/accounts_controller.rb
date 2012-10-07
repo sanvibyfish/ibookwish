@@ -1,7 +1,6 @@
 class AccountsController < Devise::RegistrationsController
 
 
-
   
 	def update
 
@@ -29,7 +28,6 @@ class AccountsController < Devise::RegistrationsController
     # POST /resource
   def create
     build_resource
-    # resource.gender = params[resource_name][:gender]
     resource.email = params[resource_name][:email]
     if resource.save
       if resource.active_for_authentication?

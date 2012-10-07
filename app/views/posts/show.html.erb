@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="span9">
+	<div class="span8">
 		<div class="container-fluid bookdate-box ">
 			<div class="post-detail">
 				<div class="image">
@@ -7,6 +7,12 @@
 					<div class="social_share">
 						<%= social_share_button_tag(@post.title) %>
 					</div>
+					<div class="tags">
+	<i class="icon-tags"></i>
+	<% @post.tags.each do |tag|  %>
+		<span><%= link_to(tag.name, tag_post_path(tag)) %> </span>
+	<% end %>
+</div>
 				</div>
 
 					<div class="content">
@@ -46,38 +52,85 @@
 
 			</div>
 			<div class="bookdate-box" id="pin_comments">
-				<div class="piece">
-<a class="signature" href="/users/1" target="_blank">
-<img alt="941056da1db23b2c0081e9c8d9416574" height="50" src="https://secure.gravatar.com/avatar/941056da1db23b2c0081e9c8d9416574.png?r=PG" width="50">
-</a>
-<div class="info_bar">
-<b>hlcfan</b>
-16:03:47 2012-08-23
-
-<div class="holder pull-right">
-<a class="rt" href="javascript:void(0)" id="hlcfan">回复</a>
-</div>
-
-</div>
-<div class="messages" id="1190">
-<p>无聊到爆！</p>
-
-</div>
-</div>
-
-
+				<% if @post.comments.size == 0 %>
+					<div class="dream alert alert-info" id="comments_nil_display">
+						还不赶快说两句~
+					</div>
+				<% end %>
+				<%= render :partial => "comments/comment", :collection => @post.comments %>
 			</div>
 
 			<div id="reply" class="bookdate-box">
-				
-				
+						<%= form_for(@comment, :remote => true, :html => { :class => 'form-horizontal' }) do |f| %>
+		      <%= render "shared/error_messages", :target => @comment %>
+			 <%= f.text_area :body,:class => "span8 replay_box", :rows => "4", :tabindex => "1", :style => "width:600px;" %>
+        <div class="submit_buttons">
+          <button type="submit" id="btn_reply" class="btn btn-primary" tabindex="2">提交回复</button><br />
+          <span class="help-inline">Ctrl+Enter</span>
+        </div>
+        <%= f.hidden_field :post, :value => @post.id %>
+
+		<% end %>
 			</div>
 
 		</div>
-		<div class="span3">
+		<div class="span4">
 			<div class="bookdate-box">
-				xxxx
+				<h4>地图</h4>
+				<div id="post-map" data-lat="<%= @post.coordinates[0] %>" data-lng= "<%= @post.coordinates[1] %>"></div>
+			</div>
+		</div>
+		
+		<div class="span4">
+			<div class="bookdate-box">
+					<h4>圆梦师</h4>
+			<div class="accpt-accounts">
+				<div class="image"><%= account_avatar_tag(current_account,:style => "48x48") %></div>
+				<div class="name"><%= current_account.nickname %>
 
+			<div class="accpt-action">
+					<div class="dream alert alert-success">
+						<i class="icon icon-ok"></i>
+						已完成
+					</div>
+
+			</div>
+				</div>
+				<div class="accpt-info">
+					<%= current_account.tagline %>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+			<div class="accpt-accounts">
+			
+				<div class="image"><%= account_avatar_tag(current_account,:style => "48x48") %></div>
+				<div class="name"><%= current_account.nickname %>
+
+			<div class="accpt-action">
+					<div class="dream alert alert-error">
+						<i class="icon icon-remove"></i>
+						未完成
+					</div>
+
+			</div>
+				</div>
+				<div class="accpt-info">
+					<%= current_account.tagline %>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+			</div>
+
+
+		</div>
+
+
+		<div class="span4">
+			<div class="bookdate-box">
+				<h4>周边图书</h4>
+	
 			</div>
 		</div>
 	</div>
