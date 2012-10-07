@@ -14,3 +14,10 @@ Window.Post =
 $(document).ready ->
   $(".piece .rt").click (el)->
     Window.Post.reply($(this).data("account-nickname"))
+
+  $('#post-map').gmap3
+    action:'addMarker',
+    latLng:[$("#post-map").data("lat"), $("#post-map").data("lng")]
+    map:
+      center: true
+      zoom: 14

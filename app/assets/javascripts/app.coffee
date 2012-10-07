@@ -137,12 +137,7 @@ $(document).ready ->
     $('#myModal').hide()
     $("textarea").autogrow()
 
-    # 未显示图标
-    $('#post-map').gmap3
-      action: 'init'
-      options: 
-        zoom: 14
-        center:[$("#post-map").data("lat"), $("#post-map").data("lng")]
+
   
 
 
