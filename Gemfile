@@ -7,10 +7,11 @@ gem 'rails-i18n'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # MongoDB..
-
 gem 'mongoid'
+gem 'mongo'
+gem 'bson_ext'
+
 gem 'kaminari'
-gem 'mongoid_spacial'
 
 # 图片存储
 gem "carrierwave",'0.6.2'

@@ -45,6 +45,11 @@
 #post-map {
 	height: 210px;
 }
+
+.posts {
+	width: 200px;
+}
+
 .post {
 	.tags {
 		margin: 10px 0 5px;
@@ -71,4 +76,21 @@
 		font-size: 12px;
 		color: #BBB;
 	}
+}
+
+.near-boks {
+	.image {
+		float: left;
+	}
+
+	.iwant {
+		padding-left: 55px;
+		a{
+			text-decoration:none;
+			&.hover { 
+				text-decoration:underline;
+			}
+		}
+	}
+
 }

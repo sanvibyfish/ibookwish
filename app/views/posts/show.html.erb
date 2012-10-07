@@ -128,9 +128,23 @@
 
 
 		<div class="span4">
-			<div class="bookdate-box">
+			<div class="bookdate-box near-boks ">
 				<h4>周边图书</h4>
-	
+				<% @nears.each do |n| %>
+					<div class="image">
+						<%= account_avatar_tag n.account, :style => "48x48" %>
+					</div>
+
+					<div class="iwant">
+						<a href="<%= post_path(n) %>">
+					<div class="dream alert alert-success">
+						<span class="label label-important">我想要</span>
+						<%=  n.dream %>
+					</div>
+					</a>
+					<div class="clearfix"></div>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>

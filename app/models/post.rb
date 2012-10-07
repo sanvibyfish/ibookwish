@@ -1,9 +1,8 @@
 # coding: utf-8
 class Post
   include Mongoid::Document
-  include Geocoder::Model::Mongoid
   include Mongoid::Timestamps
-
+  include Geocoder::Model::Mongoid
   
   field :isbn, type: String
   field :author, type: String
@@ -22,6 +21,7 @@ class Post
   has_many :comments
 
   field :coordinates, :type => Array
+
   belongs_to :location
   field :address
 
@@ -34,6 +34,8 @@ class Post
   validates_presence_of  :isbn, :dream, :title, :coordinates
   validates_length_of :isbn,  :within => 10..13
   validates_length_of :dream,  :within => 0..140
+
+
 
   def assign_tags
     unless tag_names.blank?
