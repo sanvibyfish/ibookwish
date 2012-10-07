@@ -65,6 +65,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'bootstrap-will_paginate', '0.0.3'
   gem 'bootstrap_helper', "1.4.1"
+  gem 'jquery-atwho-rails'
 end
 
 gem 'jquery-rails', '2.0.2'

@@ -5,11 +5,11 @@
 $(document).ready ->
   #FIXME 暂时不工作
   # 绑定评论框 Ctrl+Enter 提交事件
-  $(".replay_box textarea").bind "keydown","ctrl+return",(el) ->
-    if $(el.target).val().trim().length > 0
-      $(el.target).parent().parent().submit()
-    return false
-
+  # $("textarea").bind "keydown","ctrl+return",(el) ->
+  #   if $(el.target).val().trim().length > 0
+  #     $("#reply > form").submit()
+  #   return false
+  # # $("textarea").autogrow()
 
   $("#btn_reply").click ->
     if $("#comment_body").val() != ""
