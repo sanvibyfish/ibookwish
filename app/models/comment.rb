@@ -8,4 +8,5 @@ class Comment
   belongs_to :post
   
   field :body, type: String
+  
 end

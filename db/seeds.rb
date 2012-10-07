@@ -13,6 +13,7 @@ Location.create!({:name =>"上海", :pin_yin => "shanghai"})
 Location.create!({:name =>"深圳", :pin_yin => "shenzhen"})
 Location.create!({:name =>"广州", :pin_yin => "guangzhou"})
 Location.create!({:name =>"杭州", :pin_yin => "hangzhou"})
+Location.create!({:name => "宁波", :pin_yin => "ningbo"})
 puts "结束初始化城市..."
 
 

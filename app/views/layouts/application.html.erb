@@ -61,6 +61,9 @@
           end  %>
   <% if account_signed_in? %>
   <ul class="nav pull-right">
+    <li>
+      <a href="/notifications" id="user_notifications_count"><span class="badge">0</span></a>
+    </li>
      <li class="dropdown" id="user_menu">
     <%= link_to(raw("#{current_account.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
     <%= render_list :class => "dropdown-menu" do |li|  
