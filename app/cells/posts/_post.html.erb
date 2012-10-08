@@ -4,7 +4,7 @@
 <p class="tags">
 	<i class="icon-tags"></i>
 	<% post.tags.each do |tag|  %>
-		<span><%= link_to(tag.name, tag_post_path(tag)) %> </span>
+		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
 </p>
 <p class="muted"><%= post.dream %></p>

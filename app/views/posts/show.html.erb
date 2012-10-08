@@ -10,7 +10,7 @@
 					<div class="tags">
 	<i class="icon-tags"></i>
 	<% @post.tags.each do |tag|  %>
-		<span><%= link_to(tag.name, tag_post_path(tag)) %> </span>
+		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
 </div>
 				</div>
@@ -129,8 +129,11 @@
 
 		<div class="span4">
 			<div class="bookdate-box near-boks ">
-				<h4>周边图书</h4>
+				<h4>周边愿望</h4>
 				<% @nears.each do |n| %>
+				<% if n.id == @post.id %>
+					<% next %>
+				<% end %>
 					<div class="image">
 						<%= account_avatar_tag n.account, :style => "48x48" %>
 					</div>
