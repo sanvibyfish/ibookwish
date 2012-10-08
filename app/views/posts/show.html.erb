@@ -10,7 +10,7 @@
 					<div class="tags">
 	<i class="icon-tags"></i>
 	<% @post.tags.each do |tag|  %>
-		<span><%= link_to(tag.name, tag_post_path(tag)) %> </span>
+		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
 </div>
 				</div>
@@ -128,9 +128,26 @@
 
 
 		<div class="span4">
-			<div class="bookdate-box">
-				<h4>周边图书</h4>
-	
+			<div class="bookdate-box near-boks ">
+				<h4>周边愿望</h4>
+				<% @nears.each do |n| %>
+				<% if n.id == @post.id %>
+					<% next %>
+				<% end %>
+					<div class="image">
+						<%= account_avatar_tag n.account, :style => "48x48" %>
+					</div>
+
+					<div class="iwant">
+						<a href="<%= post_path(n) %>">
+					<div class="dream alert alert-success">
+						<span class="label label-important">我想要</span>
+						<%=  n.dream %>
+					</div>
+					</a>
+					<div class="clearfix"></div>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>

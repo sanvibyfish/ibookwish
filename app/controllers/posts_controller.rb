@@ -77,8 +77,9 @@ class PostsController < ApplicationController
 
 	def create
 		# FIXME: 跳转修复 
+		# FIXME: 修改地理位置array保存double，但未测试
 		unless params[:lat].blank?
-			params[:post][:coordinates] = [params[:lat],params[:lng]]
+			params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])]
 			doc = JSON.parse(open("http://maps.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
 			address_path = JsonPath.new('$..address')
 			location_path = JsonPath.new('$..LocalityName')
@@ -100,7 +101,7 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@comment = Comment.new
-		#FIXME 寻找周边图书
+		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
 	end
 
 

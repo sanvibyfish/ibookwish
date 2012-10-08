@@ -52,6 +52,7 @@ class Cpanel::PostsController < Cpanel::ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    #FIXME 修改未float
     params[:post][:coordinates] = params[:post][:coordinates].split(",")
     respond_to do |format|
       if @post.update_attributes(params[:post])

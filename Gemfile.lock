@@ -35,6 +35,9 @@ GEM
     bootstrap_helper (1.4.1)
       railties (~> 3.0)
       thor (~> 0.14)
+    bson (1.7.0)
+    bson_ext (1.7.0)
+      bson (~> 1.7.0)
     builder (3.0.3)
     cancan (1.6.8)
     carrierwave (0.6.2)
@@ -119,14 +122,13 @@ GEM
     method_source (0.8)
     mime-types (1.19)
     modernizr-rails (2.0.6)
+    mongo (1.7.0)
+      bson (~> 1.7.0)
     mongoid (3.0.6)
       activemodel (~> 3.1)
       moped (~> 1.1)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    mongoid_spacial (0.2.16)
-      activesupport (~> 3.0)
-      mongoid (>= 2.3.0)
     moped (1.2.2)
     multi_json (1.3.6)
     net-http-digest_auth (1.2.1)
@@ -233,6 +235,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-will_paginate (= 0.0.3)
   bootstrap_helper (= 1.4.1)
+  bson_ext
   cancan
   carrierwave (= 0.6.2)
   carrierwave-mongoid
@@ -251,8 +254,8 @@ DEPENDENCIES
   masonry-rails
   mechanize
   modernizr-rails
+  mongo
   mongoid
-  mongoid_spacial
   pry
   quiet_assets (= 1.0.1)
   rails (= 3.2.8)

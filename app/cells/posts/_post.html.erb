@@ -1,10 +1,10 @@
-<div class="bookdate-box post" data-type="image">
+<div class="bookdate-box posts" data-type="image">
 	<%= link_to image_tag(post.image), post_path(post) %>
 
 <p class="tags">
 	<i class="icon-tags"></i>
 	<% post.tags.each do |tag|  %>
-		<span><%= link_to(tag.name, tag_post_path(tag)) %> </span>
+		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
 </p>
 <p class="muted"><%= post.dream %></p>
