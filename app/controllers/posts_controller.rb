@@ -111,10 +111,12 @@ class PostsController < ApplicationController
     	# }
 
 
-		# Post.all.each { |p|
-		# 	p.state = 1
-		# 	p.save
-		# }
+		Post.all.each { |p|
+			c = []
+			c[0] = Float(p.coordinates[0])
+			c[1] = Float(p.coordinates[1])
+			p.save
+		}
 
 	end
 
