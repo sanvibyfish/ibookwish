@@ -1,0 +1,21 @@
+<div class="span4">
+<div class="bookdate-box">
+		<h4>圆梦师</h4>
+		<div class="accpt-accounts">
+			<div class="image"><%= account_avatar_tag(@post.complete_user,:style => "48x48") %></div>
+			<div class="name"><%= @post.complete_user.nickname %>
+
+		<div class="accpt-action">
+				<%= raw complete_state_tag(@post, @post.complete_user) %>
+		</div>
+
+			</div>
+			<div class="accpt-info">
+				<%= @post.complete_user.tagline %>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+</div>
+
+</div>

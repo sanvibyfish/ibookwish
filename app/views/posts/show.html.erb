@@ -2,6 +2,22 @@
 	<div class="span8">
 		<div class="container-fluid bookdate-box ">
 			<div class="post-detail">
+								<div class="infos">
+								<div class="wish">					<div class="alert alert-success">
+						<span class="label label-important">我想要</span>
+						<%= @post.dream %>
+					</div></div>
+					<div class="pull-right">
+							<%= account_avatar_tag(@post.account, :style => "48x48") %>
+					</div>
+					<div class="clearfix"></div>
+					<div class="info leader">
+						<%= link_to @post.account.nickname, user_path(@post.account) %><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布
+						    •
+						1111浏览</div>
+				
+
+				</div>
 				<div class="image">
 				<%= image_tag @post.image %>
 					<div class="social_share">
@@ -14,6 +30,7 @@
 	<% end %>
 </div>
 				</div>
+
 
 					<div class="content">
 						<p class="lead">书名
@@ -33,45 +50,48 @@
 						</p>						
 
 						<p class="lead">介绍
-							<span><%= @post.description %></span>
+							<span class="description" rel="twipsy" data-placement="right" data-original-title = "<%= @post.description %>">
+								<%= 	(truncate(strip_tags(@post.description), :length => 140, :omission => '...')).html_safe%></span>
 						</p>
 
 					</div>
 					<div class="clearfix"></div>
-					<div class="dream alert alert-success">
-						<span class="label label-important">我想要</span>
-						<%= @post.dream %>
-					</div>
+
 					<div class="action">
-						<a href="#" class="btn">
+						<% #FIXME 如果是自己呢？是否应该进入编辑界面 %>
+						<% if  @post.wish_user_ids.include?(current_account.id) %>
+						<a href="javascript:void(0)" class="btn"  disabled="disabled">
+							<i class="icon icon-refresh"></i>
+							已接受</a>
+						<% end %>
+
+						<% unless @post.wish_user_ids.include?(current_account.id) || @post.account.id == current_account.id %>
+					<%= form_for(@post,:as => :post , :url => complete_wish_post_path(@post), :html => { :class => 'form-horizontal', :id => "complete_wish_form" }, :method => :post) do |f| %>
+		      <%= render "shared/error_messages", :target => @post %>
+						<a href="javascript:void(0)" class="btn" data-disable-with ="加载中...">
 							<i class="icon icon-trophy"></i>
 							帮他实现</a>
+					<% end %>
+					<% end %>
 					</div>
 					
 				</div>
 
 			</div>
-			<div class="bookdate-box" id="pin_comments">
 				<% if @post.comments.size == 0 %>
 					<div class="dream alert alert-info" id="comments_nil_display">
 						还不赶快说两句~
 					</div>
 				<% end %>
+
+
+			<div class="bookdate-box" id="pin_comments" <%= "style=display:none;" if @post.comments.size == 0 %>>
 				<%= render :partial => "comments/comment", :collection => @post.comments %>
 			</div>
 
-			<div id="reply" class="bookdate-box">
-						<%= form_for(@comment, :remote => true, :html => { :class => 'form-horizontal' }) do |f| %>
-		      <%= render "shared/error_messages", :target => @comment %>
-			 <%= f.text_area :body,:class => "span8 replay_box", :rows => "4", :tabindex => "1", :style => "width:600px;" %>
-        <div class="submit_buttons">
-          <button type="submit" id="btn_reply" class="btn btn-primary" tabindex="2">提交回复</button><br />
-          <span class="help-inline"></span>
-        </div>
-        <%= f.hidden_field :post, :value => @post.id %>
 
-		<% end %>
-			</div>
+			<%= render :partial => "comments/comment_new", :post => @post, :comment => @comment %>
+
 
 		</div>
 		<div class="span4">
@@ -80,74 +100,17 @@
 				<div id="post-map" data-lat="<%= @post.coordinates[0] %>" data-lng= "<%= @post.coordinates[1] %>"></div>
 			</div>
 		</div>
+
+		<% if @post.complete_user? %>
+				<%= render_cell :posts, :complete, 
+    :post => @post, :task => @task %>
+		<% end %>
 		
-		<div class="span4">
-			<div class="bookdate-box">
-					<h4>圆梦师</h4>
-			<div class="accpt-accounts">
-				<div class="image"><%= account_avatar_tag(current_account,:style => "48x48") %></div>
-				<div class="name"><%= current_account.nickname %>
 
-			<div class="accpt-action">
-					<div class="dream alert alert-success">
-						<i class="icon icon-ok"></i>
-						已完成
-					</div>
+		<% if @post.wish_users? %>
+		<%= render_cell :posts, :join, 
+    :post => @post %>
+		<% end %>
 
-			</div>
-				</div>
-				<div class="accpt-info">
-					<%= current_account.tagline %>
-				</div>
-
-				<div class="clearfix"></div>
-			</div>
-			<div class="accpt-accounts">
-			
-				<div class="image"><%= account_avatar_tag(current_account,:style => "48x48") %></div>
-				<div class="name"><%= current_account.nickname %>
-
-			<div class="accpt-action">
-					<div class="dream alert alert-error">
-						<i class="icon icon-remove"></i>
-						未完成
-					</div>
-
-			</div>
-				</div>
-				<div class="accpt-info">
-					<%= current_account.tagline %>
-				</div>
-
-				<div class="clearfix"></div>
-			</div>
-			</div>
-
-
-		</div>
-
-
-		<div class="span4">
-			<div class="bookdate-box near-boks ">
-				<h4>周边愿望</h4>
-				<% @nears.each do |n| %>
-				<% if n.id == @post.id %>
-					<% next %>
-				<% end %>
-					<div class="image">
-						<%= account_avatar_tag n.account, :style => "48x48" %>
-					</div>
-
-					<div class="iwant">
-						<a href="<%= post_path(n) %>">
-					<div class="dream alert alert-success">
-						<span class="label label-important">我想要</span>
-						<%=  n.dream %>
-					</div>
-					</a>
-					<div class="clearfix"></div>
-					</div>
-				<% end %>
-			</div>
-		</div>
+		<%= render :partial => "near_wish", :nears => @nears %>
 	</div>

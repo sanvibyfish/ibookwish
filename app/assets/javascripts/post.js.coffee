@@ -21,3 +21,7 @@ $(document).ready ->
     map:
       center: true
       zoom: 14
+
+  $("#complete_wish_form a").click (el)->
+    $("#complete_wish_form").submit()  
+

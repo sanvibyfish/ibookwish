@@ -1,3 +1,4 @@
+#coding = utf-8
 module PostsHelper
 	def tag_name_tag(tag_names)
 		@tags = []
@@ -21,6 +22,5 @@ module PostsHelper
 		end
 		link_to image_tag(post.image.url(style)), post_path(post),:class => options[:class]
 	end
-
 
 end

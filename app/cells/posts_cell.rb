@@ -1,6 +1,7 @@
 class PostsCell < Cell::Rails
+  include Devise::Controllers::Helpers
 	helper :application, :accounts
-
+  helper_method :current_account
 
   def index(opts = {})
   	@current_tag     = opts[:current_tag]
@@ -8,5 +9,17 @@ class PostsCell < Cell::Rails
   	@action_name = opts[:action_name]
   	render
   end
+
+  def join(opts = {})
+  	@post = opts[:post]
+  	render
+  end
+
+  def complete(opts = {})
+    @post = opts[:post]
+    @task = opts[:task]
+    render
+  end
+
 
 end

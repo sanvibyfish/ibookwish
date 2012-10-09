@@ -1,0 +1,6 @@
+<%= form_for @post, :url => exec_user_post_path(post), :method => "POST", 
+	:html => { :class => 'form-horizontal' } do |f| %>
+      <%= render "shared/error_messages", :target => @post %>
+      <%= f.hidden_field nil, :value => account.id, :name => "complete_user_id" %>
+      <%= f.submit "参与" , :class	 => "btn" %>
+<% end %>

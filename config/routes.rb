@@ -26,8 +26,13 @@ Code4::Application.routes.draw do
     member do
       get :near_me
       get :tag
+      post :complete_wish
+      post :exec_user
     end
   end
+
+  resources :tasks 
+
 
   devise_for :accounts,  :controllers => {
       :registrations => :accounts

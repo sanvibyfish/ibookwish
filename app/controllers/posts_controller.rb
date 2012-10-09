@@ -77,7 +77,6 @@ class PostsController < ApplicationController
 
 	def create
 		# FIXME: 跳转修复 
-		# FIXME: 修改地理位置array保存double，但未测试
 		unless params[:lat].blank?
 			params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])]
 			doc = JSON.parse(open("http://maps.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
@@ -102,7 +101,44 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@comment = Comment.new
 		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
+		if @post.complete_user?
+			@task = Task.new
+		end
+		
+    	# @wish_users = []
+    	# @post.wish_users.each { |wish_user|
+    	# 	@wish_users << wish_users.account
+    	# }
+
+
+		# Post.all.each { |p|
+		# 	p.state = 1
+		# 	p.save
+		# }
+
 	end
+
+	def complete_wish
+		@post = Post.find(params[:id])
+		if @post.push_wish_user(current_account.id)
+			redirect_to @post, notice: '操作成功.' 
+		else
+			redirect_to @post, error: '已经添加过了' 
+		end
+	end
+
+	def exec_user
+		@post = Post.find(params[:id])
+		if @post.complete_user?
+			redirect_to @post, error: '当前任务已经有圆梦师了' 
+		else
+			@post.complete_user_id = params[:complete_user_id]
+			@post.save
+			redirect_to @post, notice: '操作成功.' 
+		end		
+	end
+
+
 
 
 	protected

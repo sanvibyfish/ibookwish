@@ -1,0 +1,44 @@
+<div class="span4">
+<div class="bookdate-box">
+		<h4>圆梦师</h4>
+		<div class="accpt-accounts">
+			<div class="image"><%= account_avatar_tag(@post.complete_user,:style => "48x48") %></div>
+			<div class="name"><%= @post.complete_user.nickname %>
+
+		<div class="accpt-action">
+			<% if  @post.account.id == current_account.id %>
+				<%= link_to "完成并评价","#completeModal",:class => "btn", :role => "button", "data-toggle" => "modal" %>
+			<% else %>
+				<div class="alert alert-success"><i class='icon icon-refresh'></i> 进行中</div>
+			<% end %>
+		</div>
+
+			</div>
+			<div class="accpt-info">
+				<%= @post.complete_user.tagline %>
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+</div>
+<div class="modal" id="completeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+	 	<%= form_for @task, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">对<%= @post.complete_user.nickname %>进行评价</h3>
+  </div>
+  <div class="modal-body">
+  	<%= f.text_area :body,:class => "span4 ", :rows => "4", :tabindex => "1", :style => "width:500px;", :placeholder => "说点什么..." %>
+  	<div class="rating">
+  		<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit "完成并评价" , :class => "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
+
+</div>
+
