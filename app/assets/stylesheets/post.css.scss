@@ -6,6 +6,36 @@
 		}
 	}
 
+	.infos {
+
+		img {
+			margin-top: 5px;
+		}
+
+
+		.wish{
+			float: left;
+			width: 650px;
+			margin-bottom: -15px;
+		}
+		position: relative;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #DDD;
+		padding: 0 10px 5px 10px;
+
+		.info {
+			color: #BBB;
+			margin-bottom: 2px;
+			font-size: 12px;
+
+			a {
+				color: #999;
+				text-decoration: underline;
+				margin-right:5px;
+			}
+		}
+	}
+
 	.tags {
 		width: 300px;
 	}
@@ -14,6 +44,7 @@
 		margin-left: 320px;
 	p {
 		text-align: left;
+		font-size: 14px;
 		span{
 		color: #444;
 		font-weight: 300;
@@ -23,12 +54,12 @@
 		width: 275px;
 		margin-right: 45px;
 		}
+
+		.description {
+
+		}
 	}
 
-	}
-
-	.dream {
-		margin-top: 10px;
 	}
 
 	.action {
@@ -78,19 +109,44 @@
 	}
 }
 
-.near-boks {
+.near-books {
 	.image {
 		float: left;
 	}
 
+
 	.iwant {
 		padding-left: 55px;
 		a{
-			text-decoration:none;
-			&.hover { 
-				text-decoration:underline;
-			}
+			color: #468847;
 		}
 	}
 
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 30px;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+
+.join-users {
+	.user {
+    	display: inline-block;
+    	margin-right: 10px;
+		form {
+			margin-top: 5px;
+		}
+	}
 }

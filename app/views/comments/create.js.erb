@@ -1,7 +1,7 @@
 $("#btn_reply").removeAttr("disabled")
 $("#btn_reply").html("提交回复")
 $("#comments_nil_display").fadeOut(1000)
-
+$("#pin_comments").show()
 $("#comment_body").val("")
 <% if @success %>
 	$('#pin_comments').append("<%= j render 'comment', :comment => @comment %>")
