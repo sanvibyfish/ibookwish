@@ -12,9 +12,10 @@
 
 <p class="post-footer"> 
 	<span class="item"><i class="icon-eye-open"></i><a href="#">200</a></span>
-	<span class="item">     	<i class="icon-comment"></i> <a href="#">3</a>
-		<span class="item"><i class="icon-retweet"></i> <a href="#">39</a>
-</span>
+	<span class="item">     	<i class="icon-comment"></i> <%= comment_count_tag(post) %></span>
+		<span class="item"><i class="icon-retweet"></i>
+		<%= join_count_tag(post) %>
+
 </span>
 </p>
 <div class="clearfix"></div>
