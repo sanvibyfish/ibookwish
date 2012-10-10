@@ -6,10 +6,32 @@
 			<div class="name"><%= @post.complete_user.nickname %>
 
 		<div class="accpt-action">
-			<% if  @post.account.id == current_account.id %>
+			<% if  @post.account.id == current_account.id && @post.state == Post::STATE[:normal] %>
 				<%= link_to "完成并评价","#completeModal",:class => "btn", :role => "button", "data-toggle" => "modal" %>
+				<div class="modal" id="completeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+	 	<%= form_for @post, :url => end_task_post_path(@post), :method => "POST", :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">对<%= @post.complete_user.nickname %>进行评价</h3>
+  </div>
+  <div class="modal-body">
+  	<%= f.hidden_field :state, :value => Post::STATE[:success] %>
+  	<%= f.text_area :rating_body,:class => "span4 ", :rows => "4", :tabindex => "1", :style => "width:500px;", :placeholder => "说点什么..." %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <%= f.submit "完成并评价" , :class => "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
 			<% else %>
+			<% if @post.state == Post::STATE[:normal] %>
 				<div class="alert alert-success"><i class='icon icon-refresh'></i> 进行中</div>
+			<% elsif  @post.state == Post::STATE[:success] %>
+				<div class="alert alert-success"><i class='icon icon-ok'></i> 已完成</div>
+			<% else %>
+				<div class="alert alert-danger"><i class='icon icon-remove'></i> 失败</div>
+				<% end %>
 			<% end %>
 		</div>
 
@@ -20,25 +42,8 @@
 
 			<div class="clearfix"></div>
 		</div>
-</div>
-<div class="modal" id="completeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-	 	<%= form_for @task, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">对<%= @post.complete_user.nickname %>进行评价</h3>
-  </div>
-  <div class="modal-body">
-  	<%= f.text_area :body,:class => "span4 ", :rows => "4", :tabindex => "1", :style => "width:500px;", :placeholder => "说点什么..." %>
-  	<div class="rating">
-  		<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <%= f.submit "完成并评价" , :class => "btn btn-primary" %>
-  </div>
-  <% end %>
-</div>
+</div>	
+
 
 </div>
 

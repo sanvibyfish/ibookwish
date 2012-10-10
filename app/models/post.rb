@@ -26,9 +26,15 @@ class Post
   field :address
 
   has_and_belongs_to_many :wish_users, :class_name => "Account"
-
-  belongs_to :task
   belongs_to :complete_user, :class_name => "Account"
+  field :rating_body
+  field :state , :type => Integer, :default => 1
+
+  STATE = {
+    :fail => -1,
+    :normal => 1,
+    :success => 2
+  }
 
 
   def push_wish_user(uid)

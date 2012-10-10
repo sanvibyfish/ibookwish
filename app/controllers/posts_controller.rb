@@ -101,23 +101,6 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@comment = Comment.new
 		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
-		if @post.complete_user?
-			@task = Task.new
-		end
-		
-    	# @wish_users = []
-    	# @post.wish_users.each { |wish_user|
-    	# 	@wish_users << wish_users.account
-    	# }
-
-
-		Post.all.each { |p|
-			c = []
-			c[0] = Float(p.coordinates[0])
-			c[1] = Float(p.coordinates[1])
-			p.save
-		}
-
 	end
 
 	def complete_wish
@@ -140,6 +123,17 @@ class PostsController < ApplicationController
 		end		
 	end
 
+	def end_task
+		@post = Post.find(params[:id])
+		if @post.update_attributes(params[:post])
+			redirect_to @post, notice: '操作成功.' 
+		else
+			redirect_to @post, notice: '操作失败.' 
+		end
+
+
+
+	end
 
 
 

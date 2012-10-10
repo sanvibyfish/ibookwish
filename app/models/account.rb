@@ -43,7 +43,7 @@ class Account
   # 用户角色
   field :roles_mask
   ROLES = %w[admin user]
-
+  has_many :tasks
   # has_many :tike_posts, :class_name => "Post", :inverse_of => :complete_user
 
 
