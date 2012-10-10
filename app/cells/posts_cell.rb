@@ -1,6 +1,6 @@
 class PostsCell < Cell::Rails
   include Devise::Controllers::Helpers
-	helper :application, :accounts
+	helper :application, :accounts, :posts
   helper_method :current_account
 
   def index(opts = {})
