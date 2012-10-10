@@ -9,7 +9,7 @@ module PostsHelper
 	end
 
 	def display_latlng_tag(coordinates)
-		Float(coordinates[0]) + "," + Float(coordinates[1])
+		coordinates[0].to_s + "," + coordinates[1].to_s
 	end
 
 	def post_image_tag(post, options = {})
