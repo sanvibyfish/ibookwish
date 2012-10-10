@@ -3,12 +3,21 @@
 
 <p class="tags">
 	<i class="icon-tags"></i>
+
 	<% post.tags.each do |tag|  %>
 		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
 </p>
 <p class="muted"><%= post.dream %></p>
 
+<p class="post-footer"> 
+	<span class="item"><i class="icon-eye-open"></i><a href="#">200</a></span>
+	<span class="item">     	<i class="icon-comment"></i> <a href="#">3</a>
+		<span class="item"><i class="icon-retweet"></i> <a href="#">39</a>
+</span>
+</span>
+</p>
+<div class="clearfix"></div>
 
 <div class="convo attribution clearfix"><p><a href="<%= user_path(post.account) %>" title="<%= post.account.nickname %>" class="img x"><%= account_avatar_tag(post.account, :style => "small") %></a><a href="<%= user_path(post.account) %>" class="author x"><%= post.account.nickname %></a>&nbsp;创建于&nbsp;<%= distance_of_time_in_words(post.created_at,Time.now) %>前</p></div>
 </div>

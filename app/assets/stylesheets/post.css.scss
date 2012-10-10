@@ -79,6 +79,16 @@
 
 .posts {
 	width: 200px;
+
+	.post-footer {
+		float: right;
+		.item {
+			color: #333;
+			a{
+			color: #333;	
+			}
+		}
+	}
 }
 
 .post {
