@@ -3,10 +3,10 @@
 		<div class="container-fluid bookdate-box ">
 			<div class="post-detail">
 								<div class="infos">
-								<div class="wish">					<div class="alert alert-success">
-						<span class="label label-important">我想要</span>
+								<div class="wish">					
+
 						<%= @post.dream %>
-					</div></div>
+					</div>
 					<div class="pull-right">
 							<%= account_avatar_tag(@post.account, :style => "48x48") %>
 					</div>
@@ -58,6 +58,8 @@
 					<div class="clearfix"></div>
 
 					<div class="action">
+
+
 						<% #FIXME 如果是自己呢？是否应该进入编辑界面 %>
 						<% if  @post.wish_user_ids.include?(current_account.id) %>
 						<a href="javascript:void(0)" class="btn"  disabled="disabled">

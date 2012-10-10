@@ -28,10 +28,9 @@ Code4::Application.routes.draw do
       get :tag
       post :complete_wish
       post :exec_user
+      post :end_task
     end
   end
-
-  resources :tasks 
 
 
   devise_for :accounts,  :controllers => {
