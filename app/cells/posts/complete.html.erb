@@ -17,6 +17,16 @@
   <div class="modal-body">
   	<%= f.hidden_field :state, :value => Post::STATE[:success] %>
   	<%= f.text_area :rating_body,:class => "span4 ", :rows => "4", :tabindex => "1", :style => "width:500px;", :placeholder => "说点什么..." %>
+  	<div class="rating-group">
+  		<span class="rating">
+  		  	<%= f.radio_button :rating,"1", :checked => true %>
+  	<i class="icon-thumbs-up"></i></span>
+  	<span class="rating">
+  	<%= f.radio_button :rating,"0"  %>
+  	 <i class="icon-thumbs-down"></i>
+  	 </span>
+</div>
+
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>

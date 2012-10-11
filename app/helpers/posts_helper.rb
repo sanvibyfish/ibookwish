@@ -15,9 +15,10 @@ module PostsHelper
 	def post_image_tag(post, options = {})
 		options[:style] ||= :small
 		style = case options[:style].to_s
-		when "240x240" then "100x100"
+		when "100x100" then "100x100"
 		when "240x240" then "240x240"
 		when "48x48" then "48x48"
+		when "160x120" then "160x120"
 		else options[:style].to_s
 		end
 		link_to image_tag(post.image.url(style)), post_path(post),:class => options[:class]
@@ -36,6 +37,20 @@ module PostsHelper
 			link_to post.comments.count, post_path(post)
 		else
 			link_to "0", post_path(post)
+		end
+	end
+
+	def post_state_tag(state)
+		if Post::STATE[:success] == state
+			"已结束"
+		end
+	end
+
+	def post_rating_tag(rating)
+		if Post::RATING_STATE[:up] == rating
+			"<i class='icon icon-thumbs-up'></i>"
+		else
+			"<i class='icon icon-thumbs-down'></i>"
 		end
 	end
 end

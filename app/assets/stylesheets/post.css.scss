@@ -51,6 +51,18 @@
 				margin-right:20px;
 				text-align:right;
 			}
+			.image {
+				float:left;
+			}
+			.state {
+				color: #F1687B;
+			}
+			color: grey;
+		}
+
+		.info {
+			margin-top:20px;
+			margin-left: 210px;
 
 		}
 
@@ -63,8 +75,8 @@
 	}
 
 	.social_share {
-		float: right;
 		width: 260px;
+		margin-left: -10px;
 		.share-text{
 			float:left;
 			margin-right:5px;
@@ -138,6 +150,15 @@
 		}
 	}
 
+}
+
+.rating-group {
+	float: right;
+	margin: 10px 20px 0px 0px;
+	.rating{
+		line-height: 20px;
+		font-size: 20px;
+	}
 }
 
 .book-content {
