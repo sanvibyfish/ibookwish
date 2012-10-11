@@ -66,4 +66,16 @@ Code4::Application.configure do
   config.assets.precompile += %w(application.css base.css bootstrap_and_overrides.css comment.css post.css tag.css user.css
      app.js bootstrap.js comment.js post.js user.js )
 
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "gmail.com",
+    :authentication => "plain",
+    :user_name => "sanvibyfish@gmail.com",
+    :password => "air20dream",
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.default_url_options = { :host => 'www.ibookwish.com:3000' }
+
 end
