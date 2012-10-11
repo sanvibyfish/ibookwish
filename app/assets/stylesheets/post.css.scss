@@ -1,9 +1,7 @@
 .post-detail {
 	.image {
 		float: left;
-		.social_share {
 
-		}
 	}
 
 	.infos {
@@ -41,30 +39,38 @@
 	}
 
 	.content {
-		margin-left: 320px;
-	p {
-		text-align: left;
-		font-size: 14px;
-		span{
-		color: #444;
-		font-weight: 300;
-		margin-left: 15px;
-		text-align: left;
-		float: right;
-		width: 275px;
-		margin-right: 45px;
-		}
-
-		.description {
+		padding: 20px 30px;
+		.field {
+			text-align: left; 
+			margin-left: 60px;
+			a{
+				font-size:14px;
+			}
+			.label{
+				font-size:14px;
+				margin-right:20px;
+				text-align:right;
+			}
 
 		}
-	}
 
 	}
-
 	.action {
-		float: right;
+		.label {
+			font-size:14px;
+		}
+		text-align: center;
 	}
+
+	.social_share {
+		float: right;
+		width: 260px;
+		.share-text{
+			float:left;
+			margin-right:5px;
+		}
+	}
+
 }
 
 
@@ -134,7 +140,11 @@
 
 }
 
-
+.book-content {
+	font-size: 14px;
+	color: grey;
+	padding-left: 10px;
+}
 
 .join-users {
 	.user {

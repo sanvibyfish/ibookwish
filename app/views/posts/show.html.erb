@@ -2,117 +2,95 @@
 	<div class="span8">
 		<div class="container-fluid bookdate-box ">
 			<div class="post-detail">
-								<div class="infos">
-								<div class="wish">					
-									<span class="label label-info">愿望</span>
-						<%= @post.dream %>
-					</div>
+				<div class="infos">
 					<div class="pull-right">
-							<%= account_avatar_tag(@post.account, :style => "48x48") %>
+						<%= account_avatar_tag(@post.account, :style => "48x48") %>
 					</div>
 					<div class="clearfix"></div>
 					<div class="info leader">
 						<%= link_to @post.account.nickname, user_path(@post.account) %><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布
 						    •
 						1111浏览</div>
-				
-
 				</div>
-				<div class="image">
-				<%= image_tag @post.image %>
-					<div class="social_share">
-						<%= social_share_button_tag(@post.title) %>
-					</div>
-					<div class="tags">
-	<i class="icon-tags"></i>
+				<div class="content">
+				<p class="field">
+						<span
+						 class="label label-info">我借出</span> <%= link_to @post.title,"#betaModal",	:rel => "twipsy", "data-original-title" => "点击查看更多", "data-toggle" => "modal"  %></p>
+
+
+					
+
+				<p class="field">
+						<span
+						 class="label label-info">我想要</span> <%= @post.dream %></p>
+
+				<p class="field">
+						<span
+						 class="label label-info">微标签</span> 
+						 <span class="tags">
+						 	
 	<% @post.tags.each do |tag|  %>
-		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
+		<span class="tag"><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
-</div>
+						 </span>
+						</p>
 				</div>
-
-
-					<div class="content">
-						<p class="lead">书名
-							<span><%= @post.title %></span>
-						</p>
-
-						<p class="lead">作者
-							<span><%= @post.author %></span>
-						</p>
-
-						<p class="lead">出版社
-							<span><%= @post.publisher %></span>
-						</p>
-
-						<p class="lead">价钱
-							<span><%= @post.price %></span>
-						</p>						
-
-						<p class="lead">介绍
-							<span class="description" rel="twipsy" data-placement="right" data-original-title = "<%= @post.description %>">
-								<%= 	(truncate(strip_tags(@post.description), :length => 140, :omission => '...')).html_safe%></span>
-						</p>
-
-					</div>
-					<div class="clearfix"></div>
-
-					<div class="action">
-
-
-						<% #FIXME 如果是自己呢？是否应该进入编辑界面 %>
-						<% if  @post.wish_user_ids.include?(current_account.id) %>
-						<a href="javascript:void(0)" class="btn"  disabled="disabled">
-							<i class="icon icon-refresh"></i>
-							已接受</a>
-						<% end %>
-
+				<div class="action">
 						<% unless @post.wish_user_ids.include?(current_account.id) || @post.account.id == current_account.id %>
 					<%= form_for(@post,:as => :post , :url => complete_wish_post_path(@post), :html => { :class => 'form-horizontal', :id => "complete_wish_form" }, :method => :post) do |f| %>
 		      <%= render "shared/error_messages", :target => @post %>
-						<a href="javascript:void(0)" class="btn" data-disable-with ="加载中...">
-							<i class="icon icon-trophy"></i>
-							帮他实现</a>
+						<a href="javascript:void(0)" class="label label-success" data-disable-with ="加载中...">
+							参与进去</a>
 					<% end %>
 					<% end %>
-					</div>
-					
 				</div>
 
+				<div class="social_share">
+						<span class="share-text">分享:</span>	<%= social_share_button_tag(@post.title) %>
+				</div>
 			</div>
-				<% if @post.comments.size == 0 %>
+
+
+
+
+		</div>
+	<% if @post.comments.size == 0 %>
 					<div class="dream alert alert-info" id="comments_nil_display">
 						还不赶快说两句~
 					</div>
-				<% end %>
+	<% end %>
 
 
-			<div class="bookdate-box" id="pin_comments" <%= "style=display:none;" if @post.comments.size == 0 %>>
-				<%= render :partial => "comments/comment", :collection => @post.comments %>
-			</div>
+	<div class="bookdate-box" id="pin_comments" <%= "style=display:none;" if @post.comments.size == 0 %>>
+	<%= render :partial => "comments/comment", :collection => @post.comments %>
+	</div>
+
+	<%= render :partial => "comments/comment_new", :post => @post, :comment => @comment %>
 
 
-			<%= render :partial => "comments/comment_new", :post => @post, :comment => @comment %>
 
+	</div>
 
+	<div class="span4">
+		<div class="bookdate-box">
+			<h4>地图</h4>
+			<div id="post-map" data-lat="<%= @post.coordinates[0] %>" data-lng= "<%= @post.coordinates[1] %>"></div>
 		</div>
-		<div class="span4">
-			<div class="bookdate-box">
-				<h4>地图</h4>
-				<div id="post-map" data-lat="<%= @post.coordinates[0] %>" data-lng= "<%= @post.coordinates[1] %>"></div>
-			</div>
-		</div>
+	</div>
 
-		<% if @post.complete_user? %>
+	<% if @post.complete_user? %>
 				<%= render_cell :posts, :complete, 
     :post => @post, :task => @task %>
 		<% end %>
-		
 
-		<% if @post.wish_users? %>
+
 		<%= render_cell :posts, :join, 
     :post => @post %>
-		<% end %>
+		
 
 		<%= render :partial => "near_wish", :nears => @nears %>
-	</div>
+
+		<%= render :partial => "book_modal" %>
+
+</div>
+
