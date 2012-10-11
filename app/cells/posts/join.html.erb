@@ -7,7 +7,7 @@
 		<div class="user">
 				<%= account_avatar_tag(user, :style => "48x48", :image_css => "#{'grayscale' unless @post.complete_user_id == user.id}"  ) %>
 		</div>
-			<% end %>
+		<% end %>
 		<% else @post.wish_users? %>
 			<% @post.wish_users.each do |user| %>
 		<div class="user">
@@ -19,6 +19,10 @@
 				<% end %>
 		</div>
 			<% end %>
+		<% end %>
+
+		<% unless @post.wish_users?  %>
+			<p class="muted">目前还没有参与者，赶快参加吧</p>
 		<% end %>
 		</div>
 </div>
