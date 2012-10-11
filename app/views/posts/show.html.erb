@@ -13,15 +13,21 @@
 						1111浏览</div>
 				</div>
 				<div class="content">
-				<p class="field">
+						<div class="image">
+			<%= post_image_tag(@post, :style => "240x240") %>
+
+							<div class="social_share">
+						<span class="share-text">分享:</span>	<%= social_share_button_tag(@post.title) %>
+				</div>
+	</div>
+				<div class="info">
+						<p class="field">
 						<span
-						 class="label label-info">我借出</span> <%= link_to @post.title,"#betaModal",	:rel => "twipsy", "data-original-title" => "点击查看更多", "data-toggle" => "modal"  %></p>
+						 class="label label-info">我借出</span> <%= link_to @post.title,"#betaModal",	:rel => "twipsy", "data-original-title" => "", "data-toggle" => "modal"  %>
+						</p>	
 
-
-					
-
-				<p class="field">
-						<span
+	<p class="field">
+						<span rel="twipsy" "data-original-title" = "借出你的图书"
 						 class="label label-info">我想要</span> <%= @post.dream %></p>
 
 				<p class="field">
@@ -34,6 +40,25 @@
 	<% end %>
 						 </span>
 						</p>
+
+				<% if @post.state == Post::STATE[:success] %>
+				<p class="field">
+						<span rel="twipsy" "data-original-title" = "借出你的图书"
+						 class="label label-info  ">微评价</span><span class="state"> <%= @post.rating_body %><%= raw post_rating_tag(@post.rating) %></span>
+				</p>	
+				<p class="field">
+						<span rel="twipsy" "data-original-title" = "借出你的图书"
+						 class="label label-success  ">微状态</span><span class="state"> <%= post_state_tag @post.state %></span>
+				</p>
+			
+
+				<% end %>
+
+
+				</div>
+			
+
+			
 				</div>
 				<div class="action">
 						<% unless @post.wish_user_ids.include?(current_account.id) || @post.account.id == current_account.id %>
@@ -45,9 +70,7 @@
 					<% end %>
 				</div>
 
-				<div class="social_share">
-						<span class="share-text">分享:</span>	<%= social_share_button_tag(@post.title) %>
-				</div>
+
 			</div>
 
 

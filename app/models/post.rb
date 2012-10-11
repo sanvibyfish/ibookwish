@@ -28,6 +28,14 @@ class Post
   has_and_belongs_to_many :wish_users, :class_name => "Account"
   belongs_to :complete_user, :class_name => "Account"
   field :rating_body
+  field :rating,  :type => Integer
+
+
+  RATING_STATE = {
+    :up => 1,
+    :down => 0
+  }
+
   field :state , :type => Integer, :default => 1
 
   STATE = {
