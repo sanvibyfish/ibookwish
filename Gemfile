@@ -70,10 +70,11 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+gem 'thin'
 
 group :development, :test do
 	gem 'pry'	
-	gem 'thin'
+
   gem 'rspec-rails', '~> 2.10.0'
   gem 'database_cleaner'
   # gem 'rvm-capistrano', :require => false
@@ -84,7 +85,6 @@ group :development, :test do
 end
 
 group :production do
-  # gem 'unicorn'
 end
 
 # To use ActiveModel has_secure_password

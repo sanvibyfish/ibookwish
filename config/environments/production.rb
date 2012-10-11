@@ -15,7 +15,7 @@ Code4::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -61,7 +61,9 @@ Code4::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :scss
+  config.assets.precompile += %w(application.css base.css bootstrap_and_overrides.css comment.css post.css tag.css user.css
+     app.js bootstrap.js comment.js post.js user.js )
+
 end
