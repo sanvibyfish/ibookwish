@@ -1,4 +1,4 @@
-Window.Post = 
+Post = 
     # 回复
   reply : (nickname) ->
     reply_body = $("#comment_body")
@@ -13,7 +13,7 @@ Window.Post =
 
 $(document).ready ->
   $(".piece .rt").click (el)->
-    Window.Post.reply($(this).data("account-nickname"))
+    Post.reply($(this).data("account-nickname"))
 
   $('#post-map').gmap3
     action:'addMarker',

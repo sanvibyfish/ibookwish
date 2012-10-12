@@ -14,7 +14,7 @@
 #= require user
 #= require post
 #= require comment
-Window.APP =
+APP =
   alert : (msg,to) ->
     $(".alert").remove()
     $(to).before("<div class='alert'><a class='close' href='#' data-dismiss='alert'>X</a>#{msg}</div>")
@@ -52,11 +52,11 @@ Window.APP =
       if $.inArray(val.nickname,commenter_exists) < 0
          commenters.push(val)
          commenter_exists.push(val.nickname)
-    Window.APP.atReplyable("#comment_body", commenters)
+    APP.atReplyable("#comment_body", commenters)
 
 
 $(document).ready ->
-    Window.APP.bindCommentReply()
+    APP.bindCommentReply()
     $("a[rel=popover]").popover()
     $(".tooltip").tooltip()
     $("a[rel=tooltip]").tooltip()
@@ -131,7 +131,7 @@ $(document).ready ->
     $("#get_book_button").click () ->
       $(this).html("获取中...")
       $(this).attr("disabled","disabled")
-      Window.APP.get_book($("#post_isbn"))
+      APP.get_book($("#post_isbn"))
 
 
     $('#myModal').hide()

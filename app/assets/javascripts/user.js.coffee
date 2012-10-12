@@ -6,7 +6,7 @@ $(document).ready ->
 
 
 
-Window.Users =
+Users =
 	follow : (el) ->
     	account_id = $(el).data("id")
     	followed = $(el).data("followed")
