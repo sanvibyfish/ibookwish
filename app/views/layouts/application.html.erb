@@ -62,7 +62,7 @@
   <% if account_signed_in? %>
   <ul class="nav pull-right">
     <li>
-      <%= notification_tag(notifications_user_path) %>
+      
     </li>
      <li class="dropdown" id="user_menu">
     <%= link_to(raw("#{current_account.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>

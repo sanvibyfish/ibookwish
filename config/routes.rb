@@ -52,7 +52,6 @@ Code4::Application.routes.draw do
       post :unfollow
       get  :followers
       get  :following
-      get  :notifications
     end
   end
 
