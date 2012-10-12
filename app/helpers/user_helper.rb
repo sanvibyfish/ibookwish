@@ -16,7 +16,7 @@ def account_follow_tag(account)
       followed = true
     end
 
-    link_to raw(display_icon)+display_text, "#", :onclick => "return Window.Users.follow(this);",
+    link_to raw(display_icon)+display_text, "#", :onclick => "return Users.follow(this);",
                         'data-id' => account.id,
                         :class => class_name,
                         'data-followed' => followed
