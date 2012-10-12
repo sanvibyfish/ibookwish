@@ -26,17 +26,17 @@ module PostsHelper
 
 	def join_count_tag(post)
 		if post.wish_users?
-			link_to post.wish_users.count, post_path(post)
+			 post.wish_users.count
 		else
-			link_to "0", post_path(post)
+			 "0"
 		end
 	end
 
 	def comment_count_tag(post)
 		if post.comments?
-			link_to post.comments.count, post_path(post)
+			post.comments.count
 		else
-			link_to "0", post_path(post)
+			"0"
 		end
 	end
 
@@ -52,5 +52,10 @@ module PostsHelper
 		else
 			"<i class='icon icon-thumbs-down'></i>"
 		end
+	end
+
+
+	def item_count_tag(icon_class,title,href,count)
+		"<span class='item' rel='twipsy' title='#{title}'><i class='#{icon_class}'></i>#{link_to count,href}</span>"
 	end
 end

@@ -3,7 +3,9 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
   include Geocoder::Model::Mongoid
-  
+  include Redis::Objects
+
+
   field :isbn, type: String
   field :author, type: String
   field :title, type: String
@@ -29,7 +31,7 @@ class Post
   belongs_to :complete_user, :class_name => "Account"
   field :rating_body
   field :rating,  :type => Integer
-
+  counter :hits, :default => 0
 
   RATING_STATE = {
     :up => 1,

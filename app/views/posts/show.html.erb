@@ -10,7 +10,7 @@
 					<div class="info leader">
 						<%= link_to @post.account.nickname, user_path(@post.account) %><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布
 						    •
-						1111浏览</div>
+						<%= @post.hits %>浏览</div>
 				</div>
 				<div class="content">
 						<div class="image">
@@ -23,11 +23,11 @@
 				<div class="info">
 						<p class="field">
 						<span
-						 class="label label-info">我借出</span> <%= link_to @post.title,"#betaModal",	:rel => "twipsy", "data-original-title" => "", "data-toggle" => "modal"  %>
+						 class="label label-info">我借出</span> <%= link_to @post.title,"#betaModal", "data-toggle" => "modal", :rel => 'tooltip', :title =>'点击查看更多图书详情'  %>
 						</p>	
 
 	<p class="field">
-						<span rel="twipsy" "data-original-title" = "借出你的图书"
+						<span 
 						 class="label label-info">我想要</span> <%= @post.dream %></p>
 
 				<p class="field">

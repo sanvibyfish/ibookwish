@@ -99,6 +99,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		@post.hits.incr(1)
 		@comment = Comment.new
 		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
 	end

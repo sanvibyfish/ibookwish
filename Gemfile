@@ -8,8 +8,16 @@ gem 'rails-i18n'
 
 # MongoDB..
 gem 'mongoid'
-gem 'mongo'
-gem 'bson_ext'
+# gem 'mongo'
+# gem 'bson_ext'
+
+
+# Redis 命名空间
+gem 'redis-namespace' 
+
+# 将一些数据存放入 Redis
+gem "redis-objects" 
+
 
 gem 'kaminari'
 
