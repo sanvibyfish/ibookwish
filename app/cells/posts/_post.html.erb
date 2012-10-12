@@ -8,15 +8,12 @@
 		<span><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
 </p>
-<p class="muted"><%= post.dream %></p>
+<p class="muted dream"><%= post.dream %></p>
 
 <p class="post-footer"> 
-	<span class="item"><i class="icon-eye-open"></i><a href="#">200</a></span>
-	<span class="item">     	<i class="icon-comment"></i> <%= comment_count_tag(post) %></span>
-		<span class="item"><i class="icon-group"></i>
-		<%= join_count_tag(post) %>
-
-</span>
+	<%= raw item_count_tag("icon-eye-open","浏览(#{post.hits})", post_path(post), post.hits) %>
+	<%= raw item_count_tag("icon-comment","评论(#{comment_count_tag(post)})",post_path(post),comment_count_tag(post)) %>
+	<%= raw item_count_tag("icon-group","参与(#{join_count_tag(post)})",post_path(post),join_count_tag(post)) %>
 </p>
 <div class="clearfix"></div>
 

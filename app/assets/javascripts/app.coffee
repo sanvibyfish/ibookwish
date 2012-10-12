@@ -57,10 +57,9 @@ APP =
 
 $(document).ready ->
     APP.bindCommentReply()
-    $("a[rel=popover]").popover()
-    $(".tooltip").tooltip()
     $("a[rel=tooltip]").tooltip()
     $("img[rel=twipsy]").tooltip()
+    $("span[rel=twipsy]").tooltip()
     $('.dropdown-toggle').dropdown()
     
     $("#post_submit").click ->
@@ -82,7 +81,7 @@ $(document).ready ->
 
     $("#back-top").hide()
 
-    $("span[rel=twipsy]").tooltip()
+    
 
 
     $ ->

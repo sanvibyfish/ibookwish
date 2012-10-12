@@ -43,9 +43,8 @@ class Account
   # 用户角色
   field :roles_mask
   ROLES = %w[admin user]
-  has_many :tasks
   # has_many :tike_posts, :class_name => "Post", :inverse_of => :complete_user
-
+  has_many :notifications
 
   ##Invitation Token
   field :invitation_token, :type => String
@@ -56,7 +55,9 @@ class Account
   field :invited_by_type
   validates_length_of :invitation_token, maximum: 60
 
-  has_many :posts
+  def notifications
+    Notification.where(:to_user => self.id)
+  end
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
