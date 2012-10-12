@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.new(params[:comment])
+
 		@comment.post_id = params[:comment][:post]
     	@comment.account = current_account
    		@success = @comment.save!

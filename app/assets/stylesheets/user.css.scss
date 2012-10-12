@@ -80,9 +80,11 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 
 #notifications {
 	td {
+		&.img {
+			width:50px;
+		}
 		.face{
 			padding-right: 8px;
-			width: 48px;
 			margin-left: 0;
 		}
 

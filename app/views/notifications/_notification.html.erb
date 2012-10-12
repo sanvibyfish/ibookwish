@@ -1,0 +1,22 @@
+ <tr id="<%= notification.id %>">
+<td class="img">
+  <%= account_avatar_tag(notification.from_user, :style => "48x48") %>
+</td>
+<td>
+  <h3>
+    <span class="user">
+      <%= notification.from_user.nickname %>
+    </span>
+      在
+      <%= link_to notification.post.dream,  post_path(notification.post) %>
+      提及你：
+    <% if !notification.read? %>
+      <span class="new label label-warning">新</span>
+    <% end %>
+  </h3>
+    <div class="body md_body">
+      <%= notification.body %>
+    </div>
+</td>
+</tr>
+

@@ -102,6 +102,13 @@ class PostsController < ApplicationController
 		@post.hits.incr(1)
 		@comment = Comment.new
 		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
+		# @comments = @post.comment.asc(:id).all.include?(@post.account) 
+		# # 通知处理
+  #     	unless current_account.post_read?(@post)
+  #       current_account.notifications.unread.any_of({:mentionable_type => 'Reply', :mentionable_id.in => @comments.map(&:id)},
+  #                                                {:reply_id.in => @comments.map(&:id)}).update_all(:read => true)
+  #       current_user.read_post(@post)
+      	# end
 	end
 
 	def complete_wish
