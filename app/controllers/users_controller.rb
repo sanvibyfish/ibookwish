@@ -25,14 +25,6 @@ class UsersController < ApplicationController
 
   end
 
-  def send_notif
-      
-  end
-
-  def notifications
-    
-  end
-
   def followers
     @account = Account.find_by(:nickname => params[:id])
     render  :action => "index"

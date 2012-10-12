@@ -43,8 +43,11 @@ class Account
   # 用户角色
   field :roles_mask
   ROLES = %w[admin user]
-  has_many :notifications, :class_name => 'Notification::Base', :dependent => :delete
+  has_many :notifications, :class_name => "Notification",:inverse_of => :to_user
+  has_many :sends, :class_name => "Notification",:inverse_of => :from_user
   has_many :posts
+
+
 
   ##Invitation Token
   field :invitation_token, :type => String
@@ -55,34 +58,12 @@ class Account
   field :invited_by_type
   validates_length_of :invitation_token, maximum: 60
 
-
-  # # 是否读过 post 的最近更新
-  # def post_read?(post)
-  #   # 用 last_reply_id 作为 cache key ，以便不热门的数据自动被 Memcached 挤掉
-  #   last_reply_id = post.last_reply_id || -1
-  #   Rails.cache.read("user:#{self.id}:post_read:#{post.id}") == last_reply_id
-  # end
-
-  # # 将 post 的最后回复设置为已读
-  # def read_post(post)
-  #   # 处理 last_reply_id 是空的情况
-  #   last_reply_id = topic.last_reply_id || -1
-  #   Rails.cache.write("user:#{self.id}:topic_read:#{topic.id}", last_reply_id)
-  # end
-
-
-
-
-  # def read_notifications(notifications)
-  #   unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
-  #   if unread_ids.any?
-  #     Notification::Base.where({
-  #       :user_id => id,
-  #       :_id.in  => unread_ids,
-  #       :read    => false
-  #     }).update_all(:read => true)
-  #   end
-  # end
+  def read_notifications(notifications)
+    unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
+    if unread_ids.any?
+      self.notifications.update_all(:read => true)
+    end
+  end
 
 
   def roles=(roles)

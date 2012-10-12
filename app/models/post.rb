@@ -33,6 +33,7 @@ class Post
   field :rating,  :type => Integer
   counter :hits, :default => 0
 
+
   RATING_STATE = {
     :up => 1,
     :down => 0

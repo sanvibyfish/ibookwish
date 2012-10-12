@@ -44,7 +44,7 @@ Code4::Application.routes.draw do
   end
 
   resources :comments
-
+  resources :notifications
   resources :accounts
   resources :users do
     member do
@@ -54,5 +54,7 @@ Code4::Application.routes.draw do
       get  :following
     end
   end
+
+
 
 end

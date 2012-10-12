@@ -1,0 +1,19 @@
+<div id="main" >
+      <div id="notifications" class="bookdate-box">
+    <h1>通知</h1>
+      <% if @notifications.blank? %>
+    <div class="no_result" style="padding:80px 0;">暂无通知</div>
+  <% else %>
+
+    <table class="table">
+      <tbody>
+            <%= render :partial => "notification", :collection => @notifications %>
+      </tbody>
+    </table>
+  
+
+          <%= paginate @notifications  %>
+  <% end %>
+</div>
+
+    </div>
