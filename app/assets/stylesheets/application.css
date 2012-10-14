@@ -117,7 +117,13 @@ padding: 0 10px;
 #node_info .right-band {
 	float: right;
 	text-align: right
+
 }
+#node_info .right-band {
+	width: 340px;
+}
+
+
 
 
 #node_info .sorts li {

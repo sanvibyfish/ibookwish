@@ -8,8 +8,12 @@
     <%= f.label "isbn", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :isbn, :class => 'text_field', :id => 'post_isbn' %>
+
       <%= f.button "获取", 
       :class => 'btn', :id => "get_book_button", :type => "button", :disabled => true%>
+      <span id="isbn-help" rel='twipsy' title='<%= image_tag "ISBN.jpg" %>' data-placement="right">什么是ISBN?</span>
+            <span class="help-block">输入是请直接输入数字，请勿输入"-"</span>
+
     </div>
   </div>
 
@@ -21,9 +25,9 @@
   </div>
   
     <div class="control-group">
-    <%= f.label "愿望", :class => 'control-label' %>
+    <%= f.label "我想要", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :dream, :class => 'text_field',:placeholder => "写上你的小愿望" , :rows => '3' %>
+      <%= f.text_area :dream, :class => 'text_field',:placeholder => "写上你想要别人帮你完成的事" , :rows => '3' %>
     </div>
   </div>
     <div class="control-group">
