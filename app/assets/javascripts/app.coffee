@@ -7,7 +7,6 @@
 #= require masonry/jquery.masonry
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
-#= require modernizr
 #= require jquery.atwho
 #= require jquery.autogrow-textarea
 #= require social-share-button
