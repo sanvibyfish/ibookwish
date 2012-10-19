@@ -52,6 +52,10 @@ Code4::Application.routes.draw do
       post :unfollow
       get  :followers
       get  :following
+      get :near_me
+    end
+    collection do
+      get :near_me
     end
   end
 

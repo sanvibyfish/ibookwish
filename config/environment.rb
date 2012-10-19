@@ -6,3 +6,5 @@ Code4::Application.initialize!
 
 SITE_NAME = Setting.app_name
 
+
+

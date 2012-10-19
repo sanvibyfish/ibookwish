@@ -19,6 +19,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def location 
+      @locations = Location.all
+    if session[:location].blank?
+      # FIXME 目前是虚拟IP
+      if request.location.city.downcase.blank?
+        session[:location] =  Location.find_by(pin_yin: "shenzhen")
+      else
+        session[:location] = Location.find_by(pin_yin: request.location.city.downcase)
+      end 
+    end
+  end
+
+  
 
 
   def unread_notify_count

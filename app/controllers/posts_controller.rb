@@ -13,18 +13,6 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
-	def location
-		@locations = Location.all
-		if session[:location].blank?
-			# FIXME 目前是虚拟IP
-			if request.location.city.downcase.blank?
-				session[:location] =  Location.find_by(pin_yin: "shenzhen")
-			else
-				session[:location] = Location.find_by(pin_yin: request.location.city.downcase)
-			end
-			
-		end
-	end
 
 	def get_book
 		@book = JSON.parse(open("http://api.douban.com/v2/book/isbn/#{params[:isbn]}?apikey=#{DOUBAN_APIKEY}&secret=#{DOUBAN_SECRET}").read)
@@ -114,6 +102,7 @@ class PostsController < ApplicationController
 	def complete_wish
 		@post = Post.find(params[:id])
 		if @post.push_wish_user(current_account.id)
+			current_account.push_wish_post(@post.id)
 			redirect_to @post, notice: '操作成功.' 
 		else
 			redirect_to @post, error: '已经添加过了' 
@@ -126,6 +115,7 @@ class PostsController < ApplicationController
 			redirect_to @post, error: '当前任务已经有圆梦师了' 
 		else
 			@post.complete_user_id = params[:complete_user_id]
+			@post.complete_user.push_complete_post(@post.id)
 			@post.save
 			redirect_to @post, notice: '操作成功.' 
 		end		

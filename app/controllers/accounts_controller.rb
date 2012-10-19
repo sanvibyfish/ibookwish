@@ -29,6 +29,17 @@ class AccountsController < Devise::RegistrationsController
   def create
     build_resource
     resource.email = params[resource_name][:email]
+
+    if session[:location].blank?
+      # FIXME 目前是虚拟IP
+      if request.location.city.downcase.blank?
+        session[:location] =  Location.find_by(pin_yin: "shenzhen")
+      else
+        session[:location] = Location.find_by(pin_yin: request.location.city.downcase)
+      end 
+    end
+    resource.location = session[:location]
+
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?

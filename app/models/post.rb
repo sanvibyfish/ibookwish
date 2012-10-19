@@ -18,7 +18,7 @@ class Post
 
   field :dream, type: String
    
-  belongs_to :account
+  belongs_to :account, :inverse_of => :posts
   has_and_belongs_to_many :tags
   has_many :comments
 
@@ -27,8 +27,8 @@ class Post
   belongs_to :location
   field :address
 
-  has_and_belongs_to_many :wish_users, :class_name => "Account"
-  belongs_to :complete_user, :class_name => "Account"
+  has_and_belongs_to_many :wish_users, :class_name => "Account", :inverse_of => :wish_posts
+  belongs_to :complete_user, :class_name => "Account", :inverse_of => :complete_posts
   field :rating_body
   field :rating,  :type => Integer
   counter :hits, :default => 0
@@ -49,7 +49,6 @@ class Post
 
 
   def push_wish_user(uid)
-    self
     return false if self.wish_user_ids.include?(uid)
     self.push(:wish_user_ids,uid)   
   end
