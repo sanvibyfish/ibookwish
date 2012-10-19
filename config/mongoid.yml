@@ -26,7 +26,4 @@ production:
       hosts:
         - 127.0.0.1:27017
       database: bookdate
-<<<<<<< HEAD
-=======
       raise_not_found_error: false
->>>>>>> 7fa34bd53bb51588fa2e12f03293c8657bc49b98
