@@ -1,6 +1,7 @@
 #encoding: utf-8
 module UserHelper
 
+
 def account_follow_tag(account)
     return "" if current_account.blank?
     return "" if account.blank?

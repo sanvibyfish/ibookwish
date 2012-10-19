@@ -113,3 +113,49 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 	}
 }
 
+.friend-node{
+	margin-left: 100px;
+
+
+	span{
+		font-size: 18px;
+
+		a{
+			color: #333;
+			&:hover{
+				text-decoration: none;
+				color: #08C;
+			}
+		}
+
+		a.active {
+			color: #08C;
+		}
+
+
+	}
+
+	span.active {
+		a{
+			color: #08C;
+		}
+	}
+}
+.friends {
+	margin-left: 70px;
+	img{
+		float: left;
+	}
+
+	.info {
+		margin-left: 110px;
+		color: #999;
+	}
+	
+
+	.follow {
+		padding: 10px 0px 0px 15px;
+	}
+
+}
+

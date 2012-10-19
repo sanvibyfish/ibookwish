@@ -56,8 +56,7 @@
 
               <%= render_list :class => "nav" do |li|
             li << link_to("书单", posts_path)
-            li << link_to("书友", "#")
-            li << link_to("活动", "#")
+            li << link_to("书友", near_me_users_path)
           end  %>
   <% if account_signed_in? %>
   <ul class="nav pull-right">

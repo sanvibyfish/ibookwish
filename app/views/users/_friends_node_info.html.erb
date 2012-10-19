@@ -1,0 +1,28 @@
+<div class="friend-node">
+<div class="bookdate-box span9">
+	<span class="pull-left <%= 'active' if action_name == "near_me" %>">
+		<%= link_to   raw("<i class='icon-map-marker'></i>离我最近"), near_me_users_path %>
+		<a data-toggle="modal" href="#myModal">(<%= session[:location].name %>)</a>
+	</span>
+	<span class="pull-right">
+		<%= link_to "男",near_me_user_path(session[:location], :gender => 0), :class => "#{'active' if session[:gender] == "0" || session[:gender] == 0}" %>/<%= link_to "女", near_me_user_path(session[:location], :gender => 1 ), :class => "#{'active' if session[:gender] == "1" || session[:gender] == 1  }"%>
+	</span>
+   <div class="span">
+               <div style="display:none;" class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">选择城市</h3>
+  </div>
+  <div class="modal-body" id="node_info">
+    <ul class="sorts">
+      <% @locations.each do |location| %>
+      <li><%= link_to location.name, near_me_user_path(location) %></li>
+      <% end %>
+      </ul>
+  </div>
+</div>
+      </div>
+
+
+</div>
+</div>

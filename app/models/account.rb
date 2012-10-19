@@ -45,9 +45,9 @@ class Account
   ROLES = %w[admin user]
   has_many :notifications, :class_name => "Notification",:inverse_of => :to_user
   has_many :sends, :class_name => "Notification",:inverse_of => :from_user
-  has_many :posts
-
-
+  has_many :posts, :inverse_of => :account
+  has_and_belongs_to_many :wish_posts, :class_name => "Post",:inverse_of => :wish_user
+  has_many :complete_posts, :class_name => "Post", :inverse_of => :complete_user
 
   ##Invitation Token
   field :invitation_token, :type => String
@@ -114,6 +114,18 @@ class Account
   def pull_follower(uid)
     return false if uid == self.id
     self.pull(:follower_ids,uid)
+  end
+
+  def push_wish_post(uid)
+    return false if self.wish_post_ids.include?(uid)
+    self.push(:wish_post_ids,uid)   
+  end
+
+  #FIXME 未加入
+  def push_complete_post(uid)
+    binding.pry
+    return false if self.complete_post_ids.include?(uid)
+    self.push(:complete_post_ids,uid)   
   end
 
 

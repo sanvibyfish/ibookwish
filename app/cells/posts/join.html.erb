@@ -1,6 +1,6 @@
 <div class="span4">
 <div class="bookdate-box">
-		<h4>参与者</h4>
+		<h4>我们想要借</h4>
 		<div class="join-users">
 		<% if @post.complete_user? %>
 			<% @post.wish_users.each do |user| %>
@@ -22,7 +22,7 @@
 		<% end %>
 
 		<% unless @post.wish_users?  %>
-			<p class="muted">目前还没有参与者，赶快参加吧</p>
+			<p class="muted">目前还没有人想跟他借书，赶快加入吧</p>
 		<% end %>
 		</div>
 </div>

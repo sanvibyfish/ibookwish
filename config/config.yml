@@ -1,7 +1,7 @@
 # coding: utf-8
 defaults: &defaults
   app_name: "书愿网"
-  upload_url: "sanvi1020.b0.upaiyun.com"
+  upload_url: "http://image-sanvibyfish.b0.upaiyun.com"
   admin_emails: 
     - "admin@admin.com"
     - "test@test.com"

@@ -1,0 +1,27 @@
+<%= render "friends_node_info" %>
+<div class="friends">
+<% @accounts.each do |account| %>
+<% unless account.id == current_account.id %>
+<div class="bookdate-box span3" >
+	<%= account_avatar_tag(account, :style => "100x100") %>
+
+	<div class="info">
+	<div class="name"><%= account.nickname %></div>
+	<div class="bio"><%= account_tagline_tag account %></div>
+	<p class="action">
+	<div class="follow"><%= account_follow_tag(account) %></div>
+
+	</p>
+	</div>
+	<div class="clearfix"></div>
+	<div>
+	<%= link_to "#{account.wish_posts.count} 参与任务",following_user_path(account) %>
+	<%= link_to "#{account.complete_posts.count} 完成任务",following_user_path(account) %>
+	<%= link_to "#{account.posts.count} 分享",user_path(account) %>
+	<%= link_to "#{account.followers.count} 粉丝",followers_user_path(account) %>
+	<%= link_to "#{account.following.count} 关注",following_user_path(account) %>
+	</div>
+</div>
+<% end %>
+<% end %>
+</div>
