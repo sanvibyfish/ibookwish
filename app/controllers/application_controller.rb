@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :authenticate_account!
   helper_method :unread_notify_count
 
   def render_404

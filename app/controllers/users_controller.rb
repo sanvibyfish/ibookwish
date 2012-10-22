@@ -1,6 +1,8 @@
+#coding = utf-8
 class UsersController < ApplicationController
   before_filter :location, :only => [:near_me]
   before_filter :set_menu_active
+  skip_before_filter :authenticate_account!, :only => [:iwant_account]
 
 	def show
 		@account = Account.find_by(:nickname => params[:id])
@@ -55,6 +57,18 @@ class UsersController < ApplicationController
     render :action => "friends"
   end
 
+  def iwant_account
+    @apply_for_test = ApplyForTest.new
+  end
+
+  def iwant_account_save
+    @apply_for_test = ApplyForTest.new(params[:apply_for_test])
+    if @apply_for_test.save
+      redirect_to "/users/iwant_account", notice: '你的申请已经成功，在验证信息后我们会发送一封邮件邀请你注册.' 
+    else
+      render :action => :iwant_account , error: '申请失败' 
+    end
+  end
 
   protected
 

@@ -56,6 +56,8 @@ Code4::Application.routes.draw do
     end
     collection do
       get :near_me
+      get :iwant_account
+      post :iwant_account_save
     end
   end
 

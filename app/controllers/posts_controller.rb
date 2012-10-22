@@ -1,7 +1,6 @@
 #coding: utf-8
 require "open-uri"  
 class PostsController < ApplicationController
-	before_filter :authenticate_account!
 	before_filter :location, :only => [:index, :near_me, :tag]
 	before_filter :set_menu_active
 
