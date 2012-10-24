@@ -39,7 +39,11 @@ class ApplicationController < ActionController::Base
       if request.location.city.downcase.blank?
         session[:location] =  Location.find_by(pin_yin: "shenzhen")
       else
-        session[:location] = Location.find_by(pin_yin: request.location.city.downcase)
+        session[:location] = Location.where(pin_yin: request.location.city.downcase).first
+        if session[:location].blank?
+           session[:location] =  Location.find_by(pin_yin: "shenzhen")
+        end
+
       end 
     end
   end

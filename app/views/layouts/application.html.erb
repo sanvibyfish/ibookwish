@@ -72,7 +72,7 @@
       li <<  link_to("我的主页", main_app.user_path(current_user)) 
       li <<  link_to("修改个人信息", main_app.edit_user_registration_path) 
       li <<  link_to("邀请", main_app.new_user_invitation_path) 
-      li <<  link_to("退出", main_app.destroy_user_session_path, :method => :delete) 
+      li <<  link_to("退出", main_app.destroy_user_session_path, :method => :get) 
     end %>
   </li>
 </ul>
