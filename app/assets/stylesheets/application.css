@@ -124,6 +124,9 @@ display: inline;
 margin: 0 5px;
 }
 
+#post_node_info .sorts li a i {
+line-height: 18px;
+}
 
 
 
