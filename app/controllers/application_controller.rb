@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
       @locations = Location.all
     if session[:location].blank?
       # FIXME 目前是虚拟IP
+      if request.location.blank?
+        session[:location] =  Location.find_by(pin_yin: "shenzhen")
+      end
+
       if request.location.city.downcase.blank?
         session[:location] =  Location.find_by(pin_yin: "shenzhen")
       else
