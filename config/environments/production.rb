@@ -63,8 +63,8 @@ Code4::Application.configure do
 
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
-  config.assets.precompile += %w(application.css base.css bootstrap_and_overrides.css comment.css post.css tag.css user.css
-     app.js bootstrap.js comment.js post.js user.js .svg .eot .woff .ttf )
+  config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css
+     app.js bootstrap.js comment.js post.js user.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
