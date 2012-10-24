@@ -9,7 +9,7 @@
   <%= f.input :description %>
   <%= f.input :uploader_secure_token %>
   <%= f.input :dream %>
-  <%= f.input :account, :collection => Account.all, :as => :select, :selected => f.object.account_id ,:label_method => :nickname, :value_method => :id %>
+  <%= f.input :account, :collection => User.all, :as => :select, :selected => f.object.account_id ,:label_method => :name, :value_method => :id %>
   <%= f.input :coordinates, :input_html => { :value => "#{display_latlng_tag @post.coordinates}"} %>
   <%= f.input :location,  :collection => Location.all, :as => :select, :selected => f.object.location_id%>
   <%= f.input :address %>

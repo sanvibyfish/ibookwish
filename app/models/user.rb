@@ -1,4 +1,4 @@
-class Account
+class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -12,8 +12,8 @@ class Account
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
-  validates_presence_of :email, :encrypted_password, :nickname, :gender
-  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :nickname, :gender, :location, :avatar, :tagline, :roles
+  validates_presence_of :email, :encrypted_password, :name, :gender
+  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -30,22 +30,22 @@ class Account
   field :last_sign_in_ip,    :type => String
 
   ##Customer Field
-  field :nickname
+  field :name
   field :gender, :type => Integer
   belongs_to :location
   mount_uploader :avatar, ImageUploader
   field :tagline
   field :uploader_secure_token
   #正在关注
-  has_and_belongs_to_many :following, :class_name => 'Account', :inverse_of => :followers
+  has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers
   #粉丝
-  has_and_belongs_to_many :followers, :class_name => 'Account', :inverse_of => :following
+  has_and_belongs_to_many :followers, :class_name => 'User', :inverse_of => :following
   # 用户角色
   field :roles_mask
   ROLES = %w[admin user]
   has_many :notifications, :class_name => "Notification",:inverse_of => :to_user
   has_many :sends, :class_name => "Notification",:inverse_of => :from_user
-  has_many :posts, :inverse_of => :account
+  has_many :posts, :inverse_of => :user
   has_and_belongs_to_many :wish_posts, :class_name => "Post",:inverse_of => :wish_user
   has_many :complete_posts, :class_name => "Post", :inverse_of => :complete_user
 
@@ -90,7 +90,7 @@ class Account
   end
 
   def to_param
-    "#{nickname}"
+    "#{name}"
   end
 
   def push_following(uid)
@@ -123,7 +123,6 @@ class Account
 
   #FIXME 未加入
   def push_complete_post(uid)
-    binding.pry
     return false if self.complete_post_ids.include?(uid)
     self.push(:complete_post_ids,uid)   
   end

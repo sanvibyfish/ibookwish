@@ -1,7 +1,7 @@
 			<div id="reply" class="bookdate-box">
 						<%= form_for(@comment, :remote => true, :html => { :class => 'form-horizontal' }) do |f| %>
 		      <%= render "shared/error_messages", :target => @comment %>
-			 <%= f.text_area :body,:class => "span8 replay_box", :rows => "4", :tabindex => "1", :style => "width:600px;" %>
+			 <%= f.text_area :body,:class => "span8 replay_box", :rows => "4", :tabindex => "1", :style => "width:80%;" %>
         <div class="submit_buttons">
           <button type="submit" id="btn_reply" class="btn btn-primary" tabindex="2">提交回复</button><br />
           <span class="help-inline"></span>

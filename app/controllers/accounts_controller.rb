@@ -1,9 +1,6 @@
 class AccountsController < Devise::RegistrationsController
 
-
-  
 	def update
-
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     # Can update Email when email was not has being exist.
     resource.email = resource_params[:email] if self.resource.email.blank?
@@ -39,7 +36,6 @@ class AccountsController < Devise::RegistrationsController
       end 
     end
     resource.location = session[:location]
-
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?

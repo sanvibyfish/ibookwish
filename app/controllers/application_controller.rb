@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_account!
+  before_filter :authenticate_user!
   helper_method :unread_notify_count
 
   def render_404
@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_seo_meta(title = '',meta_keywords = '', meta_description = '')
+    if title.length > 0
+      @page_title = "#{title}"
+    end
+    @meta_keywords = meta_keywords
+    @meta_description = meta_description
+  end
+
   def location 
       @locations = Location.all
     if session[:location].blank?
@@ -32,11 +40,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def require_user
+    if current_user.blank?
+      respond_to do |format|
+        format.html  {
+          authenticate_user!
+        }
+        format.all {
+          head(:unauthorized)
+        }
+      end
+    end
+  end
   
 
 
   def unread_notify_count
-    return 0 if current_account.blank?
-    @unread_notify_count ||= current_account.notifications.unread.count
+    return 0 if current_user.blank?
+    @unread_notify_count ||= current_user.notifications.unread.count
   end
 end

@@ -3,11 +3,11 @@
 	<span  class= "<%=cycle('left','right') %>">
 	<div class="usercard">
 		<div class="avatar">
-			<%= account_avatar_tag(f, :style => "48x48") %>
+			<%= user_avatar_tag(f, :style => "48x48") %>
 		</div>
 		<div class="name">
-			<%= link_to f.nickname, user_path(f) %>
-	<div class="action"><%= account_follow_tag f %></div>
+			<%= link_to f.name, user_path(f) %>
+	<div class="action"><%= user_follow_tag f %></div>
 		</div>
 		<div class="stats">
 				<%= link_to "#{f.posts.count} 分享", user_path(f) %> 

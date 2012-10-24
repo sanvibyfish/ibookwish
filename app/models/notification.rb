@@ -3,8 +3,8 @@ class Notification
   include Mongoid::Timestamps
 
 
-	belongs_to  :from_user, :class_name => "Account", :inverse_of => :sends
-	belongs_to	:to_user, :class_name => "Account", :inverse_of => :notifications
+	belongs_to  :from_user, :class_name => "User", :inverse_of => :sends
+	belongs_to	:to_user, :class_name => "User", :inverse_of => :notifications
 	field :body
 	belongs_to :post
 	field :read, :default => false

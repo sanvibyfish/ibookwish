@@ -3,7 +3,7 @@
          <h1><%= @current_tag.name %></h1>
         <% end %>
       <div id="posts-container">
-          <%= render :partial => "post", :collection => @posts %>
+          <%= render :partial => "post", :posts => @posts %>
     </div>
      	<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => @action_name}  %>
 </div>

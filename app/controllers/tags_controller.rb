@@ -10,8 +10,8 @@ class TagsController < ApplicationController
 	  # GET /posts/1
   # GET /posts/1.json
   def show
-    tag = Tag.where(:name => params[:id])
-    if tag.blank? 
+    @tag = Tag.where(:name => params[:id]).first
+    if @tag.blank? 
       render_404
       return
     end

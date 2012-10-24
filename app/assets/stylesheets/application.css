@@ -16,7 +16,13 @@
  *= require 'masonry/infinitescroll'
  *= require social-share-button
  #= require jquery.atwho
- *= require_tree .
+ *= require homeland
+ *= require base
+ *= require bootstrap_and_overrides
+ *= require comment
+ *= require post
+ *= require tag
+ *= require user
  */
 .bookdate-box {
 	background-color: white;
@@ -29,6 +35,7 @@
 	-moz-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
 	padding-bottom: 15px;
+
 }
 
 .avatar32_f img {
@@ -54,21 +61,7 @@ color: #999;
 text-decoration: none;
 }
 
-#node_info a {
-	color: #333;
-}
-#node_info a:hover {
-	text-decoration: none;
-	color: #08C;
-}
 
-#node_info li a:active{
-	color: #08C;
-}
-
-#node_info li.active a{
-	color: #08C;
-}
 
 .width-full{
 	width: 100% !important;
@@ -100,33 +93,33 @@ font-size: 16px;
 	width: 500px;
 }
 
-#node_info {
+#post_node_info {
 padding: 0 10px;
 }
 
 
-#node_info .sorts {
+#post_node_info .sorts {
 	color: #999;
 	padding: 10px 0;
 }
 
-#node_info .left-band {
+#post_node_info .left-band {
 	float: left;
 	width: 340px;
 }
-#node_info .right-band {
+#post_node_info .right-band {
 	float: right;
 	text-align: right
 
 }
-#node_info .right-band {
+#post_node_info .right-band {
 	width: 340px;
 }
 
 
 
 
-#node_info .sorts li {
+#post_node_info .sorts li {
 display: inline;
 margin: 0 5px;
 }
@@ -199,6 +192,9 @@ vertical-align: middle;
 .attribution a {
 color: #444;
 }
+.author.x {
+	margin-left: 5px;
+}
 
 .convo a.img {
 float: left;
@@ -231,6 +227,21 @@ outline: 0;
 }
 
 
+#post_node_info a {
+	color: #333;
+}
+#post_node_info a:hover {
+	text-decoration: none;
+	color: #08C;
+}
+
+#post_node_info li a:active{
+	color: #08C;
+}
+
+#post_node_info li.active a{
+	color: #08C;
+}
 
 
 

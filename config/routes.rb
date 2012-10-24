@@ -1,21 +1,22 @@
 Code4::Application.routes.draw do
 
-  #后台路由
-  namespace :cpanel do
-    root :to => 'posts#index'
-    resources :categories do
-      collection do
-        get :autocomplete
-      end   
-    end
-    resources :tags do
-      collection do
-        get :autocomplete
-      end
-    end
-    resources :posts
-    resources :accounts
-  end
+  # #后台路由
+  # namespace :cpanel do
+  #   root :to => 'posts#index'
+  #   resources :categories do
+  #     collection do
+  #       get :autocomplete
+  #     end   
+  #   end
+  #   resources :tags do
+  #     collection do
+  #       get :autocomplete
+  #     end
+  #   end
+  #   resources :posts
+  # end
+
+  mount Homeland::Engine, :at => "/bbs"
   
   root :to => 'posts#index'
   resources :posts do
@@ -33,7 +34,7 @@ Code4::Application.routes.draw do
   end
 
 
-  devise_for :accounts,  :controllers => {
+  devise_for :users,  :controllers => {
       :registrations => :accounts
   } 
 
@@ -45,19 +46,20 @@ Code4::Application.routes.draw do
 
   resources :comments
   resources :notifications
-  resources :accounts
   resources :users do
     member do
       post :follow
       post :unfollow
       get  :followers
       get  :following
+      get  :join_posts
+      get  :complete_posts
       get :near_me
     end
     collection do
       get :near_me
-      get :iwant_account
-      post :iwant_account_save
+      get :iwant_user
+      post :iwant_user_save
     end
   end
 

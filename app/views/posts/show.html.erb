@@ -4,11 +4,11 @@
 			<div class="post-detail">
 				<div class="infos">
 					<div class="pull-right">
-						<%= account_avatar_tag(@post.account, :style => "48x48") %>
+						<%= user_avatar_tag(@post.user, :style => "48x48") %>
 					</div>
 					<div class="clearfix"></div>
 					<div class="info leader">
-						<%= link_to @post.account.nickname, user_path(@post.account) %><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布
+						<%= link_to @post.user.name, user_path(@post.user) %><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布
 						    •
 						<%= @post.hits %>浏览</div>
 				</div>
@@ -61,7 +61,7 @@
 			
 				</div>
 				<div class="action">
-						<% unless @post.wish_user_ids.include?(current_account.id) || @post.account.id == current_account.id %>
+						<% unless @post.wish_user_ids.include?(current_user.id) || @post.user.id == current_user.id %>
 					<%= form_for(@post,:as => :post , :url => complete_wish_post_path(@post), :html => { :class => 'form-horizontal', :id => "complete_wish_form" }, :method => :post) do |f| %>
 		      <%= render "shared/error_messages", :target => @post %>
 						<a href="javascript:void(0)" class="label label-success" data-disable-with ="加载中...">

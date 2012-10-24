@@ -1,25 +1,25 @@
 <%= render "friends_node_info" %>
 <div class="friends">
-<% @accounts.each do |account| %>
-<% unless account.id == current_account.id %>
+<% @users.each do |user| %>
+<% unless user.id == current_user.id %>
 <div class="bookdate-box span3" >
-	<%= account_avatar_tag(account, :style => "100x100") %>
+	<%= user_avatar_tag(user, :style => "100x100") %>
 
 	<div class="info">
-	<div class="name"><%= account.nickname %></div>
-	<div class="bio"><%= account_tagline_tag account %></div>
+	<div class="name"><%= user.name %></div>
+	<div class="bio"><%= user_tagline_tag user %></div>
 	<p class="action">
-	<div class="follow"><%= account_follow_tag(account) %></div>
+	<div class="follow"><%= user_follow_tag(user) %></div>
 
 	</p>
 	</div>
 	<div class="clearfix"></div>
-	<div>
-	<%= link_to "#{account.wish_posts.count} 参与任务",following_user_path(account) %>
-	<%= link_to "#{account.complete_posts.count} 完成任务",following_user_path(account) %>
-	<%= link_to "#{account.posts.count} 分享",user_path(account) %>
-	<%= link_to "#{account.followers.count} 粉丝",followers_user_path(account) %>
-	<%= link_to "#{account.following.count} 关注",following_user_path(account) %>
+	<div class="params">
+	<%= link_to "#{user.wish_posts.count} 参与",join_posts_user_path(user) %>
+	<%= link_to "#{user.complete_posts.count} 完成",complete_posts_user_path(user) %>
+	<%= link_to "#{user.posts.count} 分享",user_path(user) %>
+	<%= link_to "#{user.followers.count} 粉丝",followers_user_path(user) %>
+	<%= link_to "#{user.following.count} 关注",following_user_path(user) %>
 	</div>
 </div>
 <% end %>

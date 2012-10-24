@@ -1,7 +1,7 @@
 class PostsCell < Cell::Rails
   include Devise::Controllers::Helpers
 	helper :application, :accounts, :posts
-  helper_method :current_account
+  helper_method :current_user
 
   def index(opts = {})
   	@current_tag     = opts[:current_tag]

@@ -1,18 +1,18 @@
 <div class="span4">
 <div class="bookdate-box">
 		<h4>我会借给</h4>
-		<div class="accpt-accounts">
-			<div class="image"><%= account_avatar_tag(@post.complete_user,:style => "48x48") %></div>
-			<div class="name"><%= @post.complete_user.nickname %>
+		<div class="accpt-users">
+			<div class="image"><%= user_avatar_tag(@post.complete_user,:style => "48x48") %></div>
+			<div class="name"><%= @post.complete_user.name %>
 
 		<div class="accpt-action">
-			<% if  @post.account.id == current_account.id && @post.state == Post::STATE[:normal] %>
+			<% if  @post.user.id == current_user.id && @post.state == Post::STATE[:normal] %>
 				<%= link_to "完成并评价","#completeModal",:class => "btn", :role => "button", "data-toggle" => "modal" %>
 				<div class="modal" id="completeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
 	 	<%= form_for @post, :url => end_task_post_path(@post), :method => "POST", :html => { :class => 'form-horizontal' } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">对<%= @post.complete_user.nickname %>进行评价</h3>
+    <h3 id="myModalLabel">对<%= @post.complete_user.name %>进行评价</h3>
   </div>
   <div class="modal-body">
   	<%= f.hidden_field :state, :value => Post::STATE[:success] %>
@@ -47,7 +47,7 @@
 
 			</div>
 			<div class="accpt-info">
-				<%= account_tagline_tag  @post.complete_user %>
+				<%= user_tagline_tag  @post.complete_user %>
 			</div>
 
 			<div class="clearfix"></div>

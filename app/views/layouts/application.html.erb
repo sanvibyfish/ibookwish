@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="keywords" content="<%= @meta_keywords %>" />
+    <meta name="description" content="<%= @meta_description %>" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -14,6 +15,8 @@
 
       <%= stylesheet_link_tag    "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css", :media => "all" %>
 
+<!--[if lt IE 8]><link rel="stylesheet" href="/assets/bootstrap-ie7patches.css"><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" href="/assets/bootstrap-ie8patches.css"><![endif]--> 
 
 
           <!-- Javascripts
@@ -51,31 +54,31 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="/">书愿网<small>beta</small></a>
-          <!-- #FIXME 其他连接未激活书单-->
           <div class="container nav-collapse">
 
               <%= render_list :class => "nav" do |li|
-            li << link_to("书单", posts_path)
-            li << link_to("书友", near_me_users_path)
+            li << link_to("书单", main_app.posts_path)
+            li << link_to("书友", main_app.near_me_users_path)
+            li << link_to("社区", "/bbs")
           end  %>
-  <% if account_signed_in? %>
+  <% if user_signed_in? %>
   <ul class="nav pull-right">
     <li>
-      <%= notification_tag notifications_path %>
+      <%= notification_tag main_app.notifications_path %>
     </li>
      <li class="dropdown" id="user_menu">
-    <%= link_to(raw("#{current_account.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
+    <%= link_to(raw("#{current_user.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
     <%= render_list :class => "dropdown-menu" do |li|  
-      li <<  link_to("我的主页", user_path(current_account)) 
-      li <<  link_to("修改个人信息", edit_account_registration_path) 
-      li <<  link_to("邀请", new_account_invitation_path) 
-      li <<  link_to("退出", destroy_account_session_path, :method => :delete) 
+      li <<  link_to("我的主页", main_app.user_path(current_user)) 
+      li <<  link_to("修改个人信息", main_app.edit_user_registration_path) 
+      li <<  link_to("邀请", main_app.new_user_invitation_path) 
+      li <<  link_to("退出", main_app.destroy_user_session_path, :method => :delete) 
     end %>
   </li>
 </ul>
   <% else %>
            <%= render_list :class => "nav pull-right" do |li|
-            li << link_to("登录", new_account_session_path)
+            li << link_to("登录", main_app.new_user_session_path)
                end  %>
   <% end %>
           </div><!--/.nav-collapse -->
@@ -85,6 +88,15 @@
 
     <div class="container">
       <div class="row " id="top">
+        <% if controller_name == "topics" %>
+       <div class="span12 ">
+        <ul class="breadcrumb menu clearfix">
+          <li class="first last active"><a href="/">首页</a></li>
+          <%= yield :breadcrumb %>
+        </ul>
+        
+      </div>
+      <% end %>
         <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
@@ -94,7 +106,14 @@
         </div>
       </div><!--/row-->
       <footer>
-        <p>&copy; Company 2012  </p>
+        <p class="links">
+          <a href="/bbs/topics/node_50867195c3666efd1d000002">公告</a>|
+      <a href="/bbs/topics/node_50867195c3666efd1d000003">意见及反馈</a>
+
+      <span class="pull-right">
+        Handmade by <a href="/users/小三">小三</a>
+      </span>
+</p>
       </footer>
 
 

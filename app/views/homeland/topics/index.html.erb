@@ -1,0 +1,60 @@
+<%= render 'base' %>
+<% content_for :breadcrumb do %>
+	<% if @node.blank? %>
+	  <li>首页</li>
+  <% else %>
+    <li><%= @node.name %></li>
+	<% end %>
+<% end %>
+
+
+
+<div class="row">
+<div class="content span9">
+  <div class="bookdate-box">
+    <% if !@node.blank? %>
+    <div id="node_info">
+      <p>
+        <h1><%= @node.name %></h1>
+        <span class="total">共有 <%= @node.topics_count %> 个讨论主题</span>
+      </p>
+    </div>
+    <% else %>
+      <h1 class="bbs_name">论坛</h1>
+    <% end %>
+    <div class="topics">
+   <%= render :partial => "topic", :collection => @topics %>
+    </div>
+      
+    <% if params[:action] == "index" %>
+      <div class="more">
+        <a href="<%= recent_topics_path %>">查看更多最近发布的帖子...</a>
+      </div>
+    <% elsif params[:action] == "node" or params[:action] == "search" %>
+      <%= paginate @topics %>
+    <% end %>
+  </div>
+
+</div>
+
+  <div class="span3">
+    <%= render 'sidebar' %>
+      <% if params[:action] == "index" %>
+  <div id="sections" class="bookdate-box">
+  <h4>节点分类导航</h4>
+  <ul>
+    <% @sections.each do |section| %>
+    <li>
+      <label><%= section.name %></label> 
+      <div class="items">
+        <% section.nodes.each do |node| %>
+        <a href="<%= node_topics_path(node.id) %>" title="<%= node.name %>"><%= node.name %></a>
+        <% end %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+  </div>
+  <% end %>
+  </div>
+</div>

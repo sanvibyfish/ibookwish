@@ -18,7 +18,7 @@ class Post
 
   field :dream, type: String
    
-  belongs_to :account, :inverse_of => :posts
+  belongs_to :user, :inverse_of => :posts
   has_and_belongs_to_many :tags
   has_many :comments
 
@@ -27,8 +27,8 @@ class Post
   belongs_to :location
   field :address
 
-  has_and_belongs_to_many :wish_users, :class_name => "Account", :inverse_of => :wish_posts
-  belongs_to :complete_user, :class_name => "Account", :inverse_of => :complete_posts
+  has_and_belongs_to_many :wish_users, :class_name => "User", :inverse_of => :wish_posts
+  belongs_to :complete_user, :class_name => "User", :inverse_of => :complete_posts
   field :rating_body
   field :rating,  :type => Integer
   counter :hits, :default => 0

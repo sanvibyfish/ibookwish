@@ -7,7 +7,7 @@
         <legend>个人信息设置</legend>
   <%= f.input :email , :disabled => true %>
   <%= f.input :gender, :item_wrapper_class => 'inline', :collection => [[0, '男'], [1, '女']], :label_method => :last, :value_method => :first, :as => :radio %>
-  <%= f.input :nickname %>
+  <%= f.input :name %>
   <%= f.input :location,  :collection => Location.all, :as => :select, :selected => f.object.location_id%>
 
   <%= f.input :avatar %>

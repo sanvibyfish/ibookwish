@@ -2,7 +2,7 @@ class Cpanel::AccountsController < Cpanel::ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class Cpanel::AccountsController < Cpanel::ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @account = Account.find(params[:id])
+    @account = User.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class Cpanel::AccountsController < Cpanel::ApplicationController
   # GET /accounts/new
   # GET /accounts/new.json
   def new
-    @account = Account.new
+    @account = User.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class Cpanel::AccountsController < Cpanel::ApplicationController
 
   # GET /accounts/1/edit
   def edit
-    @account = Account.find(params[:id])
+    @account = User.find(params[:id])
   end
 
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(params[:account])
+    @account = User.new(params[:account])
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to @account, notice: 'User was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
       else
         format.html { render action: "new" }
@@ -56,11 +56,11 @@ class Cpanel::AccountsController < Cpanel::ApplicationController
   # PUT /accounts/1
   # PUT /accounts/1.json
   def update
-    @account = Account.find(params[:id])
+    @account = User.find(params[:id])
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
-        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
+        format.html { redirect_to @account, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,7 +72,7 @@ class Cpanel::AccountsController < Cpanel::ApplicationController
   # DELETE /accounts/1
   # DELETE /accounts/1.json
   def destroy
-    @account = Account.find(params[:id])
+    @account = User.find(params[:id])
     @account.destroy
 
     respond_to do |format|

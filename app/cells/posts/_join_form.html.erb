@@ -1,5 +1,5 @@
 <%= form_for @post, :url => exec_user_post_path(post), :method => "POST", 
 	:html => { :class => 'form-horizontal' } do |f| %>
-      <%= f.hidden_field nil, :value => account.id, :name => "complete_user_id" %>
+      <%= f.hidden_field nil, :value => user.id, :name => "complete_user_id" %>
       <%= f.submit "选择" , :class	 => "btn" %>
 <% end %>

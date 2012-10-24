@@ -1,11 +1,11 @@
  <tr id="<%= notification.id %>">
 <td class="img">
-  <%= account_avatar_tag(notification.from_user, :style => "48x48") %>
+  <%= user_avatar_tag(notification.from_user, :style => "48x48") %>
 </td>
 <td>
   <h3>
     <span class="user">
-      <%= notification.from_user.nickname %>
+      <%= notification.from_user.name %>
     </span>
       在
       <%= link_to notification.post.dream,  post_path(notification.post) %>

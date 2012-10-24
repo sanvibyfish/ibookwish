@@ -2,26 +2,29 @@
 class UsersController < ApplicationController
   before_filter :location, :only => [:near_me]
   before_filter :set_menu_active
-  skip_before_filter :authenticate_account!, :only => [:iwant_account]
+  skip_before_filter :authenticate_user!, :only => [:iwant_user, :iwant_user_save]
 
 	def show
-		@account = Account.find_by(:nickname => params[:id])
-		@posts = Post.where(:account => @account).desc(:created_at).page(params[:page])
+		@user = User.find_by(:name => params[:id])
+		@posts = Post.where(:user => @user).desc(:created_at).page(params[:page])
     @action_name = "show"
+    set_seo_meta(@user.name)
     render  :action => "index"
  	end
 
  	def follow
-      @account = Account.find(params[:id])
-      current_account.push_following(params[:id])
-    	@account.push_follower(current_account.id)
+      @user = User.find(params[:id])
+      current_user.push_following(params[:id])
+    	@user.push_follower(current_user.id)
+      set_seo_meta(@user.name)
     	render :text => "1"
   end
 
   def unfollow
-    	@account = Account.find(params[:id])
-      current_account.pull_following(params[:id])
-    	@account.pull_follower(current_account.id)
+    	@user = User.find(params[:id])
+      current_user.pull_following(params[:id])
+    	@user.pull_follower(current_user.id)
+      set_seo_meta(@user.name)
    		render :text => "1"
   end
 
@@ -30,14 +33,31 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @account = Account.find_by(:nickname => params[:id])
+    @user = User.find_by(:name => params[:id])
+    set_seo_meta(@user.name)
     render  :action => "index"
   end
 
   def following
-    @account = Account.find_by(:nickname => params[:id])
+    @user = User.find_by(:name => params[:id])
+    set_seo_meta(@user.name)
     render :action => "index"
   end
+
+  def join_posts
+    @user = User.find_by(:name => params[:id])
+    @posts = @user.wish_posts.desc(:created_at).page(params[:page])
+    set_seo_meta(@user.name)
+    render :action => "index"
+  end
+
+  def complete_posts
+    @user = User.find_by(:name => params[:id])
+    @posts = @user.complete_posts.desc(:created_at).page(params[:page])
+    set_seo_meta(@user.name)
+    render :action => "index"
+  end
+
 
 
   def near_me 
@@ -52,21 +72,20 @@ class UsersController < ApplicationController
     else
        session[:gender] = params[:gender]
     end
-    @accounts = Account.where(location: session[:location], gender: session[:gender]).desc(:created_at).page(params[:page])
-
+    @users = User.where(location: session[:location], gender: session[:gender]).desc(:created_at).page(params[:page])
     render :action => "friends"
   end
 
-  def iwant_account
+  def iwant_user
     @apply_for_test = ApplyForTest.new
   end
 
-  def iwant_account_save
+  def iwant_user_save
     @apply_for_test = ApplyForTest.new(params[:apply_for_test])
     if @apply_for_test.save
-      redirect_to "/users/iwant_account", notice: '你的申请已经成功，在验证信息后我们会发送一封邮件邀请你注册.' 
+      redirect_to "/users/iwant_user", notice: '你的申请已经成功，在验证信息后我们会发送一封邮件邀请你注册.' 
     else
-      render :action => :iwant_account , error: '申请失败' 
+      render :action => :iwant_user , error: '申请失败' 
     end
   end
 

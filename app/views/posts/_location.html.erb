@@ -4,7 +4,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">选择城市</h3>
   </div>
-  <div class="modal-body" id="node_info">
+  <div class="modal-body" id="post_node_info">
     <ul class="sorts">
       <% @locations.each do |location| %>
       <li><%= link_to location.name, near_me_post_path(location) %></li>

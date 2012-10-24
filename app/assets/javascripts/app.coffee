@@ -10,6 +10,7 @@
 #= require jquery.atwho
 #= require jquery.autogrow-textarea
 #= require social-share-button
+#= require homeland
 #= require user
 #= require post
 #= require comment
@@ -35,11 +36,11 @@ APP =
       data: {isbn: el.val()}
 
     # 绑定 @ 回复功能
-  atReplyable : (el, nicknames) ->
-    return if nicknames.length == 0
+  atReplyable : (el, names) ->
+    return if names.length == 0
     $(el).atWho "@"
-      data : nicknames
-      tpl : "<li data-value='${nickname}'>${nickname}</li>"
+      data : names
+      tpl : "<li data-value='${name}'>${name}</li>"
 
   bindCommentReply: ()->
     # CommentAble @ 回复功能
@@ -47,10 +48,10 @@ APP =
     commenter_exists = []
     $("#pin_comments .piece .info_bar .name a").each (idx) ->
       val =
-        nickname : $(this).text()
-      if $.inArray(val.nickname,commenter_exists) < 0
+        name : $(this).text()
+      if $.inArray(val.name,commenter_exists) < 0
          commenters.push(val)
-         commenter_exists.push(val.nickname)
+         commenter_exists.push(val.name)
     APP.atReplyable("#comment_body", commenters)
 
 

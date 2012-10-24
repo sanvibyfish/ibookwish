@@ -7,9 +7,13 @@ gem 'rails-i18n'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # MongoDB..
-gem 'mongoid'
-# gem 'mongo'
-# gem 'bson_ext'
+gem 'mongoid', '3.0.6'
+
+
+gem "homeland", :git => "git://github.com/sanvibyfish/homeland.git"
+gem "rails_autolink", ">= 1.0.4"
+# 分页
+gem 'will_paginate', '3.0.3'
 
 
 # Redis 命名空间
@@ -72,7 +76,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
-  gem 'bootstrap-will_paginate', '0.0.3'
   gem 'bootstrap_helper', "1.4.1"
   gem 'jquery-atwho-rails'
 end

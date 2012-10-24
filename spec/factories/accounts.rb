@@ -3,7 +3,7 @@
 
 FactoryGirl.define do
   factory :account do
-  	sequence(:nickname){|n| "name#{n}" }
+  	sequence(:name){|n| "name#{n}" }
     sequence(:email){|n| "email#{n}@ruby-chine.org" }
     password 'password'
     password_confirmation 'password'

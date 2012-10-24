@@ -2,24 +2,22 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-$(document).ready ->
 
 
-
-Users =
+window.Users =
 	follow : (el) ->
-    	account_id = $(el).data("id")
+    	user_id = $(el).data("id")
     	followed = $(el).data("followed")
     	if followed
       		$.ajax
-        		url : "/users/#{account_id}/unfollow"
+        		url : "/users/#{user_id}/unfollow"
         		type : "POST"
           el.innerHTML = "<i class='icon-white'></i> 关注"
           $(el).data("followed", false)
           $(el).attr("class", "btn btn-primary")
     	else
       		$.ajax
-        		url : "/users/#{account_id}/follow"
+        		url : "/users/#{user_id}/follow"
         		type : "POST"
           $(el).data("followed", true)
       		el.innerHTML = "<i class='icon-remove icon-white'></i> 取消关注"
@@ -32,3 +30,4 @@ Users =
       type : "get"
       sucess: (data)->  
         $("#user_content").html()
+

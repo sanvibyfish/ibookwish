@@ -7,7 +7,7 @@
       not_saved: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
   devise:
     accounts:
-      account:
+      user:
         signed_up: '您的帐号已注册成功，如无意外，您将地收到一封确认邮件.'
         updated: '帐号资料更新成功.'
         destroyed: '再见！您的帐户已成功注销。我们希望很快可以再见到您.'
@@ -15,7 +15,7 @@
       user:
         failure: '三方登陆过程异常，请重试。'
     registrations:
-      account:
+      user:
         signed_up: '已登录'
         updated: '账户已更新'
     failure:

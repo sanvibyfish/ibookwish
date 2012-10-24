@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
 	def new	
 		@post = Post.new
+		set_seo_meta("借出图书")
 	end
 
 
@@ -35,35 +36,42 @@ class PostsController < ApplicationController
 			@posts = @current_tag.posts.desc(:created_at).page(params[:page])
 			@action_name = "tag"
 		elsif params[:action_name] == "show"
-			@account = Account.find_by(:nickname => params[:id])
+			@account = User.find_by(:name => params[:id])
 			@share_count = @account.posts.count
 			@posts = Post.where(:account => @account).desc(:created_at).page(params[:page])
 			@action_name = "show"
 		else
 			@posts = Post.desc(:created_at).page(params[:page])
 			@action_name = "index"
+
 		end
 	end
 
 	def index
+		set_seo_meta("首页")
 		@posts = Post.desc(:created_at).page(params[:page])
 	end
 
 	def near_me
 		session[:location] = Location.find_by(name: params[:id])
 		@posts = Post.where(location: session[:location]).desc(:created_at).page(params[:page])
+		set_seo_meta("同城")
 		render :action => "index"
 	end
 
 	def tag
-		@current_tag = Tag.find_by(:name => params[:id])
+		@current_tag = Tag.where(:name => params[:id]).first
+		if @current_tag.blank?
+			render_404
+			return
+		end
 		@posts = @current_tag.posts.desc(:created_at).page(params[:page])
+		set_seo_meta(@current_tag.name)
 		render :action => "index"
 	end
 
 
-	def create
-		# FIXME: 跳转修复 
+	def create 
 		unless params[:lat].blank?
 			params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])]
 			doc = JSON.parse(open("http://maps.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
@@ -74,7 +82,7 @@ class PostsController < ApplicationController
 		end
 		@post = Post.new(params[:post])
 		@post.remote_image_url = params[:post][:image]
-		@post.account = current_account
+		@post.user = current_user
 		if @post.save
 			redirect_to @post, notice: '操作成功.' 
 		else
@@ -85,23 +93,21 @@ class PostsController < ApplicationController
 
 
 	def show
-		@post = Post.find(params[:id])
+		@post = Post.where(:id => params[:id]).first
+		if @post.blank?
+			render_404
+			return
+		end
 		@post.hits.incr(1)
 		@comment = Comment.new
+		set_seo_meta(@post.title)
 		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
-		# @comments = @post.comment.asc(:id).all.include?(@post.account) 
-		# # 通知处理
-  #     	unless current_account.post_read?(@post)
-  #       current_account.notifications.unread.any_of({:mentionable_type => 'Reply', :mentionable_id.in => @comments.map(&:id)},
-  #                                                {:reply_id.in => @comments.map(&:id)}).update_all(:read => true)
-  #       current_user.read_post(@post)
-      	# end
 	end
 
 	def complete_wish
 		@post = Post.find(params[:id])
-		if @post.push_wish_user(current_account.id)
-			current_account.push_wish_post(@post.id)
+		if @post.push_wish_user(current_user.id)
+			current_user.push_wish_post(@post.id)
 			redirect_to @post, notice: '操作成功.' 
 		else
 			redirect_to @post, error: '已经添加过了' 

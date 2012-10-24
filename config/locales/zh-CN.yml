@@ -3,9 +3,11 @@
     inspection:
       criteria: "#<Mongoid::Criteria__selector: %{selector},__options:  %{options},__class:    %{klass},__embedded: %{embedded}>"
     models:
-      account: "用户"
+      user: "用户"
     attributes:
       account:
+        remember_me: 记住登录状态
+      user:
         name: "名字"
         login: "用户名"
         email: "邮箱"

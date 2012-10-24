@@ -5,15 +5,15 @@
 		<% if @post.complete_user? %>
 			<% @post.wish_users.each do |user| %>
 		<div class="user">
-				<%= account_avatar_tag(user, :style => "48x48", :image_css => "#{'grayscale' unless @post.complete_user_id == user.id}"  ) %>
+				<%= user_avatar_tag(user, :style => "48x48", :image_css => "#{'grayscale' unless @post.complete_user_id == user.id}"  ) %>
 		</div>
 		<% end %>
 		<% else @post.wish_users? %>
 			<% @post.wish_users.each do |user| %>
 		<div class="user">
-				<%= account_avatar_tag(user, :style => "48x48") %>	
-				<% if @post.account.id == current_account.id %>
-				<%= render "join_form", :post => @post, :account => user %>
+				<%= user_avatar_tag(user, :style => "48x48") %>	
+				<% if @post.user.id == current_user.id %>
+				<%= render "join_form", :post => @post, :user => user %>
 				<% else %>
 					<div><p class="muted">已参与</p></div>
 				<% end %>

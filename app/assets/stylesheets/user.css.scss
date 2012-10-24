@@ -4,7 +4,6 @@
 
 
 #user-profile-image {
-	margin: 0 0 10px 20px;
 }
 
 #user-profile {
@@ -28,7 +27,7 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 	}
 
 	.follow {
-		margin-left: 17px;
+		padding: 10px;
 	}
 }
 
@@ -53,6 +52,7 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 	margin-bottom: 10px;
+	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 
 	.avatar {
 		float: left;
@@ -114,7 +114,6 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 }
 
 .friend-node{
-	margin-left: 100px;
 
 
 	span{
@@ -142,7 +141,6 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 	}
 }
 .friends {
-	margin-left: 70px;
 	img{
 		float: left;
 	}
@@ -155,6 +153,10 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 
 	.follow {
 		padding: 10px 0px 0px 15px;
+	}
+
+	.params {
+		padding: 5px;
 	}
 
 }

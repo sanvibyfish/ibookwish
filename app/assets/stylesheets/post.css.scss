@@ -108,6 +108,11 @@
 	height: 210px;
 }
 
+.post {
+	float:left;
+	margin-right: 10px;
+	width: 230;
+}
 .posts {
 	width: 200px;
 	.post-footer {
@@ -128,7 +133,7 @@
 }
 
 
-.accpt-accounts {
+.accpt-users {
 	.image {
 		float: left;
 		margin-right: 10px;
@@ -187,3 +192,6 @@
 		}
 	}
 }
+
+
+

@@ -1,15 +1,15 @@
 #encoding: utf-8
 module AccountsHelper
-	def account_tagline_tag(account) 
-    if account.tagline.blank?
+	def user_tagline_tag(user) 
+    if user.tagline.blank?
       "暂无签名"
     else
-     account.tagline 
+     user.tagline 
     end
   end
 
 
-	def account_avatar_tag(account, options = {})
+	def user_avatar_tag(user, options = {})
 		options[:style] ||= :small
 		style = case options[:style].to_s
 		when "small" then "30x30"
@@ -20,8 +20,8 @@ module AccountsHelper
 		else options[:style].to_s
 		end
 		
-		link_to image_tag(account.avatar.url(style), :rel => "twipsy", "data-placement" => "bottom" ,
-			"data-original-title" => "#{account.nickname}<br/>#{account_tagline_tag(account)}<br/>#{account.location.name unless account.location.blank?}",
-		 :class => "img-rounded #{options[:image_css]}"), user_path(account),:class => options[:class]
+		link_to image_tag(user.avatar.url(style), :rel => "twipsy", "data-placement" => "bottom" ,
+			"data-original-title" => "#{user.name}<br/>#{user_tagline_tag(user)}<br/>#{user.location.name unless user.location.blank?}",
+		 :class => "img-rounded #{options[:image_css]}"), user_path(user),:class => options[:class]
 	end
 end
