@@ -15,7 +15,7 @@ class Cpanel::ApplyForTestsController < Cpanel::ApplicationController
 
   def invite
     @apply_for_test = ApplyForTest.find(params[:id])
-    User.invite!(:email => @apply_for_test.email , :name => "小三")
+    User.invite!(:email => @apply_for_test.email , :name => @apply_for_test.name)
     @apply_for_test.state = ApplyForTest::STATE[:sent]
     @apply_for_test.save
     redirect_to  "/cpanel/apply_for_tests", notice: '操作成功.' 
