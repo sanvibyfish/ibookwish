@@ -71,7 +71,7 @@ Code4::Application.configure do
     :port => "587",
     :domain => "gmail.com",
     :authentication => "plain",
-    :user_name => "sanvibyfish@gmail.com",
+    :user_name => "sanvibyfish@ibookwish.com",
     :password => "air20dream",
     :enable_starttls_auto => true
   }
