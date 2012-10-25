@@ -6,6 +6,7 @@
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>状态</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,7 +18,10 @@
       <td><%= apply_for_test.name %>
       </td>
       <td><%= apply_for_test.created_at %></td>
+      <td><%= "已邀请" if apply_for_test.state == ApplyForTest::STATE[:sent] %></td>
       <td>
+
+        <%= link_to "邀请", "/cpanel/apply_for_tests/#{apply_for_test.id}/invite" %>
         <%= link_to t('.edit', :default => t("helpers.links.edit")),
         edit_cpanel_apply_for_test_path(apply_for_test), :class => 'btn btn-mini' %>
         <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

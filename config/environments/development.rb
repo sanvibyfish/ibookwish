@@ -39,14 +39,14 @@ Code4::Application.configure do
 
 
   config.action_mailer.smtp_settings = {
-    :address => "mail.easy17.com",
-    :port => "25",
-    :domain => "easy17.com",
-    :authentication => :login,
-    :user_name => "sanvi@easy17.com",
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "gmail.com",
+    :authentication => "plain",
+    :user_name => "sanvibyfish@ibookwish.com",
     :password => "air20dream",
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { :host => 'sanvibyfish.no-ip.org:3000' }
+  config.action_mailer.default_url_options = { :host => 'www.ibookwish.com:3000' }
 end

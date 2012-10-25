@@ -1,3 +1,4 @@
+#coding:utf-8
 class Cpanel::ApplyForTestsController < Cpanel::ApplicationController
 
   # GET /categories
@@ -11,4 +12,12 @@ class Cpanel::ApplyForTestsController < Cpanel::ApplicationController
     end
   end
 
+
+  def invite
+    @apply_for_test = ApplyForTest.find(params[:id])
+    User.invite!(:email => @apply_for_test.email , :name => "小三")
+    @apply_for_test.state = ApplyForTest::STATE[:sent]
+    @apply_for_test.save
+    redirect_to  "/cpanel/apply_for_tests", notice: '操作成功.' 
+  end
 end

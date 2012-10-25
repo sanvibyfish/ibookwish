@@ -15,15 +15,15 @@
   <tbody>
     <% @accounts.each do |account| %>
       <tr>
-        <td><%= link_to account.id, account_path(account) %></td>
+        <td><%= link_to account.id, user_path(account) %></td>
         <td><%= account.email %></td>
         <td><%= account.name %></td>
         <td><%= account.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_cpanel_account_path(account), :class => 'btn btn-mini' %>
+                      edit_cpanel_user_path(account), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      cpanel_account_path(account),
+                      cpanel_user_path(account),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -34,5 +34,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_cpanel_account_path,
+            new_cpanel_user_path,
             :class => 'btn btn-primary' %>

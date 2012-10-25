@@ -14,6 +14,7 @@ class User
 
   validates_presence_of :email, :encrypted_password, :name, :gender
   attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles
+  validates_uniqueness_of :name, :email
 
   ## Recoverable
   field :reset_password_token,   :type => String

@@ -14,8 +14,12 @@ Code4::Application.routes.draw do
       end
     end
     resources :posts
-    resources :users
-    resources :apply_for_tests
+    resources :users 
+    resources :apply_for_tests do
+      member do
+        get :invite
+      end
+    end
   end
 
   mount Homeland::Engine, :at => "/bbs"
