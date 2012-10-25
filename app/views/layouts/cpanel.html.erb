@@ -54,12 +54,13 @@
           <a class="brand" href="#">控制台</a>
           <div class="container-fluid nav-collapse">
                           <p class="dropdown navbar-text pull-right">
-                            <a href="#" class="navbar-link"><%= current_account.email %></a>
+                            <a href="#" class="navbar-link"><%= current_user.email %></a>
                       </p>
               <%= render_list :class => "nav" do |li|
-            li << link_to("帖子", cpanel_posts_path)
-            li << link_to("用户", cpanel_accounts_path)
-            li << link_to("标签", cpanel_tags_path)
+            li << link_to("帖子", main_app.cpanel_posts_path)
+            li << link_to("内测列表", main_app.cpanel_apply_for_tests_path)
+            li << link_to("用户", main_app.cpanel_users_path)
+            li << link_to("标签", main_app.cpanel_tags_path)
           end  %>
           </div><!--/.nav-collapse -->
         </div>

@@ -5,6 +5,7 @@ defaults: &defaults
   admin_emails: 
     - "admin@admin.com"
     - "test@test.com"
+    - "sanvibyfish@gmail.com"
 development:
   <<: *defaults
   domain:

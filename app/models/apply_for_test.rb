@@ -1,5 +1,6 @@
 class ApplyForTest
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :email,  :type => String, :default => ""
   field :name
 

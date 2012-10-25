@@ -1,20 +1,22 @@
 Code4::Application.routes.draw do
 
-  # #后台路由
-  # namespace :cpanel do
-  #   root :to => 'posts#index'
-  #   resources :categories do
-  #     collection do
-  #       get :autocomplete
-  #     end   
-  #   end
-  #   resources :tags do
-  #     collection do
-  #       get :autocomplete
-  #     end
-  #   end
-  #   resources :posts
-  # end
+  #后台路由
+  namespace :cpanel do
+    root :to => 'posts#index'
+    resources :categories do
+      collection do
+        get :autocomplete
+      end   
+    end
+    resources :tags do
+      collection do
+        get :autocomplete
+      end
+    end
+    resources :posts
+    resources :users
+    resources :apply_for_tests
+  end
 
   mount Homeland::Engine, :at => "/bbs"
   
