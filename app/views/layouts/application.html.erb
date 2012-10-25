@@ -66,7 +66,7 @@
       <%= notification_tag main_app.notifications_path %>
     </li>
      <li class="dropdown" id="user_menu">
-    <%= link_to(raw("#{current_user.email} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
+    <%= link_to(raw("#{current_user.name} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
     <%= render_list :class => "dropdown-menu" do |li|  
       li <<  link_to("我的主页", main_app.user_path(current_user)) 
       li <<  link_to("修改个人信息", main_app.edit_user_registration_path) 
