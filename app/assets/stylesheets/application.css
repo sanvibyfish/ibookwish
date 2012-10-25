@@ -35,7 +35,6 @@
 	-moz-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
 	padding-bottom: 15px;
-
 }
 
 .avatar32_f img {
@@ -174,6 +173,7 @@ line-height: 18px;
 	-webkit-transition: 1s;
 	-moz-transition: 1s;
 	transition: 1s;
+	
 }
 #back-top a:hover span {
 	background-color: #777;

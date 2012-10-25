@@ -3,7 +3,7 @@ Post =
   reply : (name) ->
     reply_body = $("#comment_body")
     new_text = "@#{name} "
-    if reply_body.val().trim().length == 0
+    if reply_body.val().length == 0
       new_text += ''
     else
       new_text = "\n#{new_text}"

@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
   helper_method :unread_notify_count
+  # before_filter  :set_x_component
 
+  # def set_x_component
+  #   response.headers["Content-type"]="text/x-component"
+  # end
   def render_404
     render_optional_error_file(404)
   end
