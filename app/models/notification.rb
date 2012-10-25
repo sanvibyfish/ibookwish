@@ -15,6 +15,9 @@ class Notification
 	
 	TYPE = {
 		:reply => 0,
-		:at => 1
+		:at => 1,
+		:join => 2,
+		:complete_choose => 3,
+		:complete => 4
 	}
 end

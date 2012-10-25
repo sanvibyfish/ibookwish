@@ -66,6 +66,17 @@ class Post
   validates_length_of :dream,  :within => 1..140
 
 
+  def send_notification(type, from_user, to_user, body)
+
+    notif =  Notification.create :from_user => from_user.id, :to_user => to_user.id, :body => body, 
+        :type => type, :post => self
+        from_user.send_ids.push(notif.id)
+        to_user.notification_ids.push(notif.id)
+
+  end
+
+
+
 
   def assign_tags
     unless tag_names.blank?

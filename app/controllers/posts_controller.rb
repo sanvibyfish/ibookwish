@@ -108,6 +108,7 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		if @post.push_wish_user(current_user.id)
 			current_user.push_wish_post(@post.id)
+			@post.send_notification(Notification::TYPE[:join],current_user, @post.user,"我刚申请了想要借你本书")
 			redirect_to @post, notice: '操作成功.' 
 		else
 			redirect_to @post, error: '已经添加过了' 
@@ -122,6 +123,7 @@ class PostsController < ApplicationController
 			@post.complete_user_id = params[:complete_user_id]
 			@post.complete_user.push_complete_post(@post.id)
 			@post.save
+			@post.send_notification(Notification::TYPE[:complete_choose],@post.user,@post.complete_user,"我刚通过你的申请")
 			redirect_to @post, notice: '操作成功.' 
 		end		
 	end
@@ -129,6 +131,7 @@ class PostsController < ApplicationController
 	def end_task
 		@post = Post.find(params[:id])
 		if @post.update_attributes(params[:post])
+			@post.send_notification(Notification::TYPE[:complete],@post.user,@post.complete_user,"我刚给你评价:#{@post.rating_body}")
 			redirect_to @post, notice: '操作成功.' 
 		else
 			redirect_to @post, notice: '操作失败.' 

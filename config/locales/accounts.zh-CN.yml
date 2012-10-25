@@ -1,4 +1,6 @@
 "zh-CN":
+  accounts:
+    edit_password: "修改密码"
   users:
     bios: "个人介绍"
     city: "城市"
@@ -34,4 +36,5 @@
       like: "喜欢"
       profile: "个人信息"
       favorites: "收藏"
+
 
