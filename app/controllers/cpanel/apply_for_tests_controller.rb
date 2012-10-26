@@ -20,4 +20,10 @@ class Cpanel::ApplyForTestsController < Cpanel::ApplicationController
     @apply_for_test.save
     redirect_to  "/cpanel/apply_for_tests", notice: '操作成功.' 
   end
+
+
+  def invited
+    @user = User.invite!(:email => "", :skip_invitation => true)
+    redirect_to  "/cpanel/apply_for_tests", notice: "http://www.ibookwish.com:3000/users/invitation/accept?invitation_token=#{@user.invitation_token}" 
+  end
 end

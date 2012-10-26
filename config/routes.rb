@@ -19,6 +19,9 @@ Code4::Application.routes.draw do
       member do
         get :invite
       end
+      collection do
+        get :invited
+      end
     end
   end
 
