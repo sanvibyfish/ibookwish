@@ -6,6 +6,7 @@ class FayeClient
       message = {:channel => channel, :data => params}
       uri = URI.parse(Setting.faye_server)
       Net::HTTP.post_form(uri, :message => message.to_json)
+	puts message.to_json
     }
   end
 end
