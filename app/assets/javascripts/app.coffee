@@ -6,8 +6,8 @@
 #= require gmap3.min
 #= require faye
 #= require masonry/jquery.masonry
-#= require masonry/jquery.imagesloaded.min
-#= require masonry/jquery.infinitescroll.min
+#= require masonry/jquery.imagesloaded
+#= require masonry/jquery.infinitescroll
 #= require jquery.atwho
 #= require jquery.autogrow-textarea
 #= require social-share-button
