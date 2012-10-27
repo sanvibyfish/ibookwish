@@ -4,7 +4,6 @@ class AccountsController < Devise::RegistrationsController
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     # Can update Email when email was not has being exist.
     resource.email = resource_params[:email] if self.resource.email.blank?
-
     # code from Devise
     if resource.update_with_password(resource_params)
       if is_navigational_format?

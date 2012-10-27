@@ -13,5 +13,6 @@ class ApplyForTest
 
   validates_presence_of :name, :email
   validates_format_of :email, :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
+  validates_uniqueness_of :email
 
 end
