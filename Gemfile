@@ -22,6 +22,7 @@ gem 'redis-namespace'
 # 将一些数据存放入 Redis
 gem "redis-objects" 
 
+gem 'faye-rails'
 
 gem 'kaminari'
 

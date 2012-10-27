@@ -6,6 +6,8 @@ defaults: &defaults
     - "admin@admin.com"
     - "test@test.com"
     - "sanvibyfish@gmail.com"
+  faye_server: "http://127.0.0.1:4000/faye"
+  faye_token: "123456"
 development:
   <<: *defaults
   domain:

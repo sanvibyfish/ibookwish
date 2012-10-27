@@ -23,20 +23,23 @@ class Comment
 
     if comment.user_id != post.user_id
      notif =  Notification.create :from_user => comment.user_id, :to_user => comment.post.user_id, :body => comment.body, 
-        :type => Notification::TYPE[:reply], :post => comment.post
+        :notif_type => Notification::TYPE[:reply], :post => comment.post
         comment.user.send_ids.push(notif.id)
         comment.post.user.notification_ids.push(notif.id)
     end
+
     
     #给@的人发通知
     comment.body.scan(%r{@[a-zA-Z0-9_\u4e00-\u9fa5]{1,20}}).each { |name|
         user = User.find_by(:name => name.delete("@"))
         next if user.blank?
      notif_at =   Notification.create :from_user => comment.user_id, :to_user => user.id, :body => comment.body, 
-        :type => Notification::TYPE[:at], :post => comment.post
+        :notif_type => Notification::TYPE[:at], :post => comment.post
         comment.user.send_ids.push(notif_at.id)
         user.notification_ids.push(notif_at.id)
     }
+
+
 
   end
 

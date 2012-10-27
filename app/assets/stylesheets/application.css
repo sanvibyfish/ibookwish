@@ -23,6 +23,7 @@
  *= require post
  *= require tag
  *= require user
+ *= require jquery.pnotify
  */
 .bookdate-box {
 	background-color: white;
@@ -265,3 +266,4 @@ color: #333;
 .social_share {
 	margin:  10px;
 }
+

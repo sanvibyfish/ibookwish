@@ -48,33 +48,27 @@
 
 	.content {
 		padding: 20px 30px;
-		.field {
-			text-align: left; 
-			margin-left: 60px;
-			a{
-				font-size:14px;
-			}
-			.label{
-				font-size:14px;
-				margin-right:20px;
-				text-align:right;
-			}
-			.image {
-				float:left;
-			}
-			.state {
-				color: #F1687B;
-
-				i{
-					color: grey;
-				}
-			}
-			color: grey;
-		}
 
 		.info {
 			margin-top:20px;
 			margin-left: 210px;
+
+			tbody{
+				span.label {
+					font-size:14px;
+				}
+				td {
+					padding: 10px;
+					.state {
+						color: #F1687B;
+						i{
+							color: grey;
+						}
+					}
+				}
+
+				color: grey;
+			}
 
 		}
 

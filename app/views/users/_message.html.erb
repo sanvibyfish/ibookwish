@@ -1,0 +1,38 @@
+<% unless current_user.id  == @user.id  %>
+						<div class="private">
+							<%= link_to "发私信","#send",:class => "label label-success" ,"data-toggle" => "modal" %>
+						</div>
+
+
+				<div class="modal" id="send" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+	 	<%= form_for current_user, :url => send_private_message_users_path, :method => "POST", :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">发私信</h3>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+  		<label class="control-label" for="user_email"> 发给</label>
+  		<div class="controls">
+			<input type="text" value="<%= @user.name %>" disabled="true"/>
+			<input type="hidden" value="<%= @user.id %>" name="complete_user_id">
+  		</div>
+  	</div>
+
+  	<div class="control-group">
+  		<label class="control-label" for="user_email"> 内容</label>
+  		<div class="controls">
+  			<textarea name="message" id="message" style="height:100px;" rows="4"></textarea>
+  		</div>
+  	</div>
+
+  			
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <%= f.submit "发送" , :class => "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
+
+<% end %>

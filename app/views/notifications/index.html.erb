@@ -1,19 +1,31 @@
-<div id="main" >
-      <div id="notifications" class="bookdate-box">
-    <h1>通知</h1>
-      <% if @notifications.blank? %>
-    <div class="no_result" style="padding:80px 0;">暂无通知</div>
-  <% else %>
-
-    <table class="table">
-      <tbody>
-            <%= render :partial => "notification", :collection => @notifications %>
-      </tbody>
-    </table>
-  
-
-          <%= paginate @notifications  %>
-  <% end %>
+<div class="notif">
+<ul class="nav nav-tabs" id="inbox-tab">
+  <li class="<%= 'active' if action_name == "index"  %>">
+    <%= notif_tab "回复", @replies_count,  notifications_path %>
+  </li>
+  <li class="<%= 'active' if action_name == "at" %>">
+    <%= notif_tab "@", @at_count,  at_notifications_path %>
+   </li>
+     <li class="<%= 'active' if action_name == "system" %>">
+    <%= notif_tab "系统消息", @system_count,  system_notifications_path %>
+   </li>
+    <li class="<%= 'active' if action_name == "private" %>">
+    <%= notif_tab "私信", @private_count,  private_notifications_path %>
+   </li>
+</ul>
+ 
+<div class="tab-content" style="margin-top: -20px;">
+  <div class="tab-pane active" id="reply">
+    <% if action_name == "index" %>
+  <%= render :partial => "notif_replies", :notifications => @notifications %>
+    <% elsif action_name == "at" %>
+  <%= render :partial => "notif_at", :notifications => @notifications %>
+    <% elsif action_name == "system" %>
+ <%= render :partial => "notif_system", :notifications => @notifications %>
+     <% elsif action_name == "private" %>
+ <%= render :partial => "notif_private", :notifications => @notifications %>
+    <% end %>
+          
+  </div>
 </div>
-
-    </div>
+</div>

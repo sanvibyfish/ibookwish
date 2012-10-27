@@ -18,6 +18,15 @@ class Notification
 		:at => 1,
 		:join => 2,
 		:complete_choose => 3,
-		:complete => 4
+		:complete => 4,
+		:private => 5
 	}
+
+
+  after_create :realtime_push_to_client
+  def realtime_push_to_client
+  	FayeClient.send("/notifications_count/#{self.to_user.id}", :count => self.to_user.notifications.unread.count)
+  end
+
+
 end
