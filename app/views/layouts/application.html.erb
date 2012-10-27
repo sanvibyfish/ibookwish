@@ -52,17 +52,6 @@
     <% if current_user %>
       CURRENT_USER_ID = "<%= current_user.id %>";
       FAYE_SERVER = "<%= Setting.faye_server %>";
-
-    faye = new Faye.Client(FAYE_SERVER);
-    faye.subscribe("/notifications_count/" + CURRENT_USER_ID, function(data) {
-      if (data.count > 0) {
-        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.count + "</span>");
-        return $.pnotify({
-          text: '<a href="/notifications">你有' + data.count + '新消息</a>',
-          icon: 'icon-envelope'
-        });
-      }
-    });
     <% end %>
     </script>
     <div class="navbar navbar-inverse navbar-fixed-top">
