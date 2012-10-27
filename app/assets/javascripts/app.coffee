@@ -85,13 +85,13 @@ $(document).ready ->
     $("#back-top").hide()
 
     
-    faye = new Faye.Client(FAYE_SERVER)
-    faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
-      if data.count > 0
-        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.count + "</span>")
-        $.pnotify
-          text: '<a href="/notifications">你有' + data.count + '新消息</a>'
-          icon: 'icon-envelope'
+    # faye = new Faye.Client(FAYE_SERVER)
+    # faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
+    #   if data.count > 0
+    #     $("#user_notifications_count").html("<span class='badge badge-important'>" + data.count + "</span>")
+    #     $.pnotify
+    #       text: '<a href="/notifications">你有' + data.count + '新消息</a>'
+    #       icon: 'icon-envelope'
 
 
 
