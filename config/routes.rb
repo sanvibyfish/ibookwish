@@ -27,7 +27,7 @@ Code4::Application.routes.draw do
 
   mount Homeland::Engine, :at => "/bbs"
   
-  root :to => 'posts#index'
+  root :to => 'users#iwant_user'
   resources :posts do
     collection do
       get :get_book

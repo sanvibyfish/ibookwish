@@ -1,19 +1,25 @@
-<div class="row bookdate-box">
-	<div class="span7">
-		<h2>申请内测</h2>
+<div class="iwant span6 offset3">
+            <h1><span class="bold">书愿网</span>即将到来</h1>
+            <h2>你周边的免费图书馆</h2>
 
-		<%= simple_form_for @apply_for_test, :url => iwant_user_save_users_path, :html => { :class => 'form-horizontal' } do |f| %>
-		      <%= render "shared/error_messages", :target => @apply_for_test %>
-				<%= f.input :email,  :placeholder => "foo@bar.com" 	%>
-				<%= f.input :name %>
+            <h3>输入你的邮箱申请内测</h3>
 
-		<div class="form-actions">
-			<div><%= f.submit "申请内测", :class => 'btn btn-primary', 'data-disable-with' => '申请中...' %></div>
-		</div>
-		<% end %>
-
-	</div>
+            <div id="signup">
+            	<%= form_for @apply_for_test, :url => iwant_user_save_users_path, :html => { :class => 'form-inline' } do |f| %>
+            	<%= render "shared/error_messages", :target => @apply_for_test %>
+                <form id="form" class="form-inline" novalidate="novalidate">
+                	<%= f.text_field :email,  :placeholder => "这里输入你的邮箱" ,:class => "input-xlarge email"	%>
+                    <br>
+                    <p style="padding:10px;">
+                    <%= f.submit "申请内测", :class => 'btn btn-warning', 'data-disable-with' => '申请中...' %>
+                    <%= link_to "已有账号？" , "/users/sign_in" , :class => 'btn btn-warning'%></p>
+                    
+                    <small>* 我们会在开放注册后给你发送注册邀请</small>
+                <% end %>
+            </div>
+            <h5><small>© 2012 Company</small></h5>
 </div>
+
 
 
 
