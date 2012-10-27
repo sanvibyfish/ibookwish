@@ -59,6 +59,7 @@ class User
   field :invited_by_type
   validates_length_of :invitation_token, maximum: 60
 
+
   def read_notifications(notifications)
     unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
     if unread_ids.any?
