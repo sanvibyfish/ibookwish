@@ -22,4 +22,18 @@ n2 = Homeland::Node.create(:name => "反馈",:summary => "请写下你的意见�
 s6.node_ids.push(n1.id)
 s6.node_ids.push(n2.id)
 
+s1 = Homeland::Section.create(:name => "同城")
+n11 = Homeland::Node.create(:name => "北京",:summary => "北京", :section_id => s1.id)
+n12 = Homeland::Node.create(:name => "上海",:summary => "上海", :section_id => s1.id)
+n13 = Homeland::Node.create(:name => "深圳",:summary => "深圳", :section_id => s1.id)
+n14 = Homeland::Node.create(:name => "广州",:summary => "广州", :section_id => s1.id)
+n15 = Homeland::Node.create(:name => "杭州",:summary => "杭州", :section_id => s1.id)
+n16 = Homeland::Node.create(:name => "宁波",:summary => "宁波", :section_id => s1.id)
+s1.node_ids.push(n11)
+s1.node_ids.push(n12)
+s1.node_ids.push(n13)
+s1.node_ids.push(n14)
+s1.node_ids.push(n15)
+s1.node_ids.push(n16)
+
 
