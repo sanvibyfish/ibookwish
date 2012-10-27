@@ -12,16 +12,16 @@ window.Users =
       		$.ajax
         		url : "/users/#{user_id}/unfollow"
         		type : "POST"
-          el.innerHTML = "<i class='icon-white'></i> 关注"
+          el.innerHTML = "关注"
           $(el).data("followed", false)
-          $(el).attr("class", "btn btn-primary")
+          $(el).attr("class", "label label-info")
     	else
       		$.ajax
         		url : "/users/#{user_id}/follow"
         		type : "POST"
           $(el).data("followed", true)
-      		el.innerHTML = "<i class='icon-remove icon-white'></i> 取消关注"
-      		$(el).attr("class", "btn btn-danger")
+      		el.innerHTML = "<i class='icon-remove icon-white'></i> 取消"
+      		$(el).attr("class", "label label-important")
     	false
 
   follower: ->
@@ -30,4 +30,6 @@ window.Users =
       type : "get"
       sucess: (data)->  
         $("#user_content").html()
+
+$(document).ready ->
 

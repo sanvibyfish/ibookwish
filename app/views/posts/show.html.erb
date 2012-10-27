@@ -14,50 +14,59 @@
 				</div>
 				<div class="content">
 						<div class="image">
-			<%= post_image_tag(@post, :style => "240x240") %>
-
+							<%= post_image_tag(@post, :style => "360x360") %>
+			
 							<div class="social_share">
 						<span class="share-text">分享:</span>	<%= social_share_button_tag(@post.title) %>
 				</div>
 	</div>
 				<div class="info">
-						<p class="field">
-						<span
-						 class="label label-important">我借出</span> <%= link_to @post.title,"#betaModal", "data-toggle" => "modal", :rel => 'tooltip', :title =>'点击查看更多图书详情'  %>
-						</p>	
 
-	<p class="field">
-						<span 
-						 class="label label-warning">我想要</span> <%= @post.dream %></p>
-
-				<p class="field">
-						<span
-						 class="label label-info">微标签</span> 
-						 <span class="tags">
+					<table>
+						<tbody>
+							<tr>
+								<td><span
+						 class="label label-important">我借出</span></td>
+								<td><%= link_to @post.title,"#betaModal", "data-toggle" => "modal", :rel => 'tooltip', :title =>'点击查看更多图书详情'  %></td>
+							</tr>
+							<tr>
+								<td><span 
+						 class="label label-warning">我想要</span></td>
+								<td><%= @post.dream %></td>
+							</tr>
+							<tr>
+								<td><span
+						 class="label label-info">微标签</span> </td>
+								<td> <span class="tags">
 						 	
 	<% @post.tags.each do |tag|  %>
 		<span class="tag"><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
 	<% end %>
-						 </span>
-						</p>
+						 </span></td>
+							</tr>
 
 				<% if @post.state == Post::STATE[:success] %>
-				<p class="field">
+				<tr>
+					<td>
 						<span rel="twipsy" "data-original-title" = "借出你的图书"
-						 class="label label-info  ">微评价</span><span class="state"> <%= @post.rating_body %><%= raw post_rating_tag(@post.rating) %></span>
-				</p>	
-				<p class="field">
+						 class="label label-info  ">微评价</span>
+					</td>
+					<td> <span class="state"> <%= @post.rating_body %><%= raw post_rating_tag(@post.rating) %></span></td>
+						
+				</tr>	
+				<tr>
+					<td>
 						<span rel="twipsy" "data-original-title" = "借出你的图书"
-						 class="label label-success  ">微状态</span><span class="state"> <%= post_state_tag @post.state %></span>
-				</p>
-			
-
+						 class="label label-success  ">微状态</span>
+					</td>
+					<td>
+						 <span class="state"> <%= post_state_tag @post.state %></span>
+					</td>
+				</tr>
 				<% end %>
-
-
+						</tbody>
+					</table>
 				</div>
-			
-
 			
 				</div>
 				<div class="action">
@@ -72,9 +81,6 @@
 
 
 			</div>
-
-
-
 
 		</div>
 	<% if @post.comments.size == 0 %>

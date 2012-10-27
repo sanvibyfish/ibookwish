@@ -54,7 +54,13 @@ Code4::Application.routes.draw do
   end
 
   resources :comments
-  resources :notifications
+  resources :notifications do
+    collection do
+      get :at 
+      get :system
+      get :private
+    end
+  end
   resources :users do
     member do
       post :follow
@@ -69,6 +75,7 @@ Code4::Application.routes.draw do
       get :near_me
       get :iwant_user
       post :iwant_user_save
+      post :send_private_message
     end
   end
 

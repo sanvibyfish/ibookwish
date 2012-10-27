@@ -17,8 +17,7 @@ module PostsHelper
 		style = case options[:style].to_s
 		when "100x100" then "100x100"
 		when "240x240" then "240x240"
-		when "48x48" then "48x48"
-		when "160x120" then "160x120"
+		when "360x360" then "360x360"
 		else options[:style].to_s
 		end
 		link_to image_tag(post.image.url(style)), post_path(post),:class => options[:class]

@@ -1,0 +1,41 @@
+ <div id="main" >
+      <div id="notifications" class="bookdate-box">
+    <h1>@提及你</h1>
+      <% if @notifications.blank? %>
+    <div class="no_result" style="padding:80px 0;">暂无@</div>
+  <% else %>
+
+    <table class="table">
+      <tbody>
+        <% @notifications.each do |notification| %>
+         <tr id="<%= notification.id %>">
+<td class="img">
+  <%= user_avatar_tag(notification.from_user, :style => "48x48") %>
+</td>
+<td>
+  <h3>
+    <span class="user">
+      <%= notification.from_user.name %>
+    </span>
+      在
+      <%= link_to notification.post.dream,  post_path(notification.post) %>
+      提及你：
+    <% if !notification.read? %>
+      <span class="new label label-warning">新</span>
+    <% end %>
+  </h3>
+    <div class="body md_body">
+      <%= notification.body %>
+    </div>
+</td>
+</tr>
+<% end %>
+
+      </tbody>
+    </table>
+  
+
+          <%= paginate @notifications  %>
+  <% end %>
+</div>
+</div>

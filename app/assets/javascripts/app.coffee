@@ -4,6 +4,7 @@
 #= require twitter/bootstrap
 #= require tag-it
 #= require gmap3.min
+#= require faye
 #= require masonry/jquery.masonry
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
@@ -14,6 +15,7 @@
 #= require user
 #= require post
 #= require comment
+#= require jquery.pnotify.min
 APP =
   alert : (msg,to) ->
     $(".alert").remove()
@@ -62,6 +64,7 @@ $(document).ready ->
     $("span[rel=twipsy]").tooltip()
     $('.dropdown-toggle').dropdown()
     
+    
     $("#post_submit").click ->
       $(this).val("分享中...")
       $(this).attr("disabled","disabled")
@@ -82,6 +85,15 @@ $(document).ready ->
     $("#back-top").hide()
 
     
+    faye = new Faye.Client('http://localhost:4000/faye')
+    faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
+      if data.count > 0
+        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.count + "</span>")
+        $.pnotify
+          text: '<a href="/notifications">你有' + data.count + '新消息</a>'
+          icon: 'icon-envelope'
+
+
 
 
     $ ->

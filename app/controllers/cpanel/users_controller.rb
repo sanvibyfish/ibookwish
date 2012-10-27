@@ -2,7 +2,7 @@ class Cpanel::UsersController < Cpanel::ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = User.all
+    @accounts = User.all.desc(:created_at)
 
     respond_to do |format|
       format.html # index.html.erb
