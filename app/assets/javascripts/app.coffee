@@ -5,6 +5,7 @@
 #= require tag-it
 #= require gmap3.min
 #= require faye
+#= require jquery.pnotify
 #= require masonry/jquery.masonry
 #= require masonry/jquery.imagesloaded.min
 #= require masonry/jquery.infinitescroll.min
@@ -15,7 +16,6 @@
 #= require user
 #= require post
 #= require comment
-#= require jquery.pnotify
 APP =
   alert : (msg,to) ->
     $(".alert").remove()
@@ -85,7 +85,7 @@ $(document).ready ->
     $("#back-top").hide()
 
     
-    faye = new Faye.Client('http://localhost:4000/faye')
+    faye = new Faye.Client(FAYE_SERVER)
     faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
       if data.count > 0
         $("#user_notifications_count").html("<span class='badge badge-important'>" + data.count + "</span>")

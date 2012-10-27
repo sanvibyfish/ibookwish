@@ -51,6 +51,7 @@
     <script type="text/javascript">
     <% if current_user %>
       CURRENT_USER_ID = "<%= current_user.id %>";
+      FAYE_SERVER = "<%= Setting.faye_server %>";
     <% end %>
     </script>
     <div class="navbar navbar-inverse navbar-fixed-top">
