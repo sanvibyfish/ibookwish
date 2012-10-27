@@ -50,7 +50,7 @@ GEM
     carrierwave-mongoid (0.1.0)
       carrierwave
       mongoid
-    carrierwave-upyun (0.1.5)
+    carrierwave-upyun (0.1.6)
       carrierwave (>= 0.5.7)
       rest-client (>= 1.6.7)
     cells (3.8.6)
