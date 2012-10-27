@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
 
 	def at
 		@notifications = current_user.notifications.where(:notif_type => Notification::TYPE[:at]).desc(:created_at).page(params[:page])
-		current_user.(@notifications)
+		current_user.read_notifications(@notifications)
 		set_seo_meta("@")
 		render :action => "index"
 	end
