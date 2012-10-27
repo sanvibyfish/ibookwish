@@ -15,7 +15,7 @@
 #= require user
 #= require post
 #= require comment
-#= require jquery.pnotify.min
+#= require jquery.pnotify
 APP =
   alert : (msg,to) ->
     $(".alert").remove()
