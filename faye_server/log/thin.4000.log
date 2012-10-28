@@ -3,6 +3,7 @@
 >> Thin web server (v1.5.0 codename Knife)
 >> Maximum connections set to 256
 >> Listening on 0.0.0.0:4000, CTRL+C to stop
+<<<<<<< HEAD
 >> Writing PID to tmp/pids/thin.4000.pid
 >> Using rack adapter
 >> Thin web server (v1.5.0 codename Knife)
@@ -71,3 +72,7 @@
 >> Thin web server (v1.5.0 codename Knife)
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:4000, CTRL+C to stop
+=======
+>> Stopping ...
+>> Exiting!
+>>>>>>> b03b7597d30d5cc712c5c9e79c26a07155b965be

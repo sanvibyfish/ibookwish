@@ -1,8 +1,8 @@
 <div class="iwant span6 offset3">
             <h1><span class="bold">书愿网</span>即将到来</h1>
-            <h2>你周边的免费图书馆</h2>
+            <h2>以书相识，以愿相知</h2>
 
-            <h3>输入你的邮箱申请内测</h3>
+            <h3>输入你的邮箱申请内测账号</h3>
 
             <div id="signup">
             	<%= form_for @apply_for_test, :url => iwant_user_save_users_path, :html => { :class => 'form-inline' } do |f| %>
@@ -14,7 +14,7 @@
                     <%= f.submit "申请内测", :class => 'btn btn-warning', 'data-disable-with' => '申请中...' %>
                     <%= link_to "已有账号？" , "/users/sign_in" , :class => 'btn btn-warning'%></p>
                     
-                    <small>* 我们会在开放注册后给你发送注册邀请</small>
+                    <small>* 我们会在确认后给你发送注册邀请</small>
                 <% end %>
             </div>
             <h5><small>© 2012 Company</small></h5>
