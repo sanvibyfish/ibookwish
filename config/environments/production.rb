@@ -76,6 +76,6 @@ Code4::Application.configure do
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { :host => '119.147.23.192:3000' }
+  config.action_mailer.default_url_options = { :host => 'www.ibookwish.com' }
 
 end
