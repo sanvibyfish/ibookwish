@@ -14,6 +14,8 @@
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
   <%= f.input :name %>
+  <% init_location %>
+  <% binding.pry %>
   <%= f.hidden_field :locaton_id, :value => "#{session[:location].id unless session[:location].blank? }" %>
   		<div class="form-actions">
 			<div><%= f.submit "注册", :class => 'btn btn-primary', 'data-disable-with' => '注册中...' %></div>
