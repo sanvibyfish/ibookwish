@@ -1,9 +1,9 @@
 <div class="row">
-	<div class="span2">
+	<div class="span3 bookdate-box">
 		<%= render "profile", :user => @user %>
 	</div>
 
-	<div class="span9">
+	<div class="span8">
 <ul class="nav nav-pills" id="tab" >
   <li <%= " class=active" if action_name == "show"  %>>
   	<%= link_to "#{@user.posts.count}分享",user_path(@user) %>

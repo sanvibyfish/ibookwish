@@ -9,7 +9,10 @@
         remember_me: 记住登录状态
       user:
         name: "名字"
+        ilike: "兴趣爱好"
         login: "用户名"
+        discover: "常出没的地方"
+        info: "个人说明"
         email: "邮箱"
         email_public: "公开邮箱"
         avatar: "头像"

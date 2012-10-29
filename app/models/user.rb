@@ -13,7 +13,7 @@ class User
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email, :encrypted_password, :name, :gender
-  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles
+  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles, :ilike, :discover, :info
   validates_uniqueness_of :name, :email
 
   ## Recoverable
@@ -33,6 +33,9 @@ class User
   ##Customer Field
   field :name
   field :gender, :type => Integer
+  field :ilike
+  field :discover
+  field :info 
   belongs_to :location
   mount_uploader :avatar, ImageUploader
   field :tagline
@@ -49,6 +52,7 @@ class User
   has_many :posts, :inverse_of => :user
   has_and_belongs_to_many :wish_posts, :class_name => "Post",:inverse_of => :wish_user
   has_many :complete_posts, :class_name => "Post", :inverse_of => :complete_user
+
 
   ##Invitation Token
   field :invitation_token, :type => String

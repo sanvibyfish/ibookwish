@@ -1,19 +1,26 @@
-<div id="user-profile">
-	<h1><%= @user.name %></h1>
-
-	<div id="user-profile-image">
-		<%= image_tag @user.avatar %>
-	</div>
-	<% unless current_user == @user %>
-	<div class="actions">
-		<ul>
-			<li class="follow"><%= user_follow_tag @user %> </li>
-			<li><%= render "message", :user => @user %></li>
-		</ul>
-	</div>
-	<% end %>
-	<div class="tagline">
-		<p class="muted"><%= user_tagline_tag @user %></p>
-	</div>
-
+<div class="nav-headers">
+    <h3><%= @user.name %></h3>
+    <p><%= image_tag @user.avatar %></p>
 </div>
+<ul class="nav nav-tabs nav-stacked">
+	<% unless @user.location.blank? %>
+    <li class="active"><a href="javascript:void(0)" rel="tooltip" title="城市"><i class="icon-map-marker"></i> <%= @user.location.name %></a></li>
+    <% end %>
+
+    <% unless @user.tagline.blank?  %>
+    <li class="active"><a  href="javascript:void(0)" rel="tooltip" title="个人签名"><i class=" icon-sign-blank"></i> <%= user_tagline_tag @user %></a></li>
+    <% end %>
+
+    <% unless @user.ilike.blank? %>
+    <li class="active"><a href="javascript:void(0)" rel="tooltip" title="兴趣爱好"><i class="icon-heart"></i> <%= @user.ilike %></a></li>
+    <% end %>
+
+    <% unless @user.discover.blank? %>
+    <li class="active"><a href="javascript:void(0)" rel="tooltip" title="常出没的地方"><i class="icon-warning-sign"></i> <%= @user.discover %></a></li>
+    <% end %>
+
+    <% unless @user.info.blank? %>
+    <li class="active"><a href="javascript:void(0)" rel="tooltip" title="个人说明"><i class="icon-info-sign"></i> <%= @user.info %></a></li>
+    <% end %>
+
+</ul>
