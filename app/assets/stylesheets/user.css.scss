@@ -92,7 +92,27 @@ input[type="text"]:focus {
 }
 }
 
-#user-profile-image {
+.nav-tabs {
+	li{
+		a.label-important{
+		&:hover {
+			background-color: #953B39;
+		}
+		}
+
+		a.label-info {
+			&:hover {
+				background-color: #2D6987;
+			
+			}
+		}
+
+		a.label-success {
+			&:hover {
+				background-color: #356635;
+			}
+		}
+	}
 }
 
 #user-profile {

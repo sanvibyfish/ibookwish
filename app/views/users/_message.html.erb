@@ -1,7 +1,5 @@
 <% unless current_user.id  == @user.id  %>
-						<div class="private">
 							<%= link_to "发私信","#send",:class => "label label-success" ,"data-toggle" => "modal" %>
-						</div>
 
 
 				<div class="modal" id="send" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
