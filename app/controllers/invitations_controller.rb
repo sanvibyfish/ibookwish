@@ -18,7 +18,6 @@ class InvitationsController < Devise::InvitationsController
 
       end 
     end
-    puts session[:location]
     self.resource.location = session[:location]
 
     if resource.errors.empty?
@@ -29,7 +28,6 @@ class InvitationsController < Devise::InvitationsController
       respond_with_navigational(resource){ render :edit }
     end
   end
-
 
 
 end
