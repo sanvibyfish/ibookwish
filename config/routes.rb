@@ -44,7 +44,8 @@ Code4::Application.routes.draw do
 
 
   devise_for :users,  :controllers => {
-      :registrations => :accounts
+      :registrations => :accounts,
+      :invitations => :invitations
   } 
 
   resources :tags do
