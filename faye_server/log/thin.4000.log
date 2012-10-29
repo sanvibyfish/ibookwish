@@ -81,3 +81,46 @@
 >> Thin web server (v1.5.0 codename Knife)
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:4000, CTRL+C to stop
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+!! Unexpected error while processing request: cannot load such file -- rack/multipart/parser
+>> Waiting for 3 connection(s) to finish, can take up to 120 sec, CTRL+C to stop now
+>> Writing PID to tmp/pids/thin.4000.pid
+>> Using rack adapter
+>> Thin web server (v1.5.0 codename Knife)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:4000, CTRL+C to stop

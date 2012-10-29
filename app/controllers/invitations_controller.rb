@@ -1,6 +1,7 @@
 class InvitationsController < Devise::InvitationsController
 	before_filter :init_location
 	def init_location
+  puts session[:location]
     if session[:location].blank?
       # FIXME 目前是虚拟IP
       if request.location.blank?
