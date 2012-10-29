@@ -20,7 +20,7 @@ class InvitationsController < Devise::InvitationsController
     end
 
     resource.location = session[:location]
-
+    
     if resource.errors.empty?
       set_flash_message :notice, :updated
       sign_in(resource_name, resource)
