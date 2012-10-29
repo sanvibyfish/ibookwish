@@ -18,8 +18,8 @@ class InvitationsController < Devise::InvitationsController
 
       end 
     end
-
-    resource.location = session[:location]
+    puts session[:location]
+    self.resource.location = session[:location]
 
     if resource.errors.empty?
       set_flash_message :notice, :updated
@@ -29,6 +29,7 @@ class InvitationsController < Devise::InvitationsController
       respond_with_navigational(resource){ render :edit }
     end
   end
+
 
 
 end
