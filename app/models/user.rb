@@ -36,6 +36,7 @@ class User
   field :ilike
   field :discover
   field :info 
+  field :school
   belongs_to :location
   mount_uploader :avatar, ImageUploader
   field :tagline

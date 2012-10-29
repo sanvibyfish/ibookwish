@@ -36,11 +36,11 @@
 							</tr>
 							<tr>
 								<td><span
-						 class="label label-info">微标签</span> </td>
+						 class="label label-inverse">微标签</span> </td>
 								<td> <span class="tags">
 						 	
 	<% @post.tags.each do |tag|  %>
-		<span class="tag"><%= link_to("##{tag.name}", tag_post_path(tag)) %> </span>
+		<span class="tag"><%= link_to(raw("<span class='badge badge-info'>#{tag.name}</span>"), tag_post_path(tag)) %> </span>
 	<% end %>
 						 </span></td>
 							</tr>
@@ -73,7 +73,7 @@
 						<% unless @post.wish_user_ids.include?(current_user.id) || @post.user.id == current_user.id || @post.state == Post::STATE[:success]  %>
 					<%= form_for(@post,:as => :post , :url => complete_wish_post_path(@post), :html => { :class => 'form-horizontal', :id => "complete_wish_form" }, :method => :post) do |f| %>
 		      <%= render "shared/error_messages", :target => @post %>
-						<a href="javascript:void(0)" class="label label-success" data-disable-with ="加载中...">
+						<a href="javascript:void(0)"  class="btn btn-success btn-large" data-disable-with ="加载中...">
 							我想借</a>
 					<% end %>
 					<% end %>
