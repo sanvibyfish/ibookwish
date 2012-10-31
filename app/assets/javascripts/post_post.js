@@ -14,11 +14,15 @@
    $('#address_ok').click(function(){
     var addr = $('#post_address_search').val();
     if ( !addr || !addr.length ) return;
+    $("#address_ok").html("寻找中...")
+    $("#address_ok").attr("disabled","disabled")
     $("#map").gmap3({
       action:   'getlatlng',
       address:  addr,
       callback: function(results){
         if ( !results ) return;
+        $("#address_ok").removeAttr("disabled")
+        $("#address_ok").html("查看该地址")
         $("#lat").val(results[0].geometry.location.lat())
         $("#lng").val(results[0].geometry.location.lng())
         $("#map").gmap3(
