@@ -272,6 +272,11 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 		float: left;
 	}
 
+	.user {
+		margin-right: -20px;
+		width: 240px;
+	}
+
 	.info {
 		margin-left: 110px;
 		color: #999;
@@ -289,6 +294,9 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 
 	.params {
 		padding: 5px;
+		.state {
+			color: #999;
+		}
 	}
 }
 

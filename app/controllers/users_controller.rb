@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     else
        session[:gender] = params[:gender]
     end
-    @users = User.where(location: session[:location], gender: session[:gender]).desc(:created_at).page(params[:page])
+    @users = User.where(location: session[:location], gender: session[:gender]).desc(:created_at).page(params[:page]).per(12)
     render :action => "friends"
   end
 
