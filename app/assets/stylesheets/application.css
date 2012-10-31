@@ -23,7 +23,7 @@
  *= require post
  *= require tag
  *= require user
- *= require jquery.ui
+ *= require jquery-ui
  *= require jquery.pnotify
  */
 .bookdate-box {
