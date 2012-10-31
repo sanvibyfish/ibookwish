@@ -112,6 +112,13 @@ input[type="text"]:focus {
 				background-color: #356635;
 			}
 		}
+
+	}
+
+	li.active {
+		table-layout: fixed;
+		word-wrap:break-word;
+		word-break:break-all;
 	}
 }
 
@@ -270,6 +277,11 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
 		color: #999;
 	}
 	
+	.bio {
+		table-layout: fixed;
+		word-wrap:break-word;
+		word-break:break-all;
+	}
 
 	.follow {
 		padding: 10px 0px 0px 15px;

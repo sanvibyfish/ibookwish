@@ -37,12 +37,14 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.find_by(:name => params[:id])
+    @users = @user.followers.desc(:created_at).page(params[:page]).per(10)
     set_seo_meta(@user.name)
     render  :action => "index"
   end
 
   def following
     @user = User.find_by(:name => params[:id])
+    @users = @user.followers.desc(:created_at).page(params[:page]).per(10)
     set_seo_meta(@user.name)
     render :action => "index"
   end

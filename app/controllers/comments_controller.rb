@@ -5,9 +5,13 @@ class CommentsController < ApplicationController
 
 		@comment.post_id = params[:comment][:post]
     	@comment.user = current_user
-   		@success = @comment.save!
+   		@success = @comment.save
 		respond_to do |format|
 			format.js { render :layout => false }
 		end
+	end
+
+	def index
+		
 	end
 end

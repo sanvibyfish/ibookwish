@@ -9,6 +9,7 @@ class Comment
   
   field :body, type: String
   
+  validates_presence_of  :body
 
   after_create do
     send_notification(self.id)

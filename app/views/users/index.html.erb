@@ -26,9 +26,9 @@
 		<%= render_cell :posts, :index, 
     :current_tag => @current_tag, :posts => @posts, :action_name => @action_name %>	
     <% elsif action_name == "followers" %>
-    	<%= render "followers",  :followers => @user.followers %>
+    	<%= render "followers",  :followers => @users%>
     <% else %>
-      <%= render "followers",  :followers => @user.following %>
+      <%= render "followers",  :followers => @users %>
     <% end %>
 	</div>
 	</div>

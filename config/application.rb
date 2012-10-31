@@ -71,6 +71,16 @@ module Code4
         g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
+
+    # 其他项目用的时候注意修改这里
+    if Rails.env == "production"
+      config.middleware.use ExceptionNotifier,
+      :email_prefix         => "[ibookwish] ",
+      :sender_address       => %{"notifier" <sanvibyfish@ibookwish.com>},
+      :exception_recipients => %w{sanvibyfish@gmail.com}
+      # :ignore_exceptions    => ['Mongoid::Errors::DocumentNotFound'] + ExceptionNotifier.default_ignore_exceptions
+    end
+
   end
 end
 

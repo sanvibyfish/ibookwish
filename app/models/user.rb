@@ -13,7 +13,7 @@ class User
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email, :encrypted_password, :name, :gender
-  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles, :ilike, :discover, :info
+  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles, :ilike, :discover, :info, :school
   validates_uniqueness_of :name, :email
 
   ## Recoverable

@@ -5,5 +5,7 @@ $("#pin_comments").show()
 $("#comment_body").val("")
 <% if @success %>
 	$('#pin_comments').append("<%= j render 'comment', :comment => @comment %>")
+<% else %>
+	$("#comment_error").html("<%= j render 'shared/error_messages', :target => @comment%>")
 <% end %>
 

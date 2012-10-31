@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
 gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'exception_notification'
 # MongoDB..
 gem 'mongoid', '3.0.6'
 
