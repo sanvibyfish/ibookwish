@@ -124,6 +124,7 @@ class PostsController < ApplicationController
 			@post.complete_user.push_complete_post(@post.id)
 			@post.save
 			@post.send_notification(Notification::TYPE[:complete_choose],@post.user,@post.complete_user,"我刚通过你的申请")
+			binding.pry
 			redirect_to @post, notice: '操作成功.' 
 		end		
 	end

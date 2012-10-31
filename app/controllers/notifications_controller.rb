@@ -6,8 +6,8 @@ class NotificationsController < ApplicationController
 	def notif_count
 		@replies_count = current_user.notifications.where(:notif_type => Notification::TYPE[:reply],:read => false).count
 		@at_count = current_user.notifications.where(:notif_type => Notification::TYPE[:at],:read => false).count
-		@system_count = current_user.notifications.where(:notif_type => Notification::TYPE[:join] ||
-			Notification::TYPE[:complete_choose] || Notification::TYPE[:complete],:read => false ).count
+		@system_count = current_user.notifications.any_of({:notif_type =>  Notification::TYPE[:complete]},{:notif_type =>  Notification::TYPE[:complete_choose]}, {:notif_type =>  Notification::TYPE[:join] }
+		).where(:read => false).count
 		@private_count = current_user.notifications.where(:notif_type => Notification::TYPE[:private],:read => false).count
 	end
 
@@ -25,8 +25,8 @@ class NotificationsController < ApplicationController
 	end
 
 	def system
-		@notifications = current_user.notifications.where(:notif_type => Notification::TYPE[:join] ||
-			Notification::TYPE[:complete_choose] || Notification::TYPE[:complete] ).desc(:created_at).page(params[:page])
+		@notifications = current_user.notifications.any_of({:notif_type =>  Notification::TYPE[:complete]},{:notif_type =>  Notification::TYPE[:complete_choose]}, {:notif_type =>  Notification::TYPE[:join] }
+		).desc(:created_at).page(params[:page])
 		current_user.read_notifications(@notifications)
 		set_seo_meta("系统消息")
 		render :action => "index"
