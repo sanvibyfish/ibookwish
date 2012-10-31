@@ -82,6 +82,20 @@ $(document).ready ->
         else
           $("#get_book_button").attr("disabled","true")
 
+     $("#place_text").keyup ->  
+        if $(this).val().length > 0
+          $("#address_ok").removeAttr("disabled")
+        else
+          $("#address_ok").attr("disabled","true")
+      
+    $("#place_text").change ->  
+        if $(this).val().length > 0
+          $("#address_ok").removeAttr("disabled")
+        else
+          $("#address_ok").attr("disabled","true")
+
+              
+
     $("#back-top").hide()
 
     
