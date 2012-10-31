@@ -74,7 +74,7 @@ class PostsController < ApplicationController
 	def create 
 		unless params[:lat].blank?
 			params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])]
-			doc = JSON.parse(open("http://maps.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
+			doc = JSON.parse(open("http://ditu.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
 			address_path = JsonPath.new('$..address')
 			location_path = JsonPath.new('$..LocalityName')
 			params[:post][:address] = address_path.on(doc).first

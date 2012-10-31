@@ -66,7 +66,7 @@ $(document).ready ->
     
     
     $("#post_submit").click ->
-      $(this).val("分享中...")
+      $(this).val("提交中...")
       $(this).attr("disabled","disabled")
       $("#new_post").submit()
 

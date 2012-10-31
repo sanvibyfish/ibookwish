@@ -1,4 +1,5 @@
-<div class="span12 bookdate-box">
-	<h2>我要借出一本书</h2>
+<div class="createbook span12 bookdate-box">
+	<h2>我要借出一本书<small><%= link_to "新手指南", "#guide-modal", "data-toggle" => "modal" %></small></h2>
 	<%= render :partial => 'form' %>
+	<%= render :partial => 'create_guide' %>
 </div>
