@@ -82,13 +82,13 @@ $(document).ready ->
         else
           $("#get_book_button").attr("disabled","true")
 
-     $("#place_text").keyup ->  
+     $("#post_address_search").keyup ->  
         if $(this).val().length > 0
           $("#address_ok").removeAttr("disabled")
         else
           $("#address_ok").attr("disabled","true")
       
-    $("#place_text").change ->  
+    $("#post_address_search").change ->  
         if $(this).val().length > 0
           $("#address_ok").removeAttr("disabled")
         else
