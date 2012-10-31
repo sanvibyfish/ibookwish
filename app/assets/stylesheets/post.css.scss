@@ -129,6 +129,11 @@
 }
 
 .post {
+	.end-state {
+		position: absolute;
+		top: 0px;
+		right: 5px;
+	}
 	.tags {
 		margin: 10px 0 5px;
 	}
@@ -153,6 +158,9 @@
 	.accpt-info{
 		font-size: 12px;
 		color: #BBB;
+		table-layout: fixed;
+		word-wrap:break-word;
+		word-break:break-all;
 	}
 }
 

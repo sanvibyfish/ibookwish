@@ -3,8 +3,10 @@
 <div class="post">
 <% end %>
 <div class="bookdate-box posts" data-type="image">
-	<%= link_to image_tag(post.image), post_path(post), :class => "#{'grayscale' if post.state == Post::STATE[:success]}" %>
-
+	<%= link_to image_tag(post.image), post_path(post) %>
+	<% if post.state == Post::STATE[:success] %>
+	<div class="end-state"><%= image_tag "ending.png" %></div>
+	<% end %>
 <p class="tags">
 	<i class="icon-tags"></i>
 
