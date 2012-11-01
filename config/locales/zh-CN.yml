@@ -37,6 +37,7 @@
         title: 图书标题
         tag_names: 标签
         coordinates: 坐标
+        location: "城市"
       apply_for_test:
         email: 邮箱
         name: 姓名

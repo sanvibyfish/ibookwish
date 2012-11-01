@@ -1,5 +1,9 @@
     $(document).ready(function() {
 
+     if($("#post_isbn").val().length > 0)
+        $("#get_book_button").removeAttr("disabled")
+     else
+        $("#get_book_button").attr("disabled","true")
 
       
     $('#map').gmap3({
