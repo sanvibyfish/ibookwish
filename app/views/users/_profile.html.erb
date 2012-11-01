@@ -9,7 +9,7 @@
                     <% end %>
 
                     <% unless @user.tagline.blank?  %>
-                    <li class="active"><a  href="javascript:void(0)" rel="tooltip" title="个人签名"><i class=" icon-sign-blank"></i> <%= user_tagline_tag @user %></a></li>
+                    <li class="active"><a  href="javascript:void(0)" rel="tooltip" title="个人签名"><i class=" icon-sign-blank"></i> <%=  @user.tagline %></a></li>
                     <% end %>
                     
                     <% unless @user.school.blank? %>

@@ -4,7 +4,7 @@ module AccountsHelper
     if user.tagline.blank?
       "暂无签名"
     else
-     user.tagline 
+    	truncate(strip_tags(user.tagline), :length => 30, :omission => '...')
     end
   end
 
