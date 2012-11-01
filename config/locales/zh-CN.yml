@@ -43,6 +43,8 @@
         name: 姓名
       comment:
         body: 评论内容
+      notification:
+        body: 内容
     errors:
       models:
         account: 用户

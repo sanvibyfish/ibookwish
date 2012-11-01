@@ -97,10 +97,14 @@ class UsersController < ApplicationController
 
 
   def send_private_message
-    notif =  Notification.create :from_user => current_user.id, :to_user => params[:complete_user_id], :body => params[:message], 
+    @notif =  Notification.create :from_user => current_user.id, :to_user => params[:complete_user_id], :body => params[:message], 
     :notif_type => Notification::TYPE[:private]
-    notif.from_user.send_ids.push(notif.id)
-    notif.to_user.notification_ids.push(notif.id)
+    @notif.from_user.send_ids.push(@notif.id)
+    @notif.to_user.notification_ids.push(@notif.id)
+
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
 
   end
 

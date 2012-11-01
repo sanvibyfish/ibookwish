@@ -8,7 +8,7 @@ class Notification
 	field :body
 	belongs_to :post
 	field :read, :default => false
-	
+	validates_presence_of  :body
 	field :notif_type, :type => Integer, :default => 0 
 	
 	scope :unread, where(:read => false)

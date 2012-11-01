@@ -4,10 +4,12 @@
 
 				<div class="modal" id="send" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
 	 	<%= form_for current_user, :url => send_private_message_users_path, :method => "POST", :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
+             
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">发私信</h3>
   </div>
+  <div id="p-msg-result"></div>
   <div class="modal-body">
   	<div class="control-group">
   		<label class="control-label" for="user_email"> 发给</label>

@@ -1,3 +1,7 @@
+<% if @notif.valid? %>
 alert('发送成功')
 $("#send").modal('hide')
 $("#message").val('')
+<% else %> 
+	$("#p-msg-result").html("<%= j render 'shared/error_messages', :target => @notif %>")
+<% end %>
