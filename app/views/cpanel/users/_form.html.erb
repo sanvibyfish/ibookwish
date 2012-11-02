@@ -1,8 +1,23 @@
-<%= form_for @account, :html => { :class => 'form-horizontal' } do |f| %>
+<div id="cpanel_user" class="form bookdate-box">
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                cpanel_accounts_path, :class => 'btn' %>
-  </div>
+<%= simple_form_for([:cpanel,@user]) do |f| %>
+  <%= render "/shared/error_messages", :target => @user  %>
+  <fieldset>
+    <legend><%= t("common.edit") %></legend>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :gender %>
+      <%= f.input :ilike %>
+      <%= f.input :discover %>
+      <%= f.input :avatar %>
+      <%= f.hint "#{image_tag @user.avatar,:height => '120', :width => '120'}" %>
+      <%= f.input :info %>
+      <%= f.input :school %>
+      <%= f.input :tagline %>
+      <%= f.input :location, :collection => Location.all, :selected => f.object.location_id %>
+      <div class="form-actions">
+      <%= f.submit t("common.save"), :class => "btn btn-primary" %> <%= link_to t("common.cancel"), cpanel_users_path , :class => "btn"%>
+    </div>
+  </fieldset>
 <% end %>
+</div>

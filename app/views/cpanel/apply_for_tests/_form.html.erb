@@ -1,0 +1,15 @@
+<div id="cpanel_apply_for_test" class="form bookdate-box">
+
+<%= simple_form_for([:cpanel,@apply_for_test]) do |f| %>
+  <%= render "/shared/error_messages", :target => @apply_for_test  %>
+  <fieldset>
+    <legend><%= t("common.edit") %></legend>
+      <%= f.input :email %>
+      <%= f.input :name %>
+      <%= f.input :state %>
+      <div class="form-actions">
+      <%= f.submit t("common.save"), :class => "btn btn-primary" %> <%= link_to t("common.cancel"), cpanel_apply_for_tests_path , :class => "btn"%>
+    </div>
+  </fieldset>
+<% end %>
+</div>

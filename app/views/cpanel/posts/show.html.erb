@@ -1,23 +1,47 @@
-<%- model_class = Post -%>
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:id) %>:</strong></dt>
-  <dd><%= @post._id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:author) %>:</strong></dt>
-  <dd><%= @post.author %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:isbn) %>:</strong></dt>
-  <dd><%=raw @post.isbn %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%=raw @post.description %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              cpanel_posts_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_cpanel_post_path(@post), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              cpanel_post_path(@post),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<%= render 'base' %>
+<div class="tools">
+  <%= link_to '修改', edit_cpanel_post_path(@post), :class => "btn btn-small btn-success" %>
+  <%= link_to '返回', cpanel_posts_path, :class => "btn btn-small" %>
 </div>
+<div id="cpanel_post">
+    <p>
+    <b>Isbn:</b>
+    <%= @post.isbn %>
+  </p>
+    <p>
+    <b>Author:</b>
+    <%= @post.author %>
+  </p>
+    <p>
+    <b>Title:</b>
+    <%= @post.title %>
+  </p>
+    <p>
+    <b>Publisher:</b>
+    <%= @post.publisher %>
+  </p>
+    <p>
+    <b>Price:</b>
+    <%= @post.price %>
+  </p>
+    <p>
+    <b>Description:</b>
+    <%= @post.description %>
+  </p>
+    <p>
+    <b>Dream:</b>
+    <%= @post.dream %>
+  </p>
+    <p>
+    <b>Address:</b>
+    <%= @post.address %>
+  </p>
+    <p>
+    <b>Rating body:</b>
+    <%= @post.rating_body %>
+  </p>
+    <p>
+    <b>Rating:</b>
+    <%= @post.rating %>
+  </p>
+  </div>

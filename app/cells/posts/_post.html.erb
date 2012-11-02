@@ -4,7 +4,9 @@
 <% end %>
 <div class="bookdate-box posts" data-type="image">
 	<%= link_to image_tag(post.image), post_path(post) %>
-	<% if post.state == Post::STATE[:success] %>
+	<% if post.complete_user? && post.state != Post::STATE[:success] %>
+	<div class="end-state"><%= image_tag "rent.png" %></div>
+	<% elsif post.state == Post::STATE[:success] %>
 	<div class="end-state"><%= image_tag "ending.png" %></div>
 	<% end %>
 <p class="tags">

@@ -12,13 +12,9 @@
     <![endif]-->
 
       <%= stylesheet_link_tag    "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css", :media => "all" %>
+       <%= javascript_include_tag "cpanel/app" %>
 
-          <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-    <%= javascript_include_tag "app" %>
 
     <%= csrf_meta_tags %>
     <!-- For third-generation iPad with high-resolution Retina display: -->
@@ -61,6 +57,8 @@
             li << link_to("内测列表", main_app.cpanel_apply_for_tests_path)
             li << link_to("用户", main_app.cpanel_users_path)
             li << link_to("标签", main_app.cpanel_tags_path)
+            li << link_to("通知", main_app.cpanel_notifications_path)
+            li << link_to("评论", main_app.cpanel_comments_path)
           end  %>
           </div><!--/.nav-collapse -->
         </div>

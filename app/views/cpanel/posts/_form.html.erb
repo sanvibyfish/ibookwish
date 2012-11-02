@@ -1,35 +1,22 @@
-<%= simple_form_for [:cpanel,@post], :html => { :class => 'form-horizontal' }  do |f| %>
-    
-  <%= f.input :title %>
-  <%= f.input :image , :hint => "#{image_tag @post.image, :width => '60'}" %>
-  <%= f.input :isbn %>
-  <%= f.input :author %>
-  <%= f.input :publisher %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :uploader_secure_token %>
-  <%= f.input :dream %>
-  <%= f.input :account, :collection => User.all, :as => :select, :selected => f.object.account_id ,:label_method => :name, :value_method => :id %>
-  <%= f.input :coordinates, :input_html => { :value => "#{display_latlng_tag @post.coordinates}"} %>
-  <%= f.input :location,  :collection => Location.all, :as => :select, :selected => f.object.location_id%>
-  <%= f.input :address %>
+<div id="cpanel_post" class="form bookdate-box">
 
-
-    <div class="control-group">
-    <%= f.label :tags, :class => 'control-label' %>
-    <div class="controls">
-      <div class="text_field">
-        <%= f.hidden_field :tag_names, :value => @post.tags.map(&:name).join(',') %>
-      <ul id="post_tags">
-      </ul> 
-      </div>
+<%= simple_form_for([:cpanel,@post]) do |f| %>
+  <%= render "/shared/error_messages", :target => @post  %>
+  <fieldset>
+    <legend><%= t("common.edit") %></legend>
+      <%= f.input :isbn %>
+      <%= f.input :author %>
+      <%= f.input :title %>
+      <%= f.input :publisher %>
+      <%= f.input :price %>
+      <%= f.input :description %>
+      <%= f.input :dream %>
+      <%= f.input :address %>
+      <%= f.input :rating_body %>
+      <%= f.input :rating %>
+      <div class="form-actions">
+      <%= f.submit t("common.save"), :class => "btn btn-primary" %> <%= link_to t("common.cancel"), cpanel_posts_path , :class => "btn"%>
     </div>
-  </div>
-
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary'%>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                cpanel_posts_path, :class => 'btn' %>
-  </div>
+  </fieldset>
 <% end %>
+</div>

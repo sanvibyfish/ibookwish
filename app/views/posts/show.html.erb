@@ -14,7 +14,7 @@
 				</div>
 				<div class="content">
 						<div class="image">
-							<%= post_image_tag(@post, :style => "360x360") %>
+							<a href="#betaModal" data-toggle="modal"><%= image_tag @post.image , :width => "360", :height => "360" %></a>
 			
 							<div class="social_share">
 						<span class="share-text">分享:</span>	<%= social_share_button_tag(@post.title) %>

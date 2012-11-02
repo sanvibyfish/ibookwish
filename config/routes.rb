@@ -14,7 +14,9 @@ Code4::Application.routes.draw do
       end
     end
     resources :posts
-    resources :users 
+    resources :users
+    resources :notifications 
+    resources :comments
     resources :apply_for_tests do
       member do
         get :invite

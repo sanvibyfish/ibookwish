@@ -1,9 +1,15 @@
 "zh-CN":
+  common:
+    save: "保存"
+    cancel: "取消"
+    edit: "修改"
   mongoid:
     inspection:
       criteria: "#<Mongoid::Criteria__selector: %{selector},__options:  %{options},__class:    %{klass},__embedded: %{embedded}>"
     models:
       user: "用户"
+      tag: "标签"
+      apply_for_test: "内测用户"
     attributes:
       account:
         remember_me: 记住登录状态
@@ -38,6 +44,7 @@
         tag_names: 标签
         coordinates: 坐标
         location: "城市"
+        address: "地址"
       apply_for_test:
         email: 邮箱
         name: 姓名
@@ -45,6 +52,12 @@
         body: 评论内容
       notification:
         body: 内容
+      tag:
+        name: "名称"
+      apply_for_test:
+        state: 状态
+        email: "邮箱"
+        name: "名称"
     errors:
       models:
         account: 用户

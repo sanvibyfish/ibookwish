@@ -1,0 +1,15 @@
+<div id="cpanel_tag" class="form bookdate-box">
+
+<%= simple_form_for([:cpanel,@tag]) do |f| %>
+  <%= render "/shared/error_messages", :target => @tag  %>
+  <fieldset>
+    <legend><%= t("common.edit") %></legend>
+      <%= f.input :name %>
+       <%= f.input :posts, :collection => Post.all, :prompt => "Choose a Post" , :selected => f.object.posts %>
+
+      <div class="form-actions">
+      <%= f.submit t("common.save"), :class => "btn btn-primary" %> or <%= link_to t("common.cancel"), cpanel_tags_path , :class => "btn"%>
+    </div>
+  </fieldset>
+<% end %>
+</div>

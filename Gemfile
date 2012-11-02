@@ -15,7 +15,6 @@ gem "rails_autolink", ">= 1.0.4"
 # 分页
 gem 'will_paginate', '3.0.3'
 
-
 # Redis 命名空间
 gem 'redis-namespace' 
 

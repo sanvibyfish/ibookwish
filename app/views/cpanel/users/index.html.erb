@@ -1,38 +1,30 @@
-<%- model_class = User -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+<%= render 'base' %>
+<h1><%= t("mongoid.models.user")+ "(#{@count})"  %></h1>
+<div id="cpanel_users">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr class="head">
+      <td>编号</td>
+      <td><%= t("mongoid.attributes.user.name") %></td>
+      <td><%= t("mongoid.attributes.user.email") %></td>
+      <td><%= t("mongoid.attributes.user.gender") %></td>
+      <td>创建时间</td>
+      <td class="opts"></td>
     </tr>
-  </thead>
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= link_to account.id, user_path(account) %></td>
-        <td><%= account.email %></td>
-        <td><%= account.name %></td>
-        <td><%= account.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_cpanel_user_path(account), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      cpanel_user_path(account),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
+    <% @users.each do |item| %>
+    <tr class="<%= cycle("info","even") %>">
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.email %></td>
+      <td><%= gender item.gender %></td>
+      <td><%= l(item.created_at, :format => :long) %></td>
+      <td>
+        <%= link_to "修改", edit_cpanel_user_path(item.id), :class => "btn btn-mini btn-primary" %>
+        <%= link_to "删除", cpanel_user_path(item.id), :method => :delete, 'data-confirm' => '确定要删除吗?', :class => "btn btn-mini btn-danger" %>
+      </td>
+    </tr>
     <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_cpanel_user_path,
-            :class => 'btn btn-primary' %>
+  </table>
+</div>
+<div class="tools">
+  <a href="<%= new_cpanel_user_path %>" class="btn btn-small btn-success">新建</a>
+</div>

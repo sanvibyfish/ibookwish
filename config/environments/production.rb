@@ -67,12 +67,9 @@ Code4::Application.configure do
      app.js comment.js post.js user.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => "587",
-    :domain => "gmail.com",
-    :authentication => "plain",
-    :user_name => "sanvibyfish@ibookwish.com",
-    :password => "air20dream",
+    :address => "mail.icancontact.com",
+    :port => "25",
+    :domain => "icancontact.com.com",
     :enable_starttls_auto => true
   }
 

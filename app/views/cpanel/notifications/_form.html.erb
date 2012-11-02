@@ -1,0 +1,15 @@
+<div id="cpanel_notification" class="form bookdate-box">
+
+<%= simple_form_for([:cpanel,@notification]) do |f| %>
+  <%= render "/shared/error_messages", :target => @notification  %>
+  <fieldset>
+    <legend><%= t("common.edit") %></legend>
+      <%= f.input :body %>
+      <%= f.input :read %>
+      <%= f.input :notif_type %>
+      <div class="form-actions">
+      <%= f.submit t("common.save"), :class => "btn btn-primary" %> <%= link_to t("common.cancel"), cpanel_notifications_path , :class => "btn"%>
+    </div>
+  </fieldset>
+<% end %>
+</div>

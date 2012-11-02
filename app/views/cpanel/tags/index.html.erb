@@ -1,0 +1,26 @@
+<%= render 'base' %>
+<h1><%= t("mongoid.models.tag") + "(#{@count})"  %></h1>
+<div id="cpanel_tags">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr class="head">
+      <td>编号</td>
+      <td><%= t("mongoid.attributes.tag.name") %></td>
+      <td>创建时间</td>
+      <td class="opts"></td>
+    </tr>
+    <% @tags.each do |item| %>
+    <tr class="<%= cycle("info","even") %>">
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= l(item.created_at, :format => :long) %></td>
+      <td>
+        <%= link_to "修改", edit_cpanel_tag_path(item.id), :class => "btn btn-mini btn-primary" %>
+        <%= link_to "删除", cpanel_tag_path(item.id), :method => :delete, 'data-confirm' => '确定要删除吗?', :class => "btn btn-mini btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<div class="tools">
+  <a href="<%= new_cpanel_tag_path %>" class="btn btn-small btn-success">新建</a>
+</div>

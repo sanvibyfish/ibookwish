@@ -1,85 +1,72 @@
+# coding: UTF-8
 class Cpanel::UsersController < Cpanel::ApplicationController
-  # GET /accounts
-  # GET /accounts.json
-  def index
-    @accounts = User.all.desc(:created_at)
 
+  def index
+    @users = User.desc('_id').page(params[:page])
+    @count = User.count
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @accounts }
+      format.json
     end
   end
 
-  # GET /accounts/1
-  # GET /accounts/1.json
   def show
-    @account = User.find(params[:id])
+    @user = User.find_by(name: params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @account }
+      format.json
     end
   end
 
-  # GET /accounts/new
-  # GET /accounts/new.json
   def new
-    @account = User.new
+    @user = User.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @account }
+      format.json
     end
   end
 
-  # GET /accounts/1/edit
   def edit
-    @account = User.find(params[:id])
+    @user = User.find_by(name: params[:id])
   end
 
-  # POST /accounts
-  # POST /accounts.json
   def create
-    @account = User.new(params[:account])
+    @user = User.new(params[:user])
 
     respond_to do |format|
-      if @account.save
-        format.html { redirect_to @account, notice: 'User was successfully created.' }
-        format.json { render json: @account, status: :created, location: @account }
+      if @user.save
+        format.html { redirect_to(cpanel_users_path, :notice => 'User 创建成功。') }
+        format.json
       else
-        format.html { render action: "new" }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json
       end
     end
   end
 
-  # PUT /accounts/1
-  # PUT /accounts/1.json
   def update
-    @account = User.find(params[:id])
+    @user = User.find(params[:id])
 
     respond_to do |format|
-      if @account.update_attributes(params[:account])
-        format.html { redirect_to @account, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to(cpanel_users_path, :notice => 'User 更新成功。') }
+        format.json
       else
-        format.html { render action: "edit" }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json
       end
     end
   end
 
-  # DELETE /accounts/1
-  # DELETE /accounts/1.json
   def destroy
-    @account = User.find(params[:id])
-    @account.destroy
+    @user = User.find(params[:id])
+    @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to accounts_url }
-      format.json { head :no_content }
+      format.html { redirect_to(cpanel_users_path,:notice => "删除成功。") }
+      format.json
     end
   end
-
-
 end
