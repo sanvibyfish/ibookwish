@@ -23,7 +23,6 @@
  *= require post
  *= require tag
  *= require user
- *= require jquery-ui
  *= require jquery.pnotify
  */
 .bookdate-box {
@@ -247,9 +246,6 @@ outline: 0;
 #post_node_info li.active a{
 	color: #08C;
 }
-
-
-
 
 
 .holder {

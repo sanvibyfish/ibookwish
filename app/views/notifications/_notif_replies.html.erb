@@ -18,7 +18,7 @@
       <%= notification.from_user.name %>
     </span>
       在
-      <%= link_to notification.post.dream,  post_path(notification.post) %>
+      <%= link_to notification.post.title,  post_path(notification.post) %>
       回复你：
     <% if !notification.read? %>
       <span class="new label label-warning">新</span>

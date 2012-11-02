@@ -1,6 +1,6 @@
 <div class="span4">		
 <div class="bookdate-box near-books ">
-	<h4>周边愿望</h4>
+	<h4>周边图书</h4>
 	<% @nears.each do |n| %>
 	<% if n.id == @post.id %>
 		<% next %>
@@ -10,8 +10,8 @@
 			<%= user_avatar_tag n.user, :style => "48x48" %>
 		</div>
 		<div class="iwant">
-						<span class="label label-info">我想要</span>
-						<%= link_to n.dream, post_path(n) %>
+						<span class="label label-info">我借出</span>
+						<%= link_to n.title, post_path(n) %>
 		<div class="clearfix"></div>
 		</div>
 	</div>

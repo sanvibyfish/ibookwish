@@ -21,7 +21,7 @@ gem 'redis-namespace'
 # 将一些数据存放入 Redis
 gem "redis-objects" 
 
-gem 'faye-rails'
+gem 'faye-rails',"1.0.0"
 
 gem 'kaminari'
 
@@ -75,7 +75,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
+  gem "twitter-bootstrap-rails","2.1.3"
   gem 'bootstrap_helper', "1.4.1"
   gem 'jquery-atwho-rails'
 end
