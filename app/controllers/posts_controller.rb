@@ -78,7 +78,7 @@ class PostsController < ApplicationController
 			address_path = JsonPath.new('$..address')
 			location_path = JsonPath.new('$..LocalityName')
 			params[:post][:address] = address_path.on(doc).first
-			params[:post][:location] = Location.where(name: location_path.on(doc).first[0,2]) 
+			params[:post][:location] = Location.where(name: location_path.on(doc).first[0,2]).first
 		end
 		@post = Post.new(params[:post])
 		if @post.location.blank?
