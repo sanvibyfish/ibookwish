@@ -101,10 +101,20 @@ $(document).ready ->
     
     faye = new Faye.Client(FAYE_SERVER)
     faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
-      if data.count > 0
-        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.count + "</span>")
+      console.info(data)
+      if data.notif.counts > 0
+        text = ''
+        if data.notif.reply > 0
+          text +=  '<a href="/notifications">你有' + data.notif.reply + '条回复</a><br>'
+        if data.notif.at > 0
+          text +=  '<a href="/notifications/at">你有' + data.notif.at + '条@</a><br>'
+        if data.notif.system > 0
+          text +=  '<a href="/notifications/system">你有' + data.notif.system + '条系统消息</a><br>'
+        if data.notif.pri > 0
+          text +=  '<a href="/notifications/private">你有' + data.notif.pri + '条私信</a><br>'
+        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.notif.counts + "</span>")
         $.pnotify
-          text: '<a href="/notifications">你有' + data.count + '新消息</a>'
+          text: text
           icon: 'icon-envelope'
 
 
