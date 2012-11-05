@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
   <head>
     <%= render_page_title %>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
     <%= javascript_include_tag "app" %>
 
     <%= csrf_meta_tags %>
@@ -67,6 +67,7 @@
           end  %>
   <% if user_signed_in? %>
   <ul class="nav pull-right">
+    <li style="margin-top:10px;"><wb:follow-button uid="3064311803" type="red_2" width="136" height="24" ></wb:follow-button></li>
     <li>
       <%= notification_tag main_app.notifications_path %>
     </li>

@@ -4,7 +4,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
-require "sprockets/railtie" # Uncomment this line for Rails 3.1+
+require "sprockets/railtie" # Uncomment this line for Rails 3.1+require 'csv'
+
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line

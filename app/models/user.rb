@@ -65,6 +65,19 @@ class User
   validates_length_of :invitation_token, maximum: 60
 
 
+  def self.to_csv()
+   require 'csv'
+   users = User.all
+
+   CSV.generate do |csv|
+    csv << ["email"]
+    users.each do |user|
+      csv << [user.email]
+    end
+  end
+end
+
+
   def read_notifications(notifications)
     unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
     if unread_ids.any?

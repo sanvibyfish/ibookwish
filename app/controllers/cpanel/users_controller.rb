@@ -1,12 +1,17 @@
 # coding: UTF-8
 class Cpanel::UsersController < Cpanel::ApplicationController
 
+
+  def export
+    
+  end
   def index
     @users = User.desc('_id').page(params[:page])
     @count = User.count
     respond_to do |format|
       format.html # index.html.erb
       format.json
+      format.csv { send_data @users.to_csv}
     end
   end
 
