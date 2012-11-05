@@ -22,7 +22,6 @@ gem 'redis-namespace'
 gem "redis-objects" 
 
 gem 'faye-rails',"1.0.0"
-gem 'fastercsv'
 gem 'kaminari'
 
 # 图片存储
