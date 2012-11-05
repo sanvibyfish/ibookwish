@@ -66,10 +66,20 @@ Code4::Application.configure do
   config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css
      app.js comment.js post.js user.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
+  # config.action_mailer.smtp_settings = {
+  #   :address => "mail.icancontact.com",
+  #   :port => "25",
+  #   :domain => "icancontact.com.com",
+  #   :enable_starttls_auto => true
+  # }
+
   config.action_mailer.smtp_settings = {
-    :address => "mail.icancontact.com",
-    :port => "25",
-    :domain => "icancontact.com.com",
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "gmail.com",
+    :authentication => "plain",
+    :user_name => "sanvibyfish@ibookwish.com",
+    :password => "air20dream",
     :enable_starttls_auto => true
   }
 
