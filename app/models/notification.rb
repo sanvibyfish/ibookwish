@@ -50,8 +50,8 @@ class Notification
     body = self.body
     from_user_name = self.from_user.name 
     created_at = I18n.l(self.created_at, :format => :long)
-    post_id = self.post.id
-    post_title = self.post.title
+    post_id = self.post.id if self.post.blank?
+    post_title = self.post.title if self.post.blank?
     if  self.notif_type == Notification::TYPE[:reply] 
       subject += "#{self.from_user.name}评论了您的#{self.post.title}"
       UserMailer.remind_reply(self,self.to_user.email,subject, avatar, body, from_user_name, created_at,post_id, post_title).deliver
