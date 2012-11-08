@@ -9,6 +9,9 @@ gem 'exception_notification'
 # MongoDB..
 gem 'mongoid', '3.0.6'
 
+#bg work
+gem 'resque'
+gem 'resque_mailer'
 
 gem "homeland", :git => "git://github.com/sanvibyfish/homeland.git"
 gem "rails_autolink", ">= 1.0.4"

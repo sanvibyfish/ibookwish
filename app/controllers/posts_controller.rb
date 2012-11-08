@@ -91,7 +91,7 @@ class PostsController < ApplicationController
 		if @post.save
 			redirect_to @post, notice: '操作成功.' 
 		else
-			render :action => :new ,error: '你输入的数据有问题'
+			render :action => :new ,alert: '你输入的数据有问题'
 		end
 	end
 

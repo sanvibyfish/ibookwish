@@ -1,0 +1,9 @@
+<% if @notif_type == Notification::TYPE[:reply] %>
+	<%= render :partial => "reply", :notification => @notification %>
+<% elsif @notif_type == Notification::TYPE[:at] %>
+	<%= render :partial => "at", :notification => @notification %>
+<% elsif @notif_type == Notification::TYPE[:join] ||  @notification.@notif_type == Notification::TYPE[:complete_choose] ||  @notification.@notif_type == Notification::TYPE[:complete] %>
+	<%= render :partial => "system", :notification => @notification %>
+<% elsif @notif_type == Notification::TYPE[:private] %>
+	<%= render :partial => "private", :notification => @notification %>
+<% end %>

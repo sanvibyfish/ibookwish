@@ -1,3 +1,4 @@
+#coding:utf-8
 class Notification
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -23,7 +24,7 @@ class Notification
 	}
 
 
-  after_create :realtime_push_to_client
+  after_create :realtime_push_to_client,:realtime_mail_to_client
   def realtime_push_to_client
   	notifications = self.to_user.notifications.unread
   	counts = []
@@ -43,5 +44,36 @@ class Notification
   	FayeClient.send("/notifications_count/#{self.to_user.id}", :notif => counts)
   end
 
+  def realtime_mail_to_client
+    subject = "[书愿网]"
+    avatar = self.from_user.avatar.url
+    body = self.body
+    from_user_name = self.from_user.name 
+    created_at = I18n.l(self.created_at, :format => :long)
+    post_id = self.post.id
+    post_title = self.post.title
+    if  self.notif_type == Notification::TYPE[:reply] 
+      subject += "#{self.from_user.name}评论了您的#{self.post.title}"
+      UserMailer.remind_reply(self,self.to_user.email,subject, avatar, body, from_user_name, created_at,post_id, post_title).deliver
+    elsif self.notif_type == Notification::TYPE[:at]
+      subject += "#{self.from_user.name}在#{self.post.title}@了你"
+      UserMailer.remind_at(self,self.to_user.email,subject, avatar, body, from_user_name, created_at).deliver
+
+    elsif self.notif_type == Notification::TYPE[:join] 
+      subject += "#{self.from_user.name}刚申请了参与你发布的#{self.post.title}"
+      UserMailer.remind_system(self,self.to_user.email,subject, avatar, body, from_user_name, created_at,post_id, post_title).deliver
+    elsif self.notif_type == Notification::TYPE[:complete_choose] 
+      subject += "#{self.from_user.name}在#{self.post.title}通过了你的申请"
+      UserMailer.remind_system(self,self.to_user.email,subject, avatar, body, from_user_name, created_at,post_id, post_title).deliver
+    elsif self.notif_type == Notification::TYPE[:complete]
+      subject += "#{self.from_user.name}在#{self.post.title}给你评价"
+      UserMailer.remind_system(self,self.to_user.email,subject, avatar, body, from_user_name, created_at,post_id, post_title).deliver
+    elsif self.notif_type == Notification::TYPE[:private] 
+      subject += "#{self.from_user.name}给您发了一条私信"
+      UserMailer.remind_private(self,self.to_user.email,subject, avatar, body, from_user_name, created_at).deliver
+
+    end 
+      # UserMailer.remind(self,self.to_user.email,subject).deliver
+  end
 
 end

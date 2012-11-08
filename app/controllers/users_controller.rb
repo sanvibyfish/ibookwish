@@ -87,11 +87,23 @@ class UsersController < ApplicationController
   end
 
   def iwant_user_save
+    user = User.where(:email => params[:apply_for_test][:email]).first
+    # user = User.where(:email => params[:apply_for_test][:email]).and(:name.exists => true).first
+    unless user.blank?
+      if user.name.blank?
+        User.invite!(:email => params[:apply_for_test][:email])
+        redirect_to "/users/iwant_user" , alert: '你已经申请过内测了，我们将重新发送邀请邮件给你，请检查邮箱' 
+        return
+      else
+        redirect_to "/users/iwant_user", alert: '不乖哦，你已经注册过账号了.' 
+        return
+      end
+    end
     @apply_for_test = ApplyForTest.new(params[:apply_for_test])
     if @apply_for_test.save
       redirect_to "/users/iwant_user", notice: '你的申请已经成功，在验证信息后我们会发送一封邮件邀请你注册.' 
     else
-      render :action => :iwant_user , error: '申请失败' 
+      render :action => :iwant_user , alert: '申请失败' 
     end
   end
 

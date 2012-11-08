@@ -30,24 +30,13 @@ Code4::Application.routes.draw do
   mount Homeland::Engine, :at => "/bbs"
   
   root :to => 'users#iwant_user'
-  resources :posts do
-    collection do
-      get :get_book
-      get :get_posts
-    end    
-    member do
-      get :near_me
-      get :tag
-      post :complete_wish
-      post :exec_user
-      post :end_task
-    end
-  end
+
 
 
   devise_for :users,  :controllers => {
       :registrations => :accounts,
-      :invitations => :invitations
+      :invitations => :invitations,
+      :passwords => :passwords
   } 
 
   resources :tags do
@@ -82,6 +71,18 @@ Code4::Application.routes.draw do
     end
   end
 
-
+  resources :posts do
+    collection do
+      get :get_book
+      get :get_posts
+    end    
+    member do
+      get :near_me
+      get :tag
+      post :complete_wish
+      post :exec_user
+      post :end_task
+    end
+  end
 
 end

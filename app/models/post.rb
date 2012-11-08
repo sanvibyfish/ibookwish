@@ -32,7 +32,7 @@ class Post
   field :rating_body
   field :rating,  :type => Integer
   counter :hits, :default => 0
-
+  index({ coordinates: '2d' })
 
   RATING_STATE = {
     :up => 1,

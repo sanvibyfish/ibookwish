@@ -12,8 +12,6 @@ class Cpanel::ApplyForTestsController < Cpanel::ApplicationController
     redirect_to  "/cpanel/apply_for_tests", notice: '操作成功.' 
   end
 
-
-
   def index
     @apply_for_tests = ApplyForTest.desc('_id').page(params[:page])
     @count = ApplyForTest.count

@@ -24,7 +24,6 @@
 	<%= raw item_count_tag("icon-group","参与(#{join_count_tag(post)})",post_path(post),join_count_tag(post)) %>
 </p>
 <div class="clearfix"></div>
-
 <div class="convo attribution clearfix"><p><a href="<%= user_path(post.user) %>" title="<%= post.user.name %>" class="img x"><%= user_avatar_tag(post.user, :style => "small") %></a><a href="<%= user_path(post.user) %>" class="author x"><%= post.user.name %></a>&nbsp;创建于&nbsp;<%= distance_of_time_in_words(post.created_at,Time.now) %>前</p></div>
 </div>
 

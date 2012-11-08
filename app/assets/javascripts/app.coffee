@@ -101,7 +101,6 @@ $(document).ready ->
     
     faye = new Faye.Client(FAYE_SERVER)
     faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
-      console.info(data)
       if data.notif.counts > 0
         text = ''
         if data.notif.reply > 0

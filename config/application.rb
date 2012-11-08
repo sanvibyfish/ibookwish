@@ -77,7 +77,7 @@ module Code4
     if Rails.env == "production"
       config.middleware.use ExceptionNotifier,
       :email_prefix         => "[ibookwish] ",
-      :sender_address       => %{"notifier" <sanvibyfish@ibookwish.com>},
+      :sender_address       => %{"notifier" <info@ibookwish.com>},
       :exception_recipients => %w{sanvibyfish@gmail.com}
       # :ignore_exceptions    => ['Mongoid::Errors::DocumentNotFound'] + ExceptionNotifier.default_ignore_exceptions
     end
