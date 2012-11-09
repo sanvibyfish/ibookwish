@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery-ui
+#= require google-map
 #= require twitter/bootstrap
 #= require tag-it
 #= require gmap3.min
