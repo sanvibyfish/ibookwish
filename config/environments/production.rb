@@ -69,7 +69,8 @@ Code4::Application.configure do
   config.action_mailer.smtp_settings = {
     :address => "mail.icancontact.com",
     :port => "25",
-    :domain => "ibookwish.com"
+    :domain => "ibookwish.com",
+    :enable_starttls_auto => false
   }
 
 
