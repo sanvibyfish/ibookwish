@@ -2,7 +2,7 @@
 defaults: &defaults
   app_name: "书愿网"
   upload_url: "http://image-sanvibyfish.b0.upaiyun.com"
-  from_send: "ibookwish<no-reply@ibookwish.com>"
+  from_send: "ibookwish<info@ibookwish.com>"
   admin_emails: 
     - "admin@admin.com"
     - "test@test.com"
