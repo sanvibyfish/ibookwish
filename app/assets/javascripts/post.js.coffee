@@ -9,19 +9,26 @@ Post =
       new_text = "\n#{new_text}"
     reply_body.focus().val(reply_body.val() + new_text)
     return false
+  init_map: (lat,lng) ->
+    map = new BMap.Map("post-map")
+    point = new BMap.Point(lng,lat)   
+    map.centerAndZoom(point,15)
+    marker1 = new BMap.Marker(point)
+    map.addOverlay(marker1)
 
 
 $(document).ready ->
   $(".piece .rt").click (el)->
     Post.reply($(this).data("user-name"))
 
-  $('#post-map').gmap3
-    action:'addMarker',
-    latLng:[$("#post-map").data("lat"), $("#post-map").data("lng")]
-    map:
-      center: true
-      zoom: 14
-
   $("#complete_wish_form a").click (el)->
-    $("#complete_wish_form").submit()  
+    $("#complete_wish_form").submit()
+    
+  if $("#post-map").length > 0
+    Post.init_map($("#post-map").data("lat"), $("#post-map").data("lng"))
+    
+
+  
+  
+    
 

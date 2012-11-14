@@ -3,7 +3,6 @@
 #= require jquery-ui
 #= require twitter/bootstrap
 #= require tag-it
-#= require gmap3.min
 #= require faye
 #= require jquery.pnotify
 #= require masonry/jquery.masonry
@@ -16,6 +15,7 @@
 #= require user
 #= require post
 #= require comment
+#= require map
 APP =
   alert : (msg,to) ->
     $(".alert").remove()
