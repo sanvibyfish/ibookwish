@@ -64,7 +64,7 @@ Code4::Application.configure do
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
   config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css
-     app.js comment.js post.js user.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
+     app.js comment.js post.js user.js map.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
   config.action_mailer.smtp_settings = {
     :address => "mail.icancontact.com",
