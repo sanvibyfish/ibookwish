@@ -9,6 +9,7 @@ defaults: &defaults
     - "sanvibyfish@gmail.com"
   faye_server: "http://119.147.23.192:4000/faye"
   faye_token: "123456"
+  send_mail_url: "http://www.icancontact.com:3000/emails"
 development:
   <<: *defaults
   domain:
