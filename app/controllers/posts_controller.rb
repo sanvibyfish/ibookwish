@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		set_seo_meta("首页")
+		set_seo_meta("用书本来连接每个人")
 		@posts = Post.desc(:created_at).page(params[:page])
 	end
 
