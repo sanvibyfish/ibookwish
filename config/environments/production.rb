@@ -15,7 +15,7 @@ Code4::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -63,8 +63,8 @@ Code4::Application.configure do
 
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
-  config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css
-     app.js comment.js post.js user.js map.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
+  config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css *.png *.jp?g *.gif
+     app.js comment.js post.js user.js map.js cpanel_app.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
   config.action_mailer.smtp_settings = {
     :address => "mail.icancontact.com",
