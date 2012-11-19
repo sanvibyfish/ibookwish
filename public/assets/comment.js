@@ -1,0 +1,1 @@
+(function(){$(document).ready(function(){return $("#btn_reply").click(function(){if($("#comment_body").val()!=="")return $("#btn_reply").html("回复中..."),$("#btn_reply").attr("disabled","disabled"),$("#new_comment").submit()})})}).call(this);
