@@ -64,7 +64,7 @@ class Post
   validates_presence_of  :isbn, :dream, :title, :coordinates
   validates_length_of :isbn,  :within => 10..13
   validates_length_of :dream,  :within => 1..140
-
+  validates :isbn, :numericality => { :only_integer => true }
 
   def send_notification(type, from_user, to_user, body)
     notif =  Notification.create :from_user => from_user.id, :to_user => to_user.id, :body => body, 
