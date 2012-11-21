@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   require "net/http"
   require "uri"
   default from: Setting.from_send
-
+  layout 'mail'
 
   def confirmation_instructions(record)
     devise_mail(record, :confirmation_instructions)
@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def invitation_instructions(record)
      @resource = record
-     send_mail(:to => @resource.email, :subject => "[书愿网]邀请你注册", :content => render(:invitation_instructions))
+     send_mail(:to => @resource.email, :subject => "[书愿网]邀请你注册", :content => render( :invitation_instructions))
   end
 
   def remind_private(notification,mail,subject,avatar, body, from_user_name, created_at)
