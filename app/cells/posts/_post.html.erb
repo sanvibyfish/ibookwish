@@ -1,7 +1,5 @@
 <% @posts.each_with_index do |post,index| %>
-<% if   index % 2 == 0 %>
 <div class="post">
-<% end %>
 <div class="bookdate-box posts" data-type="image">
 	<%= link_to image_tag(post.image), post_path(post) %>
 	<% if post.complete_user? && post.state != Post::STATE[:success] %>
@@ -27,7 +25,5 @@
 <div class="convo attribution clearfix"><p><a href="<%= user_path(post.user) %>" title="<%= post.user.name %>" class="img x"><%= user_avatar_tag(post.user, :style => "small") %></a><a href="<%= user_path(post.user) %>" class="author x"><%= post.user.name %></a>&nbsp;创建于&nbsp;<%= distance_of_time_in_words(post.created_at,Time.now) %>前</p></div>
 </div>
 
-<% if not  index % 2 == 0 %>
 </div>
-<% end %>
 <% end %>
