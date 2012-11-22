@@ -80,7 +80,13 @@ class PostsController < ApplicationController
 		# 	params[:post][:address] = address_path.on(doc).first
 		# 	params[:post][:location] = Location.where(name: location_path.on(doc).first[0,2]).first
 		# end
-		params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])]
+		if params[:lat].blank?
+			@post = Post.new(params[:post])
+			@post.errors[:coordinates] = '你好像忘记标点了哦~'
+			render :action => :new 
+			return
+		end
+		params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])] 
 		params[:post][:address] = params[:address]
 		params[:post][:location] = Location.where(name: params[:city][0,2]).first
 		@post = Post.new(params[:post])
@@ -119,14 +125,14 @@ class PostsController < ApplicationController
 			@post.send_notification(Notification::TYPE[:join],current_user, @post.user,"我刚申请了想要借你本书")
 			redirect_to @post, notice: '操作成功.' 
 		else
-			redirect_to @post, error: '已经添加过了' 
+			redirect_to @post, alert: '已经添加过了' 
 		end
 	end
 
 	def exec_user
 		@post = Post.find(params[:id])
 		if @post.complete_user?
-			redirect_to @post, error: '当前任务已经有圆梦师了' 
+			redirect_to @post, alert: '当前任务已经有人选了' 
 		else
 			@post.complete_user_id = params[:complete_user_id]
 			@post.complete_user.push_complete_post(@post.id)
@@ -142,7 +148,7 @@ class PostsController < ApplicationController
 			@post.send_notification(Notification::TYPE[:complete],@post.user,@post.complete_user,"我刚给你评价:#{@post.rating_body}")
 			redirect_to @post, notice: '操作成功.' 
 		else
-			redirect_to @post, notice: '操作失败.' 
+			redirect_to @post, alert: '操作失败.' 
 		end
 
 

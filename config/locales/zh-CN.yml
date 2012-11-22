@@ -38,7 +38,7 @@
         nickname : 昵称
         gender: 性别
       post:
-        dream: 愿望
+        dream: 我想要
         isbn: ISBN
         title: 图书标题
         tag_names: 标签
