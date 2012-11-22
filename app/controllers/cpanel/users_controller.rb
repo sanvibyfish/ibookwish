@@ -5,6 +5,16 @@ class Cpanel::UsersController < Cpanel::ApplicationController
   def export
     
   end
+
+  def invite
+    @users = User.where(:name => nil)
+    @users.each do |user| 
+     User.invite!(:email => user.email)
+    end
+    redirect_to  "/cpanel/users", notice: '操作成功.' 
+  end
+
+
   def index
     @users = User.desc('_id').page(params[:page])
     @count = User.count

@@ -14,7 +14,11 @@ Code4::Application.routes.draw do
       end
     end
     resources :posts
-    resources :users
+    resources :users do
+      collection do
+        get :invite
+      end
+    end
     resources :notifications 
     resources :comments
     resources :apply_for_tests do
