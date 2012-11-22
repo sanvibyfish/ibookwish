@@ -124,3 +124,28 @@
 >> Thin web server (v1.5.0 codename Knife)
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:4000, CTRL+C to stop
+2012-10-29 16:29:38 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+2012-11-02 16:34:04 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+2012-11-08 21:59:16 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+2012-11-08 22:01:47 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+2012-11-08 22:02:28 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+2012-11-18 21:18:07 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+2012-11-20 15:29:17 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
+!! Invalid request
