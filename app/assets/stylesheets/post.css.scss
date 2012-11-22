@@ -110,13 +110,17 @@
 	height: 210px;
 }
 
+
 .post {
-	float:left;
-	margin-right: 10px;
-	width: 230;
-}
-.posts {
 	width: 200px;
+	.end-state {
+		position: absolute;
+		top: 0px;
+		right: 5px;
+	}
+	.tags {
+		margin: 10px 0 5px;
+	}
 	.post-footer {
 		float: right;
 		.item {
@@ -126,19 +130,9 @@
 			}
 		}
 	}
-}
 
-.post {
-	.end-state {
-		position: absolute;
-		top: 0px;
-		right: 5px;
-	}
-	.tags {
-		margin: 10px 0 5px;
-	}
-}
 
+}
 
 .accpt-users {
 	.image {

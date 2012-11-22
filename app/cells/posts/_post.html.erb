@@ -1,5 +1,5 @@
 <% @posts.each_with_index do |post,index| %>
-<div class="bookdate-box posts" data-type="image">
+<div class="bookdate-box post" data-type="image">
 	<%= link_to image_tag(post.image), post_path(post) %>
 	<% if post.complete_user? && post.state != Post::STATE[:success] %>
 	<div class="end-state"><%= image_tag "rent.png" %></div>
