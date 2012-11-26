@@ -31,9 +31,9 @@ class AccountsController < Devise::RegistrationsController
     if session[:location].blank?
       # FIXME 目前是虚拟IP
       if request.location.city.downcase.blank?
-        session[:location] =  Location.find_by(pin_yin: "shenzhen")
+        session[:location] =  Location.where(pin_yin: "shenzhen").first
       else
-        session[:location] = Location.find_by(pin_yin: request.location.city.downcase)
+        session[:location] = Location.where(pin_yin: request.location.city.downcase).first
       end 
     end
     resource.location = session[:location]

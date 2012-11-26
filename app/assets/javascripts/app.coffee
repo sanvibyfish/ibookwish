@@ -98,27 +98,6 @@ $(document).ready ->
 
     $("#back-top").hide()
 
-    
-    faye = new Faye.Client(FAYE_SERVER)
-    faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
-      if data.notif.counts > 0
-        text = ''
-        if data.notif.reply > 0
-          text +=  '<a href="/notifications">你有' + data.notif.reply + '条回复</a><br>'
-        if data.notif.at > 0
-          text +=  '<a href="/notifications/at">你有' + data.notif.at + '条@</a><br>'
-        if data.notif.system > 0
-          text +=  '<a href="/notifications/system">你有' + data.notif.system + '条系统消息</a><br>'
-        if data.notif.pri > 0
-          text +=  '<a href="/notifications/private">你有' + data.notif.pri + '条私信</a><br>'
-        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.notif.counts + "</span>")
-        $.pnotify
-          text: text
-          icon: 'icon-envelope'
-
-
-
-
     $ ->
       $(window).scroll ->
         if ($(this).scrollTop() > 100) 
@@ -149,7 +128,7 @@ $(document).ready ->
 
     $container.infinitescroll
       navSelector  : '.pagination'    
-      nextSelector : '.next a'  
+      nextSelector : '.next_page a'  
       itemSelector : '.bookdate-box'
       loading: 
         finishedMsg: '没有更多数据'
@@ -186,4 +165,21 @@ $(document).ready ->
         show_tag_url: "/tags/"
         singleField: true
         singleFieldNode: $('#post_tag_names')
+
+    faye = new Faye.Client(FAYE_SERVER)
+    faye.subscribe "/notifications_count/#{CURRENT_USER_ID}",(data) ->
+      if data.notif.counts > 0
+        text = ''
+        if data.notif.reply > 0
+          text +=  '<a href="/notifications">你有' + data.notif.reply + '条回复</a><br>'
+        if data.notif.at > 0
+          text +=  '<a href="/notifications/at">你有' + data.notif.at + '条@</a><br>'
+        if data.notif.system > 0
+          text +=  '<a href="/notifications/system">你有' + data.notif.system + '条系统消息</a><br>'
+        if data.notif.pri > 0
+          text +=  '<a href="/notifications/private">你有' + data.notif.pri + '条私信</a><br>'
+        $("#user_notifications_count").html("<span class='badge badge-important'>" + data.notif.counts + "</span>")
+        $.pnotify
+          text: text
+          icon: 'icon-envelope'
 

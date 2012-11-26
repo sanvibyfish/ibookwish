@@ -31,7 +31,7 @@ class Comment
     send_ids = []
     #给@的人发通知
     comment.body.scan(%r{@[a-zA-Z0-9_\u4e00-\u9fa5]{1,20}}).each { |name|
-        user = User.find_by(:name => name.delete("@"))
+        user = User.where(:name => name.delete("@")).first
         next if user.blank?
         unless send_ids.include?(user.id)
      notif_at =   Notification.create :from_user => comment.user_id, :to_user => user.id, :body => comment.body, 

@@ -8,7 +8,7 @@ GIT
       rails_autolink (>= 1.0.0)
 
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
