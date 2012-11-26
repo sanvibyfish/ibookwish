@@ -2,7 +2,7 @@ class PostsCell < Cell::Rails
   include Devise::Controllers::Helpers
 	helper :application, :accounts, :posts
   helper_method :current_user
-  cache :index, :expires_in => 10.minutes
+  cache :index, :expires_in => 10.seconds
 
   def index(opts = {})
   	@current_tag     = opts[:current_tag]
