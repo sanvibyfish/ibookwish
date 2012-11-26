@@ -1,7 +1,7 @@
 # coding: utf-8
 defaults: &defaults
   app_name: "书愿网"
-  upload_url: "http://image-sanvibyfish.b0.upaiyun.com"
+  upload_url: "http://image.ibookwish.com"
   from_send: "ibookwish<info@ibookwish.com>"
   admin_emails: 
     - "admin@admin.com"

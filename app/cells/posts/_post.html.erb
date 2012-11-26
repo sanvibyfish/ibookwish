@@ -22,6 +22,17 @@
 </p>
 <div class="clearfix"></div>
 <div class="convo attribution clearfix"><p><a href="<%= user_path(post.user) %>" title="<%= post.user.name %>" class="img x"><%= user_avatar_tag(post.user, :style => "small") %></a><a href="<%= user_path(post.user) %>" class="author x"><%= post.user.name %></a>&nbsp;创建于&nbsp;<%= distance_of_time_in_words(post.created_at,Time.now) %>前</p></div>
+<% unless post.comments.blank? %>
+
+<% post.comments.order_by("created_at DESC").each_with_index do |comment, index|  %>
+<div class="convo attribution clearfix"><p><a href="<%= user_path(comment.user) %>" title="<%= comment.user.name %>" class="img x"><%= user_avatar_tag(comment.user, :style => "small") %></a><a href="<%= user_path(comment.user) %>" class="author x"><%= comment.user.name %></a>&nbsp;<%= comment.body %></p></div>
+<% break if index == 2 %>
+<% end %>
+<% end %>
+
+<% if post.comments.size > 0 %>
+	<%= link_to "共有#{post.comments.size}条评论", post_path(post), :class => "all-comment" %>
+<% end %>
 
 </div>
 <% end %>

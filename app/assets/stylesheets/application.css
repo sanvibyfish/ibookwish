@@ -210,8 +210,16 @@ width: 30px;
 margin: 0 -15px;
 padding: 10px 15px;
 background: #FAFAFA;
+border-top: 1px solid #FCFAFA;
+border-bottom: 1px solid #D9D4D4;
 }
 
+.all-comment {
+	display: block;
+padding: 12px 15px;
+text-align: center;
+color: #999;
+}
 
 #user-profile .stats {
 font-size: 15px;
