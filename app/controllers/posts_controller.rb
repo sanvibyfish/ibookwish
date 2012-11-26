@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 	DOUBAN_APIKEY = '0c4c24c38128d4df24e46e4a837a7e9d'
 	DOUBAN_SECRET = 'd66f4058142d5c92'
 	DOUBAN_ACCESS_TOKEN = '1bfe1241d8bdf5de53fa36c58a39e19a'
-	caches_action :show, :expires_in => 10.minutes
+	caches_action :show, :expires_in => 10.seconds
 
 	def new	
 		@post = Post.new
