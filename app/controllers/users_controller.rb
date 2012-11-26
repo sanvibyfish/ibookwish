@@ -3,10 +3,11 @@ class UsersController < ApplicationController
   before_filter :location, :only => [:near_me]
   before_filter :set_menu_active
   skip_before_filter :authenticate_user!, :only => [:iwant_user, :iwant_user_save]
-
-
-
   layout "coming_soon", :only => [:iwant_user, :iwant_user_save]
+  caches_action :show, :expires_in => 2.hours
+  caches_page :iwant_user, :expires_in => 10.hours
+
+
 	def show
 		@user = User.find_by(:name => params[:id])
 		@posts = Post.where(:user => @user).desc(:created_at).page(params[:page])
@@ -62,8 +63,6 @@ class UsersController < ApplicationController
     set_seo_meta(@user.name)
     render :action => "index"
   end
-
-
 
   def near_me 
     unless params[:id].blank?

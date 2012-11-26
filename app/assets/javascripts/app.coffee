@@ -10,6 +10,7 @@
 #= require masonry/jquery.infinitescroll.min
 #= require jquery.atwho
 #= require jquery.autogrow-textarea
+#= require rails-timeago
 #= require social-share-button
 #= require homeland
 #= require user

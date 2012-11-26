@@ -11,6 +11,7 @@ gem 'mongoid', '3.0.6'
 #bg work
 gem 'resque'
 gem 'resque_mailer'
+gem 'rails-timeago', '~> 2.0.0.beta1'
 
 gem "homeland", :git => "git://github.com/sanvibyfish/homeland.git"
 gem "rails_autolink", ">= 1.0.4"
@@ -52,9 +53,7 @@ gem "geocoder"
 
 #瀑布流
 gem 'masonry-rails'
-gem 'modernizr-rails'
-
-gem 'mechanize'
+# gem 'modernizr-rails'
 
 gem 'jsonpath'
 
