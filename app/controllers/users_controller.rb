@@ -6,10 +6,9 @@ class UsersController < ApplicationController
   layout "coming_soon", :only => [:iwant_user, :iwant_user_save]
   caches_action :show, :expires_in => 1.hours
   caches_page :iwant_user, :expires_in => 10.hours
-  # caches_action :near_me, :expires_in => 10.minutes
 
 	def show
-		@user = User.find_by(:name => params[:id])
+		@user = User.where(:name => params[:id]).first
 		@posts = Post.where(:user => @user).desc(:created_at).page(params[:page])
     @action_name = "show"
     set_seo_meta(@user.name)
