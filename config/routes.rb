@@ -55,6 +55,7 @@ Code4::Application.routes.draw do
       get :private
     end
   end
+
   resources :users do
     member do
       post :follow
@@ -77,6 +78,7 @@ Code4::Application.routes.draw do
     collection do
       get :get_book
       get :get_posts
+      get :feedback
     end    
     member do
       get :near_me

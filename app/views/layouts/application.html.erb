@@ -48,7 +48,7 @@
               <%= render_list :class => "nav" do |li|
             li << link_to("书单", main_app.posts_path)
             li << link_to("书友", main_app.near_me_users_path)
-            li << link_to("社区", "/bbs")
+            li << link_to("意见反馈", main_app.feedback_posts_path)
           end  %>
   <% if user_signed_in? %>
   <ul class="nav pull-right">

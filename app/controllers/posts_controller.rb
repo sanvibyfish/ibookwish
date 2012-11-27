@@ -3,6 +3,8 @@ require "open-uri"
 class PostsController < ApplicationController
 	before_filter :location, :only => [:index, :near_me, :tag]
 	before_filter :set_menu_active
+	
+	skip_before_filter :set_menu_active, :only => [:feedback]
 
 	DOUBAN_APIKEY = '0c4c24c38128d4df24e46e4a837a7e9d'
 	DOUBAN_SECRET = 'd66f4058142d5c92'
@@ -12,6 +14,10 @@ class PostsController < ApplicationController
 	def new	
 		@post = Post.new
 		set_seo_meta("借出图书")
+	end
+
+	def feedback
+		
 	end
 
 
