@@ -40,8 +40,6 @@ Code4::Application.routes.draw do
       :invitations => :invitations,
       :passwords => :passwords
   } 
-  resources :users , :constraints => {:id => /[\s\S]*/}
-
 
   resources :tags do
       collection do
