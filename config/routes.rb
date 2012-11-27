@@ -39,7 +39,9 @@ Code4::Application.routes.draw do
       :registrations => :accounts,
       :invitations => :invitations,
       :passwords => :passwords
-  } , :constraints => {:id => /[\s\S]*/}
+  } 
+  resources :users , :constraints => {:id => /[\s\S]*/}
+
 
   resources :tags do
       collection do
