@@ -16,15 +16,26 @@ class PostsController < ApplicationController
 
 
 	def get_book
+		unless params[:isbn] =~ /^[1-9]\d*$/
+			@sucess = false	
+			@message = "你输入的数据有问题，请输入例如97875404449131这样个ISBN格式"
+			respond_to do |format|
+				format.js { render :layout => false }
+			end
+			return
+		end
 		@book = JSON.parse(open("http://api.douban.com/v2/book/isbn/#{params[:isbn]}?apikey=#{DOUBAN_APIKEY}&secret=#{DOUBAN_SECRET}").read)
 		@sucess = true
 		respond_to do |format|
 			format.js { render :layout => false }
+			return
 		end
-		rescue OpenURI::HTTPError, Net::HTTPNotFound, Mechanize::ResponseCodeError
+		rescue OpenURI::HTTPError, Net::HTTPNotFound
 		@sucess = false	
+		@message = "找不到该书，请查看ISBN是否正确"
 		respond_to do |format|
 			format.js { render :layout => false }
+			return
 		end
 	end
 

@@ -5,5 +5,5 @@ $("#get_book_button").removeAttr("disabled")
 	$('#post_tag_names').val("<%= tag_name_tag(@book['tags']) %>")
 	$('#content').html("<%= j render 'content', :book => @book %>")
 <% else %>
-	alert('找不到该书，请查看ISBN是否正确')
+	alert('<%= @message  %>')
 <% end %>
