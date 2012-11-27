@@ -110,7 +110,7 @@ end
   end
 
   def to_param
-    "#{name}"
+    "#{ name }"
   end
 
   def push_following(uid)

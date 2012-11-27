@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.where(:name => params[:id]).first
+    unless @user
+      render_404
+      return
+    end
 		@posts = Post.where(:user => @user).desc(:created_at).page(params[:page])
     @action_name = "show"
     set_seo_meta(@user.name)

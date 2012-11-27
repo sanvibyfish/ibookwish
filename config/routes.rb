@@ -35,13 +35,11 @@ Code4::Application.routes.draw do
   
   root :to => 'users#iwant_user'
 
-
-
   devise_for :users,  :controllers => {
       :registrations => :accounts,
       :invitations => :invitations,
       :passwords => :passwords
-  } 
+  } , :constraints => {:id => /[\s\S]*/}
 
   resources :tags do
       collection do
