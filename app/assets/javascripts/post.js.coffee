@@ -26,7 +26,7 @@ $(document).ready ->
     $("#btn_complete").attr("disabled","true")
     if $("#realname").val().length == 0 ||  $("#phone").val().length == 0 
       $("#btn_complete").removeAttr("disabled")
-      $("#btn_complete").val("我想借")
+      $("#btn_complete").html("我想借")
       alert("请先完善真实姓名和手机号，你的联系方式会显示给对方")
       return
     $("#complete_wish_form").submit()
