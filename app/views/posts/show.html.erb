@@ -79,7 +79,7 @@
 						<% unless @post.wish_user_ids.include?(current_user.id) || @post.user.id == current_user.id || @post.state == Post::STATE[:success] || @post.complete_user? %>
 					<%= form_for(@post,:as => :post , :url => complete_wish_post_path(@post), :html => { :class => 'form-horizontal', :id => "complete_wish_form" }, :method => :post) do |f| %>
 		      <%= render "shared/error_messages", :target => @post %>
-						<a href="javascript:void(0)"  class="btn btn-success btn-large" data-disable-with ="加载中...">
+						<a href="javascript:void(0)" id="btn_complete" class="btn btn-success btn-large" >
 							我想借</a>
 					<% end %>
 					<% end %>
@@ -127,5 +127,7 @@
 
 		<%= render :partial => "book_modal" %>
 
+		<input type="hidden" id="realname" value="<%= current_user.realname %>">
+		<input type="hidden" id="phone" value="<%= current_user.phone %>">
 </div>
 

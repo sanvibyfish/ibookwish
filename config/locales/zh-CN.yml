@@ -19,6 +19,8 @@
         login: "用户名"
         discover: "常出没的地方"
         school: "学校"
+        realname: "真实姓名"
+        phone: "手机号码"
         info: "个人说明"
         email: "邮箱"
         email_public: "公开邮箱"

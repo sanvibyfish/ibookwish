@@ -13,7 +13,7 @@ class User
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email, :encrypted_password, :name, :gender
-  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles, :ilike, :discover, :info, :school
+  attr_accessible :user_name, :email, :password, :password_confirmation, :remember_me, :roles, :name, :gender, :location, :avatar, :tagline, :roles, :ilike, :discover, :info, :school, :realname, :phone
   validates_uniqueness_of :name, :email
 
   ## Recoverable
@@ -53,8 +53,9 @@ class User
   has_many :posts, :inverse_of => :user
   has_and_belongs_to_many :wish_posts, :class_name => "Post",:inverse_of => :wish_user
   has_many :complete_posts, :class_name => "Post", :inverse_of => :complete_user
-
-
+  field :realname
+  field :phone
+  validates :phone, :numericality => { :only_integer => true }, :allow_blank => true
   ##Invitation Token
   field :invitation_token, :type => String
   field :invitation_sent_at, :type => DateTime
