@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   before_filter :set_menu_active
   skip_before_filter :authenticate_user!, :only => [:iwant_user, :iwant_user_save]
   layout "coming_soon", :only => [:iwant_user, :iwant_user_save]
-  caches_action :show, :expires_in => 1.hours
-  caches_page :iwant_user, :expires_in => 10.hours
 
 	def show
 		@user = User.where(:name => params[:id]).first
