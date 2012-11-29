@@ -192,6 +192,9 @@ display: table-cell;
 max-width: 190px;
 height: 30px;
 vertical-align: middle;
+table-layout: fixed;
+word-wrap:break-word;
+word-break:break-all;
 }
 
 .attribution a {
@@ -212,6 +215,7 @@ padding: 10px 15px;
 background: #FAFAFA;
 border-top: 1px solid #FCFAFA;
 border-bottom: 1px solid #D9D4D4;
+
 }
 
 .all-comment {
