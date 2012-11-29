@@ -1,0 +1,24 @@
+	<% users.each  do  |user| %>
+	<span  class= "<%=cycle('left','right') %>">
+	<div class="usercard">
+		<div class="avatar">
+			<%= user_avatar_tag(user, :style => "48x48") %>
+		</div>
+		<div class="name">
+			<%= link_to user.name, user_path(user) %>
+	<div class="action"><%= user_follow_tag user %></div>
+		</div>
+		<div class="stats">
+				<%= link_to "#{user.posts.count} 分享", user_path(user) %> 
+			<span>/</span>
+				<%= link_to "#{user.following.count} 关注", following_user_path(user) %>
+			<span>/</span>
+				<%= link_to "#{user.followers.count} 粉丝", followers_user_path(user) %>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	</span>
+	<% end %>
+	<div class="clearfix"></div>
+	<%= paginate users %>
+

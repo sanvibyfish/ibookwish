@@ -17,7 +17,27 @@
 	}
 
 	.infos {
-
+		.title {
+			padding-top:7px;
+			h1 {
+				font-size: 19px;
+				margin: 0 0 5px 58px;
+				font-weight: bold;
+				line-height: 1.1;
+			}
+		}
+		.byline {
+			margin-left: 60px;
+			font-size: 13px;
+			font-weight: normal;
+			line-height: 1.4;
+			color: #999;
+			a {
+				margin-left: 5px;
+				font-size: 1em;
+				font-weight: bold;
+			}
+		}
 		img {
 			margin-top: 5px;
 		}
@@ -30,7 +50,6 @@
 		}
 		position: relative;
 		margin-bottom: 10px;
-		border-bottom: 1px solid #DDD;
 		padding: 0 10px 5px 10px;
 
 		.info {
@@ -55,7 +74,7 @@
 	}
 
 	.content {
-		padding: 20px 30px;
+		 padding: 0px 10px 10px 10px;
 
 		.info {
 			margin-top:20px;
@@ -190,12 +209,11 @@
 .join-users {
 	.user {
     	display: inline-block;
-    	margin-right: 10px;
+    	margin: 5px;
 		form {
 			margin-top: 5px;
 		}
 	}
 }
-
 
 

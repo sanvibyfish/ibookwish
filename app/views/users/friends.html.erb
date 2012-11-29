@@ -1,29 +1,4 @@
 <%= render "friends_node_info" %>
 <div class="friends">
-<% @users.each do |user| %>
-<% unless user.id == current_user.id %>
-<div class="user bookdate-box span3">
-	<%= user_avatar_tag(user, :style => "100x100") %>
-
-	<div class="info">
-	<div class="name"><%= user.name %></div>
-	<div class="bio"><%= user_tagline_tag user %></div>
-	<p class="action">
-	<div class="follow"><%= user_follow_tag(user) %></div>
-
-	</p>
-	</div>
-	<div class="clearfix"></div>
-	<div class="params">
-	<%= link_to "#{user.wish_posts.count} 参与",join_posts_user_path(user) %> <span class="state">/</span>
-	<%= link_to "#{user.complete_posts.count} 完成",complete_posts_user_path(user) %><span class="state">/</span>
-	<%= link_to "#{user.posts.count} 分享",user_path(user) %><span class="state">/</span>
-	<%= link_to "#{user.followers.count} 粉丝",followers_user_path(user) %><span class="state">/</span>
-	<%= link_to "#{user.following.count} 关注",following_user_path(user) %>
-	</div>
+	<%= render "user", :users => @users %>
 </div>
-<% end %>
-<% end %>
-</div>
-<div class="clearfix"></div>
-<%= paginate @users %>

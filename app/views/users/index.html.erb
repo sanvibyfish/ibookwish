@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="span3 bookdate-box">
-		<%= render "profile", :user => @user %>
-	</div>
+    <div class="span3 bookdate-box">
+        <%= render "profile", :user => @user %>
+    </div>
 
-	<div class="span8">
+    <div class="span8">
 <ul class="nav nav-pills" id="tab" >
   <li <%= " class=active" if action_name == "show"  %>>
-  	<%= link_to "#{@user.posts.count}分享",user_path(@user) %>
+    <%= link_to "#{@user.posts.count}分享",user_path(@user) %>
   </li>
   <li <%= " class=active" if action_name == "join_posts"  %>>
     <%= link_to "#{@user.wish_posts.count}参与",join_posts_user_path(@user) %>
@@ -16,21 +16,21 @@
   </li>
 
   <li <%= " class=active" if action_name == "following"  %>>
-  	<%= link_to "#{@user.following.count}关注",following_user_path(@user) %>
+    <%= link_to "#{@user.following.count}关注",following_user_path(@user) %>
   </li>
   <li <%= " class=active" if action_name == "followers"  %>>
-  	<%= link_to "#{@user.followers.count}粉丝",followers_user_path(@user) %></li>
+    <%= link_to "#{@user.followers.count}粉丝",followers_user_path(@user) %></li>
 </ul>
-	<div id="user_content">
-		<% if action_name == "show" ||  action_name == "join_posts"  || action_name == "complete_posts"%>
-		<%= render_cell :posts, :index, 
-    :current_tag => @current_tag, :posts => @posts, :action_name => @action_name %>	
+    <div id="user_content">
+        <% if action_name == "show" ||  action_name == "join_posts"  || action_name == "complete_posts"%>
+        <%= render_cell :posts, :index, 
+    :current_tag => @current_tag, :posts => @posts, :action_name => @action_name %> 
     <% elsif action_name == "followers" %>
-    	<%= render "followers",  :followers => @users%>
+        <%= render "followers",  :followers => @users%>
     <% else %>
       <%= render "followers",  :followers => @users %>
     <% end %>
-	</div>
-	</div>
+    </div>
+    </div>
 
 </div>

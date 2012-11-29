@@ -11,12 +11,12 @@
 		<% else @post.wish_users? %>
 			<% @post.wish_users.each do |user| %>
 		<div class="user">
-				<%= user_avatar_tag(user, :style => "48x48") %>	
+				
 				<% if @post.user.id == current_user.id %>
-					<p><%= user.realname %></p>
-					<p><%= user.phone %></p>
+					<%= user_avatar_custom_tag(user, :style => "48x48", :title => "#{user.realname}<br/>#{user.phone}") %>
 					<%= render "join_form", :post => @post, :user => user %>
 				<% else %>
+					<%= user_avatar_tag(user, :style => "48x48") %>	
 					<div><p class="muted">已参与</p></div>
 				<% end %>
 		</div>

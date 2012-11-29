@@ -1,26 +1,4 @@
 <div class="span8">
-	<% followers.each  do  |f| %>
-	<span  class= "<%=cycle('left','right') %>">
-	<div class="usercard">
-		<div class="avatar">
-			<%= user_avatar_tag(f, :style => "48x48") %>
-		</div>
-		<div class="name">
-			<%= link_to f.name, user_path(f) %>
-	<div class="action"><%= user_follow_tag f %></div>
-		</div>
-		<div class="stats">
-				<%= link_to "#{f.posts.count} 分享", user_path(f) %> 
-			<span>/</span>
-				<%= link_to "#{f.following.count} 关注", following_user_path(f) %>
-			<span>/</span>
-				<%= link_to "#{f.followers.count} 粉丝", followers_user_path(f) %>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-	</span>
-	<% end %>
-	<div class="clearfix"></div>
-	<%= paginate followers %>
+	<%= render "user", :users => followers %>
 </div>
 

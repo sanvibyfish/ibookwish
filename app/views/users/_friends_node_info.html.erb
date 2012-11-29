@@ -1,5 +1,5 @@
 <div class="friend-node">
-<div class="bookdate-box span12">
+<div class="bookdate-box height20">
 	<span class="pull-left <%= 'active' if action_name == "near_me" %>">
 		<%= link_to   raw("<i class='icon-map-marker'></i>离我最近"), near_me_users_path %>
 		<a data-toggle="modal" href="#myModal">(<%= session[:location].name %>)</a>

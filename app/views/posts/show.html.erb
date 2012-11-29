@@ -4,22 +4,22 @@
 		<div class="container-fluid bookdate-box ">
 			<div class="post-detail">
 				<div class="infos">
-					<div class="pull-right">
+					<div class="pull-left">
 						<%= user_avatar_tag(@post.user, :style => "48x48") %>
 					</div>
-					<div class="clearfix"></div>
-					<div class="info leader">
-						<%= link_to @post.user.name, user_path(@post.user) %><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布
-						    •
-						<%= @post.hits %>浏览</div>
+					<div class="title">
+						<h1><%= @post.title %></h1>
+					</div>
+					<div class="byline">
+						<span class="byuser">来自<%= link_to @post.user.name, user_path(@post.user) %></span>
+						<span class="bytime"><%= distance_of_time_in_words(@post.created_at,Time.now) %>前发布</span>
+					</div>
 				</div>
 				<div class="content">
 						<div class="image">
-							<a href="#betaModal" data-toggle="modal"><%= image_tag @post.image , :width => "360", :height => "360" %></a>
-			
-							<div class="social_share">
-						<span class="share-text">分享:</span>	<%= social_share_button_tag(@post.title) %>
-				</div>
+							<a href="#betaModal" data-toggle="modal">
+								<%= image_clip @post.image , :style => "360x360"%>
+							</a>
 	</div>
 				<div class="info">
 
@@ -70,6 +70,11 @@
 					</td>
 				</tr>
 				<% end %>
+				<tr>
+					<td><span
+						 class="label label-inverse">分享</span></td>
+					<td><%= social_share_button_tag(@post.title) %></td>
+				</tr>
 						</tbody>
 					</table>
 				</div>
