@@ -59,6 +59,11 @@ Code4::Application.routes.draw do
   end
   match 'users/near_me' => 'users#near_me'
   match 'users/:id' => 'users#show', :constraints  => { :id => /[0-z\.]+/ }
+  match 'users/:id/join_posts' => 'users#join_posts', :constraints  => { :id => /[0-z\.]+/ }
+  match 'users/:id/complete_posts' => 'users#complete_posts', :constraints  => { :id => /[0-z\.]+/ }
+  match 'users/:id/following' => 'users#following', :constraints  => { :id => /[0-z\.]+/ }
+  match 'users/:id/followers' => 'users#followers', :constraints  => { :id => /[0-z\.]+/ }
+  
   resources :users do
     member do
       post :follow
