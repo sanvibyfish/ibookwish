@@ -41,6 +41,8 @@ Code4::Application.routes.draw do
       :passwords => :passwords
   } 
 
+
+
   resources :tags do
       collection do
         get :autocomplete
@@ -55,7 +57,8 @@ Code4::Application.routes.draw do
       get :private
     end
   end
-
+  match 'users/near_me' => 'users#near_me'
+  match 'users/:id' => 'users#show', :constraints  => { :id => /[0-z\.]+/ }
   resources :users do
     member do
       post :follow
