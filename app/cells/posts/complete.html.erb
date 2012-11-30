@@ -2,7 +2,13 @@
 <div class="bookdate-box">
 		<h4>我会借给</h4>
 		<div class="accpt-users">
-			<div class="image"><%= user_avatar_tag(@post.complete_user,:style => "48x48") %></div>
+			<div class="image">
+				<% if current_user.id == @post.user.id %>					
+				<%= user_avatar_custom_tag(@post.complete_user, :style => "48x48", :title => "#{@post.complete_user.realname}<br/>#{@post.complete_user.phone}") %>
+				<% else  %>
+					<%= user_avatar_tag(@post.complete_user,:style => "48x48") %>
+				<% end %>
+			</div>
 			<div class="name"><%= @post.complete_user.name %>
 
 		<div class="accpt-action">
