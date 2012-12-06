@@ -1,3 +1,4 @@
+#coding:utf-8
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -64,7 +65,7 @@ class User
   field :invited_by_id, :type => Integer
   field :invited_by_type
   validates_length_of :invitation_token, maximum: 60
-
+  validates_format_of :name, :with => /\A([\w\u4e00-\u9fa5])+\z/i, :message => "只支持中文，数字，字母"
 
   def self.to_csv()
    require 'csv'
