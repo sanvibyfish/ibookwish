@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+<html lang="en" >
   <head>
     <%= render_page_title %>
     <meta charset="utf-8">
@@ -29,6 +29,7 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
   </head>
   <body>
     <script type="text/javascript">
@@ -52,7 +53,7 @@
           end  %>
   <% if user_signed_in? %>
   <ul class="nav pull-right">
-    <li style="margin-top:10px;"><wb:follow-button uid="3064311803" type="red_2" width="136" height="24" ></wb:follow-button></li>
+    <li style="margin-top:10px;">    <script type="text/javascript">document.write(' <iframe allowtransparency="" border="0" frameborder="0" height="22" marginheight="0" marginwidth="0" scrolling="no" src="http://widget.weibo.com/relationship/followbutton.php?width=200&amp;height=22&amp;uid=3064311803&amp;style=5&amp;btn=red&amp;dpc=1" style="width: 64px; height: 22px;" width="200"></iframe>')</script></li>
     <li>
       <%= notification_tag main_app.notifications_path %>
     </li>
@@ -124,7 +125,6 @@
   })();
 
 </script>
-<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 
   </body>
 </html>
