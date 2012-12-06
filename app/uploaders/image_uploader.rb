@@ -37,7 +37,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     if super.present?
       model.uploader_secure_token ||= SecureRandom.uuid.gsub("-","")
       Rails.logger.debug("(BaseUploader.filename) #{model.uploader_secure_token}")
-      "#{model.uploader_secure_token}.#{file.extension.downcase}"
+      "#{model.uploader_secure_token}.#{file.path.split('.').last}"
     end
   end
 end

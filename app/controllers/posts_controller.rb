@@ -89,14 +89,6 @@ class PostsController < ApplicationController
 
 
 	def create 
-		# unless params[:lat].blank?
-		# 	params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])]
-		# 	doc = JSON.parse(open("http://ditu.google.cn/maps/geo?output=json&hl=zh_cn&q=#{params[:lat]},#{params[:lng]}").read)
-		# 	address_path = JsonPath.new('$..address')
-		# 	location_path = JsonPath.new('$..LocalityName')
-		# 	params[:post][:address] = address_path.on(doc).first
-		# 	params[:post][:location] = Location.where(name: location_path.on(doc).first[0,2]).first
-		# end
 		if params[:lat].blank?
 			@post = Post.new(params[:post])
 			@post.errors[:coordinates] = '你好像忘记标点了哦~'

@@ -6,6 +6,18 @@ class Cpanel::UsersController < Cpanel::ApplicationController
     
   end
 
+  def upload_avatar
+    @users = User.all
+    @users.each do |user|
+       gravatar_id = Digest::MD5.hexdigest(user.email.downcase) 
+        if user.avatar_url == 'http://image.ibookwish.com/blank.png'
+          user.remote_avatar_url = "http://www.gravatar.com/avatar/#{gravatar_id}.jpeg"
+          user.save
+        end
+    end
+    
+  end
+
   def invite
     @users = User.where(:name => nil)
     @users.each do |user| 

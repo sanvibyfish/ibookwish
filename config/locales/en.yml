@@ -54,3 +54,4 @@
         less_than_or_equal_to: "should be less than or equal to %{count}"
         odd: "should be odd number."
         even: "should be even number."
+        extension_white_list_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"

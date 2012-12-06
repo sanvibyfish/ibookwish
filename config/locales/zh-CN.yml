@@ -85,6 +85,7 @@
         odd: "必须为单数"
         even: "必须为双数"
         record_invalid: "校验失败: %{errors}"
+        extension_white_list_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
         taken:
           已占用
         document_not_found:

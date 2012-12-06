@@ -17,6 +17,7 @@ Code4::Application.routes.draw do
     resources :users do
       collection do
         get :invite
+        get :upload_avatar
       end
     end
     resources :notifications 

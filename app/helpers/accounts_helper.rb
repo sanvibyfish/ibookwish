@@ -8,7 +8,14 @@ module AccountsHelper
     end
   end
 
+  require "digest/md5" 
+  def gravatar(email) 
+  	gravatar_id = Digest::MD5.hexdigest(email.downcase) 
+  	"http://www.gravatar.com/avatar/#{gravatar_id}"
+  end
+
   def user_avatar_custom_tag(user, options = {})
+
 		options[:style] ||= :small
 		style = case options[:style].to_s
 		when "small" then "30x30"
@@ -18,7 +25,7 @@ module AccountsHelper
 		when "48x48" then "48x48"
 		else options[:style].to_s
 		end
-		
+
 		link_to image_tag(user.avatar.url(style), :rel => "twipsy", "data-placement" => "bottom" ,
 			"data-original-title" => "#{options[:title]}",
 		 :class => "img-rounded #{options[:image_css]}"), user_path(user),:class => options[:class]

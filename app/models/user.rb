@@ -80,6 +80,13 @@ class User
 end
 
 
+  before_create  :get_gavatar
+  def get_gavatar
+    gravatar_id = Digest::MD5.hexdigest(self.email.downcase) 
+    self.remote_avatar_url = "http://www.gravatar.com/avatar/#{gravatar_id}.jpeg"
+  end
+
+
   def read_notifications(notifications)
     unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
     if unread_ids.any?
