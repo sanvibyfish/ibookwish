@@ -172,6 +172,9 @@ class PostsController < ApplicationController
 
 	end
 
+	def about
+		
+	end
 
 
 	protected

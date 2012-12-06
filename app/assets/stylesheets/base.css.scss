@@ -5,4 +5,17 @@
 }
 
 .no_result { text-align:center; color:#999; }
+.links {
+	a{
+		margin-left : 5px;
+		color: #333;
+		&:hover {
+			color: #08C;
+			text-decoration: none;
+		}
+	}
+}
+.backwhite {
+	background-color: white;
+}
 

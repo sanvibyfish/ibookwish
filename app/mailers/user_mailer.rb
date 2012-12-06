@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def invitation_instructions(record)
      @resource = record
-     send_mail(:to => @resource.email, :subject => "[书愿网]邀请你注册", :content => render( :invitation_instructions))
+     send_mail(:to => @resource.email, :subject => "[书愿网]邀请你参加内测", :content => render( :invitation_instructions))
   end
 
   def remind_private(notification,mail,subject,avatar, body, from_user_name, created_at)

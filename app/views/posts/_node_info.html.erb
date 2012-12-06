@@ -1,11 +1,22 @@
-
-<ul class="sorts left-band">
-	<li style="font-size:18px;" <%= " class=active" if action_name == "index"  %>><%= link_to(raw("<i class='icon-upload'></i>最新上传"), root_path) %></li>/
-	<li style="font-size:18px;"  <%= " class=active" if action_name == "near_me"  %> ><%= link_to(raw("<i class='icon-map-marker'></i>离我最近"), near_me_post_path(session[:location].name)) %>
-      <a data-toggle="modal" href="#myModal">(<%= session[:location].name %>)</a>
-      </li>	
+<div class ="thumbnail backwhite node-info">
+<ul class="nav nav-pills " id="tab" >
+  <li style="font-size:18px;" <%= " class=active" if action_name == "index"  %>><%= link_to(raw("<i class='icon-upload'></i>最新上传"), root_path) %></li>
+  <li style="font-size:18px;"  <%= " class=active" if action_name == "near_me"  %> >
+    <%= link_to(raw("<i class='icon-map-marker'></i>离我最近"), near_me_post_path(session[:location].name)) %>
+      </li> 
+  <li class="pull-right" style="font-size:18px;">
+      <a data-toggle="modal" href="#myModal"><%= session[:location].name %></a>
+  </li>
 </ul>
 
-<ul class="sorts right-band">
-	<li style="font-size:18px;"><%= link_to(raw("<i class='icon-book'></i>我要借出"), new_post_path) %></li>
+<ul class="nav nav-pills">
+    <li <%= " class=active" if params[:id].blank?  %>><%= link_to "所有", posts_path %></li>
+    <li <%= " class=active" if params[:id] == "互联网"  %>><%= link_to "互联网", "/posts/互联网/tag"%></li>
+    <li <%= " class=active" if params[:id] == "管理"  %>><%= link_to "管理", "/posts/管理/tag"%></li>
+    <li <%= " class=active" if params[:id] == "小说"  %>><%= link_to "小说", "/posts/小说/tag"%></li>
+    <li <%= " class=active" if params[:id] == "经济学"  %>><%= link_to "经济学", "/posts/经济学/tag"%></li>
+    <li class="pull-right"><%= link_to "更多", tags_path %></li>
 </ul>
+
+
+</div>

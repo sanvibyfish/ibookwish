@@ -1,10 +1,10 @@
-<div class="bookdate-box width-full" id="post_node_info">
-      <%= render "node_info" %>
-</div>
+<div class="span12">
+
+<%= render "node_info" %>
 
 <%= render_cell :posts, :index, 
     :current_tag => @current_tag, :posts => @posts, :action_name => action_name %>
-
+</div>
 
 <%= render "location", :locations => @locations %>
 

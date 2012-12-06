@@ -7,6 +7,10 @@ class TagsController < ApplicationController
 		end
 	end
 
+  def index
+    @tags = Tag.all
+  end
+
 	  # GET /posts/1
   # GET /posts/1.json
   def show

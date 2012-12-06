@@ -10,7 +10,7 @@
 	<i class="icon-tags"></i>
 
 	<% post.tags.each do |tag|  %>
-		<%= link_to(raw("<span class='badge badge-info'>#{tag.name}</span>"), tag_post_path(tag)) %> 
+		<%= link_to tag.name, tag_post_path(tag) %> 
 	<% end %>
 </p>
 <p class="muted dream"><%= post.dream %></p>

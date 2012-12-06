@@ -51,6 +51,7 @@
             li << link_to("书友", main_app.near_me_users_path)
             li << link_to("意见反馈", main_app.feedback_posts_path)
           end  %>
+          <%= link_to("借出",new_post_path, :class => "btn btn-primary") %>
   <% if user_signed_in? %>
   <ul class="nav pull-right">
     <li style="margin-top:10px;">    <script type="text/javascript">document.write(' <iframe allowtransparency="" border="0" frameborder="0" height="22" marginheight="0" marginwidth="0" scrolling="no" src="http://widget.weibo.com/relationship/followbutton.php?width=200&amp;height=22&amp;uid=3064311803&amp;style=5&amp;btn=red&amp;dpc=1" style="width: 64px; height: 22px;" width="200"></iframe>')</script></li>
@@ -78,30 +79,28 @@
     </div>
 
     <div class="container">
-      <div class="row " id="top">
+      <div  id="top">
         <% if controller_name == "topics" %>
-       <div class="span12 ">
+
         <ul class="breadcrumb menu clearfix">
           <li class="first last active"><a href="/">首页</a></li>
           <%= yield :breadcrumb %>
         </ul>
         
-      </div>
+
       <% end %>
-        <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
           <p id="back-top" >
   <a href="#top"><span></span>回到顶部</a>
 </p>
-        </div>
       </div><!--/row-->
       <footer>
         <p class="links">
-          <a href="/bbs/topics/node_5087b6bab372956268000008">公告</a>|
-      <a href="/bbs/topics/node_5087b6bab372956268000009">意见及反馈</a>
-      | <a href="http://blog.ibookwish.com">博客</a>
-      | 粤ICP备12078650号
+          © 2012－2012<a href="http://www.ibookwish.com/">书愿网 ibookwish.com</a>
+       <a href="http://blog.ibookwish.com">博客</a>
+       <a href="/about">关于</a>
+       粤ICP备12078650号
       <span class="pull-right">
         Handmade by <a href="/users/小三">小三</a>
       </span>
