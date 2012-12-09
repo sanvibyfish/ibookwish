@@ -149,3 +149,5 @@
 !! Invalid request
 !! Invalid request
 !! Invalid request
+2012-11-22 10:54:01 [ERROR] [Faye::RackAdapter] Received request with no message: "curl -X GET 'http://119.147.23.192:4000/faye'"
+>> Waiting for 4 connection(s) to finish, can take up to 120 sec, CTRL+C to stop now

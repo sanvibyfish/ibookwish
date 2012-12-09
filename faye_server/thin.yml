@@ -1,13 +1,13 @@
 ---
+chdir: /opt/ruby_apps/bookdate-website/faye_server
+environment: development
 address: 0.0.0.0
-pid: tmp/pids/thin.pid
-timeout: 120
 port: 4000
+timeout: 30
 log: log/thin.log
-max_conns: 20480
+pid: tmp/pids/thin.pid
+max_conns: 1024
+max_persistent_conns: 100
 require: []
-
-max_persistent_conns: 14048
-environment: production
-servers: 1
+wait: 30
 daemonize: true

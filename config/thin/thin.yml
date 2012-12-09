@@ -1,0 +1,13 @@
+---
+chdir: /opt/ruby_apps/bookdate-website
+environment: production
+timeout: 30
+log: log/thin.log
+pid: tmp/pids/thin.pid
+max_conns: 20480
+max_persistent_conns: 4048 
+require: []
+wait: 30
+servers: 1 
+socket: /tmp/thin.sock
+daemonize: true

@@ -5,5 +5,6 @@
       <div id="posts-container">
           <%= render :partial => "post", :posts => @posts %>
     </div>
+    <div class="clearfix"></div>
      	<%= paginate @posts,:params => {:controller => 'posts', :action => 'get_posts', :action_name => @action_name}  %>
 </div>
