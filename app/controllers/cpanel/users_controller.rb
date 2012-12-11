@@ -33,7 +33,7 @@ class Cpanel::UsersController < Cpanel::ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json
-      format.csv { send_data @users.to_csv}
+      format.csv { send_data User.all.to_csv}
     end
   end
 
