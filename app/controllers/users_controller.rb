@@ -5,6 +5,26 @@ class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:iwant_user, :iwant_user_save]
   layout "coming_soon", :only => [:iwant_user, :iwant_user_save]
 
+  def location_create
+    current_user.coordinates = [Float(params[:lat]),Float(params[:lng])] 
+    current_user.address = params[:address]
+    current_user.location = Location.where(name: params[:city][0,2]).first
+    @success = true
+    if current_user.location.blank?
+      @message = '暂时不支持该城市！更多城市会在公测后开放' 
+      @success = false
+    end
+    if @success
+      current_user.save
+      @post = Post.new
+    end
+
+    respond_to do |format|
+      format.js { render :layout => false }
+      return
+    end
+  end
+
 	def show
 		@user = User.where(:name => params[:id]).first
     unless @user

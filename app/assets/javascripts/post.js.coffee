@@ -1,4 +1,4 @@
-Post = 
+window.Post = 
     # 回复
   reply : (name) ->
     reply_body = $("#comment_body")
@@ -15,7 +15,15 @@ Post =
     map.centerAndZoom(point,15)
     marker1 = new BMap.Marker(point)
     map.addOverlay(marker1)
-
+  get_book: (el)->
+    $.ajax
+      url: "/posts/get_book"
+      type: "GET"
+      data: {isbn: el.val()}
+  get_book_click: (el) ->
+      $("#get_book_button").html("获取中...")
+      $("#get_book_button").attr("disabled","disabled")
+      Post.get_book($("#post_isbn"))
 
 $(document).ready ->
   $(".piece .rt").click (el)->

@@ -38,11 +38,13 @@ Code4::Application.configure do
   config.delivery_method = :smtp  
 
 
-  config.action_mailer.smtp_settings = {
-    :address => "mail.icancontact.com",
-    :port => "25",
-    :domain => "icancontact.com",
-    :enable_starttls_auto => false
+ config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'info@ibookwish.com',
+    :password             =>  'air20dream',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
 
   config.action_mailer.default_url_options = { :host => 'www.ibookwish.com' }

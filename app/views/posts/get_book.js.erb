@@ -1,9 +1,7 @@
-$("#get_book_button").html("获取")
-$("#get_book_button").removeAttr("disabled")
 <% if @sucess %>
-	$('#share_book').show()
-	$('#post_tag_names').val("<%= tag_name_tag(@book['tags']) %>")
-	$('#content').html("<%= j render 'content', :book => @book %>")
+	$('#push_window').html("<%= j render 'posts/form', :book => @book, :step => 2, :post => @post %>")
 <% else %>
-	alert('<%= @message  %>')
+	$("#get_book_button").html("下一步")
+	$("#get_book_button").removeAttr("disabled")
+	APP.error("#step-error",'<%= @message  %>')
 <% end %>

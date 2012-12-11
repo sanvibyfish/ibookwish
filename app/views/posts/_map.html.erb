@@ -1,0 +1,31 @@
+<div class="span6">
+<script type="text/javascript">
+$(document).ready(function() {
+  var script = document.createElement("script");
+  script.src = "http://api.map.baidu.com/api?v=1.3&callback=Map.init";
+  document.body.appendChild(script);
+  });
+</script>
+<div class="alert alert-block">
+ 首次借出图书需要进行标注
+</div>
+<div id="map-error">
+</div>
+
+<div>
+  <%= text_field_tag  "post_address_search", nil, :placeholder => "请输入你的大致位置", :style => "width: 95%;" %>
+
+</div>
+<div>
+  <div id="map"></div>
+  <%= link_to "下一步", "#", :class => "btn btn-primary pull-right",  :id => "address_ok",
+  :rel => "tooltip",
+  :title => "输入完地址后点击进行标点",
+  :onclick => "javascript: Map.click();"%>
+  <%= hidden_field_tag 'lat'%>
+<%= hidden_field_tag 'lng' %>
+<%= hidden_field_tag 'address' %>
+<%= hidden_field_tag 'city' %>
+</div>
+
+</div>

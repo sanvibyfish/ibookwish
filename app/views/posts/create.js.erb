@@ -1,0 +1,7 @@
+<% if @sucess %>
+	$('#push_window').html("<%= j render 'posts/form', :step => 3, :post => @post %>")
+<% else %>
+	$("#save_post_button").html("下一步")
+	$("#save_post_button").removeAttr("disabled")
+	APP.error("#step-error",'<%= @message  %>')
+<% end %>

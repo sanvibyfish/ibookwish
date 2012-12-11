@@ -71,6 +71,7 @@ Code4::Application.routes.draw do
       get :near_me
     end
     collection do
+      post :location_create
       get :near_me
       get :iwant_user
       post :iwant_user_save

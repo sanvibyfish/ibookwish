@@ -1,0 +1,7 @@
+<% if @success %>
+	$('#push_window').html("<%= j render 'posts/form', :post => @post, :step => 1 %>")
+<% else %>
+	$('#address_ok').html("下一步")
+	$("#address_ok").removeAttr("disabled")
+	APP.error("#map-error", "<%= @message %>")
+<% end %>

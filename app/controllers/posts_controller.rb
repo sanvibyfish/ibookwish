@@ -12,7 +12,9 @@ class PostsController < ApplicationController
 
 	def new	
 		@post = Post.new
+		@step = 1
 		set_seo_meta("借出图书")
+		render :layout => false
 	end
 
 	def feedback
@@ -30,6 +32,8 @@ class PostsController < ApplicationController
 			return
 		end
 		@book = JSON.parse(open("http://api.douban.com/v2/book/isbn/#{params[:isbn]}?apikey=#{DOUBAN_APIKEY}&secret=#{DOUBAN_SECRET}").read)
+		@post = Post.new
+		@book["isbn"] = params[:isbn]
 		@sucess = true
 		respond_to do |format|
 			format.js { render :layout => false }
@@ -37,6 +41,7 @@ class PostsController < ApplicationController
 		end
 		rescue OpenURI::HTTPError, Net::HTTPNotFound
 		@sucess = false	
+
 		@message = "找不到该书，请查看ISBN是否正确"
 		respond_to do |format|
 			format.js { render :layout => false }
@@ -89,28 +94,21 @@ class PostsController < ApplicationController
 
 
 	def create 
-		if params[:lat].blank?
-			@post = Post.new(params[:post])
-			@post.errors[:coordinates] = '你好像忘记标点了哦~'
-			render :action => :new 
-			return
-		end
-		params[:post][:coordinates] = [Float(params[:lat]),Float(params[:lng])] 
-		params[:post][:address] = params[:address]
-		params[:post][:location] = Location.where(name: params[:city][0,2]).first
+		params[:post][:coordinates] = current_user.coordinates
+		params[:post][:address] = current_user.address
+		params[:post][:location] = current_user.location
 		@post = Post.new(params[:post])
-		if @post.location.blank?
-			@post.errors[:location] = '暂时不支持该城市！更多城市会在公测后开放'
-			render :action => :new 
-			return
-		end
 		@post.remote_image_url = params[:post][:image]
 		@post.user = current_user
-		if @post.save
-			redirect_to @post, notice: '操作成功.' 
+		if  @post.save
+			@sucess = true
 		else
-			render :action => :new ,alert: '你输入的数据有问题'
+			@sucess = false
 		end
+	    respond_to do |format|
+	      format.js { render :layout => false }
+	      return
+	    end
 	end
 
 

@@ -11,13 +11,14 @@
 #= require jquery.atwho
 #= require jquery.autogrow-textarea
 #= require rails-timeago
+#= require fancybox
 #= require social-share-button
 #= require homeland
 #= require user
 #= require post
 #= require comment
 #= require map
-APP =
+window.APP =
   alert : (msg,to) ->
     $(".alert").remove()
     $(to).before("<div class='alert'><a class='close' href='#' data-dismiss='alert'>X</a>#{msg}</div>")
@@ -26,17 +27,18 @@ APP =
   notice : (msg,to) ->
     $(".alert").remove()
     $(to).before("<div class='alert alert-success'><a class='close' data-dismiss='alert' href='#'>X</a>#{msg}</div>")
-    
+  
+  error: (el,msg) ->
+    error =  '<div class="alert alert-error" >'
+    error += ' <button type="button" class="close" data-dismiss="alert">×</button>'
+    error += "#{msg}"
+    error += '</div>'
+    $(el).html(error)  
   # 开一个新页面
   openUrl : (url) ->
     window.open(url)
 
-  #获取图书信息
-  get_book: (el)->
-    $.ajax
-      url: "/posts/get_book"
-      type: "GET"
-      data: {isbn: el.val()}
+
 
     # 绑定 @ 回复功能
   atReplyable : (el, names) ->
@@ -66,35 +68,13 @@ $(document).ready ->
     $('.dropdown-toggle').dropdown()
     
     
+    $("#push_button").fancybox()
+    
+
     $("#post_submit").click ->
       $(this).val("提交中...")
       $(this).attr("disabled","disabled")
       $("#new_post").submit()
-
-    $("#post_isbn").keyup ->  
-        if $(this).val().length > 0
-          $("#get_book_button").removeAttr("disabled")
-        else
-          $("#get_book_button").attr("disabled","true")
-      
-    $("#post_isbn").change ->  
-        if $(this).val().length > 0
-          $("#get_book_button").removeAttr("disabled")
-        else
-          $("#get_book_button").attr("disabled","true")
-
-     $("#post_address_search").keyup ->  
-        if $(this).val().length > 0
-          $("#address_ok").removeAttr("disabled")
-        else
-          $("#address_ok").attr("disabled","true")
-      
-    $("#post_address_search").change ->  
-        if $(this).val().length > 0
-          $("#address_ok").removeAttr("disabled")
-        else
-          $("#address_ok").attr("disabled","true")
-
               
 
     $("#back-top").hide()
@@ -144,20 +124,8 @@ $(document).ready ->
           $newElems.animate({ opacity: 1 })
           $container.append($newElems).masonry('reload')
 
-
-
-    $("#get_book_button").click () ->
-      $(this).html("获取中...")
-      $(this).attr("disabled","disabled")
-      APP.get_book($("#post_isbn"))
-
-
     $('#myModal').hide()
     $("textarea").autogrow()
-
-
-  
-
 
     $("#post_tags").tagit
         tagSource: (search, showChoices)->

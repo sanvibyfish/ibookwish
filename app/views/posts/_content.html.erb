@@ -1,9 +1,5 @@
-<div class="row">
-	<div class="span1">
-		<%= image_tag(book["image"]) %>
-	</div>
-	<div class="span3">
-	
+	<div class="image"> <%= image_tag(book["image"]) %></div>
+	<div class="detail">
 		<div><small>书名:<%= book["title"] %></small></div>
 		<div><small>作者:<%= book["author"] %></small></div>
 		<div><small>出版社:<%= book["publisher"] %></small></div>
@@ -14,5 +10,6 @@
 		<%= hidden_field_tag "post[price]", book["price"] %>
 		<%= hidden_field_tag "post[image]", book["images"]["large"] %>
 		<%= hidden_field_tag "post[description]", book["summary"] %>
+		<%= hidden_field_tag "post[isbn]", book["isbn"] %>
 	</div>
-</div>
+

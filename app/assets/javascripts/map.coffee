@@ -1,18 +1,17 @@
-Map = 
+map = null
+window.Map = 
 	bindAutoComplete:(map) ->
 		ac = new BMap.Autocomplete
 			"input" : "post_address_search"
 			"location" : map
-$(document).ready ->
-	if $("#map").length > 0
-		map = new BMap.Map("map")
-		point = new BMap.Point(116.3964,39.9093)
-		map.centerAndZoom(point,15)
-		map.enableScrollWheelZoom()
-		#bind auto complete
-		Map.bindAutoComplete(map)
-
-		$('#address_ok').click ->
+	init: () ->
+			map = new BMap.Map("map")
+			point = new BMap.Point(116.3964,39.9093)
+			map.centerAndZoom(point,15)
+			map.enableScrollWheelZoom()
+			#bind auto complete
+			Map.bindAutoComplete(map)
+	click: () ->
 			addr = $('#post_address_search').val()
 			$("#address_ok").html("寻找中...")
 			$("#address_ok").attr("disabled","disabled")
@@ -27,10 +26,22 @@ $(document).ready ->
 						$("#lng").val(results.getPoi(0).point.lng)
 						$("#address").val(results.getPoi(0).address)
 						$("#city").val(results.getPoi(0).city)
+						Map.saveLocation();
+						return
 					else
-						alert("找不到地址啊亲，别为难我了，要不换个地址看看？")
-					$('#address_ok').html("查看该地址")
-					$("#address_ok").removeAttr("disabled")
+						APP.error("#map-error", "找不到地址啊亲，别为难我了，要不换个地址看看？")
+						$('#address_ok').html("下一步")
+						$("#address_ok").removeAttr("disabled")
 
 			local = new BMap.LocalSearch(map, options);  
 			local.search(addr); 
+	saveLocation: () ->
+			    $.ajax
+			      url: "/users/location_create"
+			      type: "POST"
+			      data: 
+			      	lat: $("#lat").val()
+			      	lng: $("#lng").val()
+			      	address: $("#address").val()
+			      	city: $("#city").val()
+

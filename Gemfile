@@ -78,10 +78,12 @@ group :assets do
   gem "twitter-bootstrap-rails","2.1.3"
   gem 'bootstrap_helper', "1.4.1"
   gem 'jquery-atwho-rails'
+
 end
 
 gem 'jquery-rails', '2.0.2'
 gem 'thin'
+gem 'fancybox-rails'
 
 group :development, :test do
 	gem 'pry'	

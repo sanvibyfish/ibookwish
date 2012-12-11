@@ -66,13 +66,14 @@ Code4::Application.configure do
   config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css *.png *.jp?g *.gif
      app.js comment.js post.js user.js map.js cpanel_app.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
-  config.action_mailer.smtp_settings = {
-    :address => "mail.icancontact.com",
-    :port => "25",
-    :domain => "ibookwish.com",
-    :enable_starttls_auto => false
+ config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'info@ibookwish.com',
+    :password             =>  'air20dream',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
-
 
   config.action_mailer.default_url_options = { :host => 'www.ibookwish.com' }
 

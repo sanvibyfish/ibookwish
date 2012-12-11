@@ -22,6 +22,7 @@
  *= require comment
  *= require post
  *= require tag
+ *= require fancybox
  *= require user
  *= require jquery-ui
  *= require jquery.pnotify

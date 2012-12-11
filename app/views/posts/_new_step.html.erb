@@ -1,0 +1,19 @@
+<% if step == 1 %>
+<ul class="step hidden-on">
+            <li>1.输入ISBN号码<span class="active"> 1.输入ISBN号码</span></li>
+            <li>2.你想要什么<span class="hidden"> 2.你想要什么</span></li>
+            <li>3.借出成功<span class="hidden"> 3.借出成功</span></li>
+</ul>
+<% elsif step == 2 %>
+<ul class="step hidden-on">
+            <li>1.输入ISBN号码<span class="active"> 1.输入ISBN号码</span></li>
+            <li>2.你想要什么<span class="active"> 2.你想要什么</span></li>
+            <li>3.借出成功<span class="hidden"> 3.借出成功</span></li>
+</ul>
+<% else %>
+<ul class="step hidden-on">
+            <li>1.输入ISBN号码<span class="active"> 1.输入ISBN号码</span></li>
+            <li>2.你想要什么<span class="active"> 2.你想要什么</span></li>
+            <li>3.借出成功<span class="active"> 3.借出成功</span></li>
+</ul>
+<% end %>

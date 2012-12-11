@@ -1,69 +1,45 @@
+<div class="span6">
+<%= render "posts/new_step" , :step => step %>
 
-<div class="row">
-  <div class="span6">
-    <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
-          <%= render "shared/error_messages", :target => @post %>
-
-  <div class="control-group">
-    <%= f.label "isbn", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :isbn, :class => 'text_field', :id => 'post_isbn' %>
-
-      <%= f.button "获取", 
-      :class => 'btn', :id => "get_book_button", :type => "button", :disabled => true%>
-      <span id="isbn-help" rel='twipsy' title='<%= image_tag "ISBN.jpg" %>' data-placement="right">什么是ISBN?</span>
-            <span class="help-block">输入是请直接输入数字，请勿输入"-"</span>
-
-    </div>
-  </div>
-
-  <div class="control-group" id="share_book" style="display:none;">
-    <%= f.label "分享图书", :class => 'control-label' %>
-    <div class="controls" id="content">
-
-    </div>
-  </div>
-  
-    <div class="control-group">
-    <%= f.label "我想要", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :dream, :class => 'text_field',:placeholder => "写上你想要别人帮你完成的事" , :rows => '3' %>
-    </div>
-  </div>
-    <div class="control-group">
-    <%= f.label "标签", :class => 'control-label' %>
-    <div class="controls">
-      <div class="text_field">
-        <%= f.hidden_field :tag_names, :value => @post.tags.map(&:name).join(',') %>
-      <ul id="post_tags">
-      </ul> 
-      </div>
-    </div>
-  </div>
-
-<%= hidden_field_tag 'lat'%>
-<%= hidden_field_tag 'lng' %>
-<%= hidden_field_tag 'address' %>
-<%= hidden_field_tag 'city' %>
-  </div>
-  <div class="span4 left30">
-    <div class="row">
-      <div>
-        <%= text_field_tag  "post_address_search", nil, :placeholder => "请输入你的大致位置" %>
-        <%= link_to "查看该地址", "#", :class => "btn btn-primary", :style => "margin-bottom:9px;", :id => "address_ok",
-        :rel => "tooltip",
-        :title => "输入完地址后点击进行标点",
-        :disabled => true %>
-      </div>
-      <div>
-        <div id="map"></div>
-      </div>
-    </div>
-   
-  </div>
+<% if step == 1 %>
+<div class="step-body" id="step1">
+    <div id="step-error"></div>
+     <span class="isbn-body">
+      <input type="text" id="post_isbn" placeholder = "输入书籍的ISBN号码" style="margin-bottom: 0;margin-top: 10px;">
+      <input type="button" data-disable-with ="提交中..." value="下一步" class="btn btn-primary" id="get_book_button" 
+      onclick="javascript:Post.get_book_click();" style="margin-top: 10px;">
+    </span>
+     <div class="isbn-image"><%= image_tag "ISBN.jpg" %></div>
 </div>
-  <div class="form-actions">
-    <input type="button" data-disable-with ="提交中..." value="提交" class="btn btn-primary" id="post_submit">
-  </div>
-
+<% elsif  step == 2  %>
+<div class="step-body"  id="step2">
+    <div id="step-error"></div>
+     <span class="book-body">
+      <%= form_for @post, :remote => true do |f| %>
+      <%= f.text_area :dream, :class => 'text_field',:placeholder => "你想要对方帮你做什么" , :rows => '3', :class => "content" %>
+      <%= f.hidden_field :tag_names, :value => tag_name_tag(book['tags'])  %>
+      <input type="submit" data-disable-with ="提交中..." 
+      style="margin-top:10px;"
+      value="下一步" class="btn btn-primary" id="save_post_button" 
+    />
+     <div class="book-image">
+       <%= render "content", :book => book %>
+     </div>
+     <% end %>
+    </span>
+</div>
+<% else %>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#next_push").fancybox()
+   });
+</script>
+<p>上架成功</p>
+<p>《<%= post.title  %>》已经上架了，有人想借时，您会收到邮件通知～</p>
+<p><%= link_to "继续借出", new_post_path, :id => "next_push" , :class => "btn btn-primary"  %><%= link_to "查看该书", post_path(post), :class => "btn btn-primary" , :style => "margin-left:10px;" %></p>
 <% end %>
+</div>
+
+
+
+ 

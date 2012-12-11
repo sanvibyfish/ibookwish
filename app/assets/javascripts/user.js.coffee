@@ -31,5 +31,5 @@ window.Users =
       sucess: (data)->  
         $("#user_content").html()
 
-$(document).ready ->
+
 

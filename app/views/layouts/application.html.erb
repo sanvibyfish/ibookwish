@@ -51,10 +51,9 @@
             li << link_to("书友", main_app.near_me_users_path)
             li << link_to("意见反馈", main_app.feedback_posts_path)
           end  %>
-          <%= link_to("借出",new_post_path, :class => "btn btn-primary") %>
+          <%= link_to("借出",new_post_path, :class => "btn btn-primary",:id => "push_button")  %>
   <% if user_signed_in? %>
   <ul class="nav pull-right">
-    <li style="margin-top:10px;">    <script type="text/javascript">document.write(' <iframe allowtransparency="" border="0" frameborder="0" height="22" marginheight="0" marginwidth="0" scrolling="no" src="http://widget.weibo.com/relationship/followbutton.php?width=200&amp;height=22&amp;uid=3064311803&amp;style=5&amp;btn=red&amp;dpc=1" style="width: 64px; height: 22px;" width="200"></iframe>')</script></li>
     <li>
       <%= notification_tag main_app.notifications_path %>
     </li>
