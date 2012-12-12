@@ -24,9 +24,8 @@
 <div class="convo attribution clearfix"><p><a href="<%= user_path(post.user) %>" title="<%= post.user.name %>" class="img x"><%= user_avatar_tag(post.user, :style => "small") %></a><a href="<%= user_path(post.user) %>" class="author x"><%= post.user.name %></a>&nbsp;创建于&nbsp; <%= timeago_tag post.created_at, :nojs => true, :date_only => false,:limit => 1.years.ago  %></p></div>
 <% unless post.comments.blank? %>
 
-<% post.comments.order_by("created_at DESC").each_with_index do |comment, index|  %>
+<% post.comments.order_by("created_at DESC").limit(3).each_with_index do |comment, index|  %>
 <div class="convo attribution clearfix"><p><a href="<%= user_path(comment.user) %>" title="<%= comment.user.name %>" class="img x"><%= user_avatar_tag(comment.user, :style => "small") %></a><a href="<%= user_path(comment.user) %>" class="author x"><%= comment.user.name %></a>&nbsp;<%= comment.body %></p></div>
-<% break if index == 2 %>
 <% end %>
 <% end %>
 

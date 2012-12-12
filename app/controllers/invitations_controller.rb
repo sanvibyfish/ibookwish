@@ -21,7 +21,8 @@ class InvitationsController < Devise::InvitationsController
     resource.location = session[:location]
     
     self.resource.location = session[:location]
-
+    gravatar_id = Digest::MD5.hexdigest(self.resource.email.downcase) 
+    self.resource.remote_avatar_url = "http://www.gravatar.com/avatar/#{gravatar_id}.jpeg"
     if resource.errors.empty?
       set_flash_message :notice, :updated
       sign_in(resource_name, resource)
@@ -34,6 +35,7 @@ class InvitationsController < Devise::InvitationsController
    # POST /resource/invitation
   def create
     self.resource = resource_class.invite!(resource_params, current_inviter)
+
 
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions, :email => self.resource.email
