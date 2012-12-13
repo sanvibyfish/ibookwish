@@ -15,7 +15,7 @@
 
 
 <%= javascript_include_tag "app" %>
-<%= stylesheet_link_tag    "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css", :media => "all" %>
+<%= stylesheet_link_tag    "application" ,:media => "all" %>
 <!--[if lt IE 8]><link rel="stylesheet" href="/assets/bootstrap-ie7patches.css"><![endif]-->
 <!--[if IE 8]><link rel="stylesheet" href="/assets/bootstrap-ie8patches.css"><![endif]--> 
 <style type="text/css">
@@ -36,7 +36,6 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-  
     <div class="container">
           <%= bootstrap_flash %>
           <%= yield %>

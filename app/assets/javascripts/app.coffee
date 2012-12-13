@@ -91,21 +91,6 @@ $(document).ready ->
           800
         false
 
-    # $container = $('#posts-container');
-    # gutter = 50;
-    # min_width = 200;
-    # $container.imagesLoaded ->
-    #     $container.masonry
-    #       itemSelector: '.bookdate-box'
-    #       gutterWidth: gutter
-    #       columnWidth: (containerWidth)->
-    #         num_of_boxes = (containerWidth/min_width | 0);
-    #         box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
-    #         if (containerWidth < min_width)
-    #           box_width = containerWidth;
-    #         $('.bookdate-box').width(box_width);
-    #         box_width
-
     $container = $('#posts-container');
     $container.imagesLoaded ->
       $container.masonry

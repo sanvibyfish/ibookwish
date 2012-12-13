@@ -34,7 +34,7 @@ Code4::Application.routes.draw do
 
   mount Homeland::Engine, :at => "/bbs"
   
-  root :to => 'users#iwant_user'
+  root :to => 'post#index'
   match "/about" , :to => 'posts#about'
 
   devise_for :users,  :controllers => {
