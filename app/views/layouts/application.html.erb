@@ -47,29 +47,29 @@
           <div class="container nav-collapse">
 
               <%= render_list :class => "nav" do |li|
-            li << link_to("书单", main_app.posts_path)
-            li << link_to("书友", main_app.near_me_users_path)
-            li << link_to("意见反馈", main_app.feedback_posts_path)
+            li << link_to("书单", posts_path)
+            li << link_to("书友", near_me_users_path)
+            li << link_to("意见反馈", feedback_posts_path)
           end  %>
           <%= link_to("借出",new_post_path, :class => "btn btn-primary",:id => "push_button")  %>
   <% if user_signed_in? %>
   <ul class="nav pull-right">
     <li>
-      <%= notification_tag main_app.notifications_path %>
+      <%= notification_tag notifications_path %>
     </li>
      <li class="dropdown" id="user_menu">
     <%= link_to(raw("#{current_user.name} <b class='caret'></b>"), "#account_menu", :class => "dropdown-toggle", "data-toggle" => "dropdown") %>
     <%= render_list :class => "dropdown-menu" do |li|  
-      li <<  link_to("我的主页", main_app.user_path(current_user)) 
-      li <<  link_to("修改个人信息", main_app.edit_user_registration_path) 
-      li <<  link_to("邀请", main_app.new_user_invitation_path) 
-      li <<  link_to("退出", main_app.destroy_user_session_path, :method => :get) 
+      li <<  link_to("我的主页", user_path(current_user)) 
+      li <<  link_to("修改个人信息", edit_user_registration_path) 
+      li <<  link_to("邀请", new_user_invitation_path) 
+      li <<  link_to("退出", destroy_user_session_path, :method => :get) 
     end %>
   </li>
 </ul>
   <% else %>
            <%= render_list :class => "nav pull-right" do |li|
-            li << link_to("登录", main_app.new_user_session_path)
+            li << link_to("登录", new_user_session_path)
                end  %>
   <% end %>
           </div><!--/.nav-collapse -->

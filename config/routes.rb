@@ -32,8 +32,6 @@ Code4::Application.routes.draw do
     end
   end
 
-  mount Homeland::Engine, :at => "/bbs"
-  
   root :to => 'post#index'
   match "/about" , :to => 'posts#about'
 

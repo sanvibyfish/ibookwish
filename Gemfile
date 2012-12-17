@@ -13,7 +13,6 @@ gem 'resque'
 gem 'resque_mailer'
 gem 'rails-timeago', '~> 2.0.0.beta1'
 
-gem "homeland", :git => "git://github.com/sanvibyfish/homeland.git"
 gem "rails_autolink", ">= 1.0.4"
 # 分页
 gem 'will_paginate', '3.0.3'
