@@ -122,7 +122,7 @@ class PostsController < ApplicationController
 		@post.hits.incr(1)
 		@comment = Comment.new
 		set_seo_meta(@post.title)
-		@think_like_books = Post.where(:user => @post.user).desc(:created_at).limit(7)
+		@think_like_books = Post.where(:user => @post.user).desc(:created_at).limit(5)
 	end
 
 	def complete_wish
