@@ -122,7 +122,7 @@ class PostsController < ApplicationController
 		@post.hits.incr(1)
 		@comment = Comment.new
 		set_seo_meta(@post.title)
-		@nears = Post.near(:coordinates => @post.coordinates).desc(:created_at).limit(10)
+		@think_like_books = Post.where(:user => @post.user).desc(:created_at).limit(7)
 	end
 
 	def complete_wish

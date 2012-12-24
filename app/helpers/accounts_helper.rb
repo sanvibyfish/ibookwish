@@ -52,6 +52,7 @@ module AccountsHelper
 		style = case options[:style].to_s
 		when "240x240" then "240x240"
 		when "360x360" then "360x360"
+		when "100x100" then "100x100"
 		else options[:style].to_s
 		end
 		image_tag "#{url}!#{style}"

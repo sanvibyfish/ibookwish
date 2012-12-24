@@ -1,0 +1,18 @@
+	
+<div class="bookdate-box near-books ">
+	<h4>TA的其他书你可能喜欢</h4>
+	<% @think_like_books.each do |book| %>
+	<% unless book.id == @post.id %>
+	<div class="iwant-wish" >
+				<div class="image">
+			<%= image_tag book.image%>
+		</div>
+		<div class="iwant">
+						<%= link_to book.title, post_path(book) %>
+		</div>
+	</div>
+	<% end %>
+	<% end %>
+	<div class="clearfix"></div>
+</div>
+

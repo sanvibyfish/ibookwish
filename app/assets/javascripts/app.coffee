@@ -13,7 +13,6 @@
 #= require rails-timeago
 #= require fancybox
 #= require social-share-button
-#= require homeland
 #= require user
 #= require post
 #= require comment

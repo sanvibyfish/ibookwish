@@ -180,15 +180,21 @@
 }
 
 .near-books {
+	.iwant-wish {
+		float:left;	
+		margin-left: 10px;	
 	.image {
-		float: left;
 		padding: 5px;
+		img{
+			height: 150px;
+		}
 	}
 
 
 	.iwant {
-		padding-left: 55px;
-		margin-top: 10px;
+		width:100px;
+		text-align:center;
+	}
 	}
 
 }
