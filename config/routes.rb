@@ -34,6 +34,7 @@ Code4::Application.routes.draw do
 
   root :to => 'post#index'
   match "/about" , :to => 'posts#about'
+  match "/wb_5a74311c51862b51.txt", :to => "users#weibo_website_auth"
 
   devise_for :users,  :controllers => {
       :registrations => :accounts,
