@@ -16,3 +16,4 @@
 
 _links.erb
 .DS_Store
+/public/assets
