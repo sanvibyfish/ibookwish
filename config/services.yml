@@ -1,0 +1,14 @@
+common: &common
+  weibo:
+    api_key: "670384808"
+    api_secret: "a994f75518eacc01267f80d12692473d"
+    redirect_uri: "http://www.ibookwish.com/users/auth/weibo/callback"
+
+production:
+  <<: *common
+
+development:
+  <<: *common
+
+test:
+  <<: *common

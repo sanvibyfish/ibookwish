@@ -39,8 +39,14 @@ Code4::Application.routes.draw do
   devise_for :users,  :controllers => {
       :registrations => :accounts,
       :invitations => :invitations,
-      :passwords => :passwords
-  } 
+      :passwords => :passwords,
+      omniauth_callbacks: :authentications
+  } do
+    namespace :accounts do
+      get :binding
+      post :bind
+    end
+  end
 
 
 

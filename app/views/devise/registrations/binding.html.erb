@@ -1,0 +1,19 @@
+<div class="row bookdate-box">
+  <div class="span7">
+    <h2>只需一步，即可完成注册</h2>
+
+    <%= simple_form_for(resource, :as => resource_name, :url => accounts_bind_path, :html => { :class => 'form-horizontal' } ) do |f| %>
+          <%= render "shared/error_messages", :target => resource %>
+        <%= f.input :email,  :placeholder => "foo@bar.com"  %>        
+    <div class="form-actions">
+      <div><%= f.submit "绑定", :class => 'btn btn-primary', 'data-disable-with' => '绑定中...' %></div>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
+
+
+
+

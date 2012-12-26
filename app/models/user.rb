@@ -7,7 +7,7 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:weibo]
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -81,14 +81,6 @@ class User
   end
 end
 
-
-  before_create  :get_gavatar
-  def get_gavatar
-    gravatar_id = Digest::MD5.hexdigest(self.email.downcase) 
-    self.remote_avatar_url = "http://www.gravatar.com/avatar/#{gravatar_id}.jpeg"
-  end
-
-
   def read_notifications(notifications)
     unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
     if unread_ids.any?
@@ -111,13 +103,19 @@ end
     roles.include?(role.to_s)
   end
 
-  def update_with_password(params={})
-    if !params[:current_password].blank? or !params[:password].blank? or !params[:password_confirmation].blank?
-      super
-    else
-      params.delete(:current_password)
-      self.update_without_password(params)
-    end
+  def update_with_password(params, *options)
+  current_password = params.delete(:current_password)
+
+  if params[:password].blank?
+    params.delete(:password)
+    params.delete(:password_confirmation) if params[:password_confirmation].blank?
+  end
+
+
+    update_attributes(params, *options)
+
+    clean_up_passwords
+    true
   end
 
   def to_param

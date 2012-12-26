@@ -1,0 +1,32 @@
+<%- if controller_name != 'sessions' %>
+	<div class="login">
+			已经有账号了？
+  <%= link_to "登录", new_session_path(resource_name) %>
+</div>
+<% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'accounts' %>
+<div class="signup">
+        还没有账号？
+  <%= link_to "注册", new_user_registration_path %><br />
+</div>
+<% end -%>
+
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+<% end -%>
+<div class="signup social">
+  <h3>使用第三方账号登录</h3>
+<ul class="clearfix">
+<li>
+<a href="/users/auth/weibo">
+<img alt="使用微博账号登录" src="/assets/weibo_login.png">
+</a>
+</li>
+</ul>
+</div>

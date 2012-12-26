@@ -35,6 +35,8 @@ gem "carrierwave-mongoid"
 
 # 用户系统
 gem 'devise',           '>= 2.0.0'
+gem 'omniauth-weibo-oauth2', '~> 0.2.0'
+
 #权限系统
 gem 'cancan'
 
