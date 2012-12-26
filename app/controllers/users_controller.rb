@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
 
   def weibo_website_auth
-    render :text => "weibo"
+    render :text => "open.weibo.com"
   end
 
   def followers
