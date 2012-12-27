@@ -1,7 +1,7 @@
 common: &common
   weibo:
-    api_key: "716582019"
-    api_secret: "f26bf8bb2b491368b9f64169e69a32c0"
+    api_key: "3048364079"
+    api_secret: "d7d47ccb2bb0dc1cf34d2f17f1d32eb4"
     redirect_uri: "http://www.ibookwish.com/users/auth/weibo/callback"
 
 production:
