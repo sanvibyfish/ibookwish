@@ -6,8 +6,8 @@ class PostsController < ApplicationController
 	
 	skip_before_filter :set_menu_active, :only => [:feedback]
 
-	DOUBAN_APIKEY = '0c4c24c38128d4df24e46e4a837a7e9d'
-	DOUBAN_SECRET = 'd66f4058142d5c92'
+	DOUBAN_APIKEY = '083ef65be9c7ffc118bce313bd57ff43'
+	DOUBAN_SECRET = '7279c80feb82faae'
 	DOUBAN_ACCESS_TOKEN = '1bfe1241d8bdf5de53fa36c58a39e19a'
 
 	def new	
