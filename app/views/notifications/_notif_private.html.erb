@@ -29,11 +29,11 @@
 <td>
   <% unless current_user.id  == notification.from_user.id  %>
             <div class="private">
-              <%= link_to "回复","#send",:class => "label label-success" ,"data-toggle" => "modal" %>
+              <%= link_to "回复","##{notification.from_user.id}",:class => "label label-success" ,"data-toggle" => "modal" %>
             </div>
 
 
-        <div class="modal" id="send" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+        <div class="modal" id="<%= notification.from_user.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
     <%= form_for current_user, :url => send_private_message_users_path, :method => "POST", :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
