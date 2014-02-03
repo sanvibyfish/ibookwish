@@ -25,8 +25,7 @@ class AccountsController < Devise::RegistrationsController
 
     # POST /resource
   def create
-    build_resource
-    resource.email = params[resource_name][:email]
+    build_resource(sign_up_params)
 
    if session[:location].blank?
       # FIXME 目前是虚拟IP
@@ -40,10 +39,10 @@ class AccountsController < Devise::RegistrationsController
            session[:location] =  Location.find_by(pin_yin: "shenzhen")
         end
 
-      end 
+      end
     end
 
-    gravatar_id = Digest::MD5.hexdigest(resource.email.downcase) 
+    gravatar_id = Digest::MD5.hexdigest(resource.email.downcase)
     resource.remote_avatar_url = "http://www.gravatar.com/avatar/#{gravatar_id}.jpeg"
 
     resource.location = session[:location]
@@ -94,7 +93,7 @@ class AccountsController < Devise::RegistrationsController
         self.resource.gender = 1
       end
       self.resource.remote_avatar_url = "#{data[:info][:avatar]}.jpeg"
-     
+
       if session[:location].blank?
       # FIXME 目前是虚拟IP
       if request.location.blank?
@@ -107,9 +106,9 @@ class AccountsController < Devise::RegistrationsController
            session[:location] =  Location.find_by(pin_yin: "shenzhen")
         end
 
-      end 
+      end
     end
-    self.resource.location = session[:location] 
+    self.resource.location = session[:location]
 
        if self.resource.save
         Authentication.create_from_hash(self.resource.id, data)

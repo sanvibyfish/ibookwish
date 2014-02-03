@@ -35,14 +35,14 @@ Code4::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.delivery_method = :smtp  
+  config.delivery_method = :smtp
 
 
  config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :user_name            => 'info@ibookwish.com',
-    :password             =>  'air20dream',
+    :password             =>  '',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }

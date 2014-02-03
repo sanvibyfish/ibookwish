@@ -8,6 +8,7 @@ gem 'exception_notification'
 # MongoDB..
 gem 'mongoid', '3.0.6'
 
+gem "CoffeeTags"
 #bg work
 gem 'resque'
 gem 'resque_mailer'

@@ -34,7 +34,7 @@ module Code4
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Beijing'
-    
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -73,14 +73,14 @@ module Code4
     end
 
 
-    # 其他项目用的时候注意修改这里
-    if Rails.env == "production"
-      config.middleware.use ExceptionNotifier,
-      :email_prefix         => "[ibookwish] ",
-      :sender_address       => %{"notifier" <info@ibookwish.com>},
-      :exception_recipients => %w{sanvibyfish@gmail.com}
-      # :ignore_exceptions    => ['Mongoid::Errors::DocumentNotFound'] + ExceptionNotifier.default_ignore_exceptions
-    end
+    # # 其他项目用的时候注意修改这里
+    # if Rails.env == "production"
+    #   config.middleware.use ExceptionNotifier,
+    #   :email_prefix         => "[ibookwish] ",
+    #   :sender_address       => %{"notifier" <info@ibookwish.com>},
+    #   :exception_recipients => %w{sanvibyfish@gmail.com}
+    #   # :ignore_exceptions    => ['Mongoid::Errors::DocumentNotFound'] + ExceptionNotifier.default_ignore_exceptions
+    # end
 
   end
 end

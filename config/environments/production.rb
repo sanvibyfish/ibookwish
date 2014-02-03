@@ -62,7 +62,7 @@ Code4::Application.configure do
   config.active_support.deprecation = :notify
 
   config.assets.js_compressor  = :uglifier
-  config.assets.css_compressor = :scss
+  # config.assets.css_compressor = :scss
   config.assets.precompile += %w(application.css base.css  comment.css post.css tag.css user.css *.png *.jp?g *.gif
      app.js comment.js post.js user.js map.js cpanel_app.js bootstrap_and_overrides.css .svg .eot .woff .ttf )
 
@@ -70,7 +70,7 @@ Code4::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :user_name            => 'info@ibookwish.com',
-    :password             =>  'air20dream',
+    :password             =>  '',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
